@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-input-bar",
+  "type": "registry:block",
+  "title": "Animated Input Bar",
+  "description": "A simple hello world component.",
+  "files": [
+    {
+      "path": "components/animated-inputbar.tsx",
+      "content": "\"use client\"\r\n\r\nimport { useState } from \"react\"\r\nimport { Input } from \"./ui/input\"\r\nimport { motion, cubicBezier } from \"motion/react\"\r\n\r\nconst LABEL_TRANSITION = {\r\n  duration: 0.28,\r\n  ease: cubicBezier(0.4, 0, 0.2, 1), // ✅ correct type\r\n}\r\n\r\n\r\nexport interface AnimatedInputBarProps {\r\n  value?: string\r\n  onChange?: (value: string) => void\r\n  label?: string\r\n  className?: string\r\n}\r\n\r\nexport function AnimatedInputBar({\r\n  value,\r\n  onChange,\r\n  label = \"Label\",\r\n  className,\r\n}: AnimatedInputBarProps) {\r\n  const [isFocused, setIsFocused] = useState(false)\r\n  const [internalValue, setInternalValue] = useState(\"\")\r\n  const val = value ?? internalValue\r\n\r\n  const isFloating = isFocused || val.length > 0\r\n\r\n  return (\r\n    <div className={`relative w-fit ${className}`}>\r\n      {/* Input field */}\r\n      <Input\r\n        value={val}\r\n        onChange={(e) => {\r\n          setInternalValue(e.target.value)\r\n          onChange?.(e.target.value)\r\n        }}\r\n        onFocus={() => setIsFocused(true)}\r\n        onBlur={() => setIsFocused(false)}\r\n        placeholder={isFloating ? `Enter your ${label}` : \"\"}\r\n        className=\"relative \r\n                   border border-gray-300 rounded-md px-3 py-2\r\n                   transition-all duration-300 ease-in-out transform\r\n                   focus:ring-2 focus:ring-blue-500 focus:outline-none\"\r\n      />\r\n\r\n      {/* Animated floating label */}\r\n      <motion.label\r\n        className=\"absolute left-3 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm z-20  px-1 text-foreground \r\n                   pointer-events-none rounded-sm\"\r\n        animate={\r\n          isFloating\r\n            ? {\r\n              y: -20,\r\n              scale: 0.85,\r\n              color: \"#3b82f6\", // blue-500\r\n            }\r\n            : {\r\n              y: 0,\r\n              scale: 1,\r\n              color: \"#6b7280\", // gray-500\r\n            }\r\n        }\r\n        transition={LABEL_TRANSITION}\r\n      >\r\n        {label}\r\n      </motion.label>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ]
+}
