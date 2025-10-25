@@ -3,7 +3,7 @@
 import { useSidebar } from "fumadocs-ui/contexts/sidebar";
 import Link from "next/link";
 import { AnimatePresence, motion } from 'motion/react'
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeftToLine, ArrowRightToLine } from "lucide-react";
 
 
@@ -38,7 +38,7 @@ export function CustomSidebar(
   ]
 
 
-  const data = [
+   const data = [
     {
       heading: "utilities",
       items: [
@@ -49,6 +49,10 @@ export function CustomSidebar(
       heading: "minimilistic",
       items: [
         { title: "ToolBar", href: "/docs/toolbar" },
+        { title: "Music Player", href: "/docs/music-player" },
+        { title: "WaveInText", href: "/docs/wave-in-text" },
+
+
       ],
     },
 
@@ -101,17 +105,17 @@ export function CustomSidebar(
       </button>
       <AnimatePresence>
 
-      
+
         {sidebar.open &&
           <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
-          className="p-4 space-y-2 fixed  top-0 left-0 z-40 md:bg-background bg-muted dark:bg-muted ml-2 pt-32 md:pt-32 pb-16 mt-13 border md:border-0  md:pr-0 pr-12 rounded-xl max-h-[calc(100vh-1rem)] min-h-[calc(100vh-4rem)] overflow-scroll no-scrollbar">
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="p-4 space-y-2 fixed  top-0 left-0 z-20 md:bg-background bg-muted dark:bg-muted ml-2 md:pl-8 pt-32 md:pt-32 pb-16 mt-13 border md:border-0  pr-12 rounded-xl max-h-[calc(100vh-1rem)] min-h-[calc(100vh-4rem)] overflow-scroll no-scrollbar">
 
             <div className="flex items-center justify-start gap-3 mb-4 ">
-              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[var(--color-purple-400)]"></div>
+              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[var(--color-purple-400)] to-amber-50"></div>
               <h1 className="cursor-default text-[17px]  font-medium text-accent-foreground">Documentation</h1>
             </div>
 
@@ -124,19 +128,19 @@ export function CustomSidebar(
                     {section.heading}
                   </h1>
                 </div>
-                {section.items.map((item: any) => (
-                  <motion.div 
-                  key={item.href}
-                  onClick={()=>{  
-                    
-                  }}
-                  className=" transform text-muted-foreground hover:scale-101 transition-transform  duration-200 hover:translate-x-3 hover:text-[var(--color-purple-500)] pl-20 ">
+                {section.items.map((item: ItemProps) => (
+                  <motion.div
+                    key={item.href}
+                    onClick={() => {
 
-                    <Link onClick = {()=>{
-                      if(isMobile){
+                    }}
+                    className=" transform text-muted-foreground hover:scale-101 transition-transform  duration-200 hover:translate-x-3 hover:text-[var(--color-purple-500)]  hover:dark:text-[var(--color-purple-300)] pl-20 ">
+
+                    <Link onClick={() => {
+                      if (isMobile) {
                         sidebar.setOpen(false)
                       }
-                      else{
+                      else {
                         sidebar.setOpen(true)
                       }
                     }} href={item.href}>{item.title}</Link>
@@ -144,12 +148,12 @@ export function CustomSidebar(
                 ))}
               </div>
 
-))
-}
+            ))
+            }
 
 
             <div className="flex items-center justify-start gap-3 mb-4 ">
-              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[var(--color-purple-400)]"></div>
+              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[var(--color-purple-400)] to-amber-50"></div>
               <h1 className="cursor-default text-[17px]  font-medium text-accent-foreground">Components</h1>
             </div>
 
@@ -162,19 +166,19 @@ export function CustomSidebar(
 
                   </h1>
                 </div>
-                {section.items.map((item: any) => (
-                  <motion.div 
-                  key={item.href}
-                  onClick={()=>{
-                    if(isMobile) sidebar.setOpen(false)
+                {section.items.map((item: ItemProps) => (
+                  <motion.div
+                    key={item.href}
+                    onClick={() => {
+                      if (isMobile) sidebar.setOpen(false)
                     }}
-                  className=" transform text-muted-foreground hover:scale-101 transition-transform  duration-200 hover:translate-x-3 hover:text-[var(--color-purple-500)] pl-20 ">
+                    className=" transform text-muted-foreground hover:scale-101 transition-transform  duration-200 hover:translate-x-3 hover:text-[var(--color-purple-500)]   hover:dark:text-[var(--color-purple-300)] pl-20 ">
 
-                    <Link className = 'text-[15px]' onClick = {()=>{
-                      if(isMobile){
+                    <Link className='text-[15px]' onClick={() => {
+                      if (isMobile) {
                         sidebar.setOpen(false)
                       }
-                      else{
+                      else {
                         sidebar.setOpen(true)
                       }
                     }} href={item.href}>{item.title}</Link>
@@ -182,8 +186,10 @@ export function CustomSidebar(
                 ))}
               </div>
 
-))
-}
+            ))
+            }
+
+            <div className="fixed pointer-events-none  bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-muted/80 to-transparent backdrop-blur-xs max-w-xs rounded-b-xl" />
           </motion.div>
         }
       </AnimatePresence>

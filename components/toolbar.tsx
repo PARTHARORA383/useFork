@@ -106,7 +106,6 @@ function ToolbarButton({
   },[])
 
   return (
-    //@ts-ignore
     <motion.div
       ref={ref}
       className={cn(
@@ -116,7 +115,6 @@ function ToolbarButton({
       onClick={() => {
         setIsRender(!isRender);
         setIsHovered(false);
-        //@ts-ignore
         setActiveButton(heading)
       }}
       onMouseEnter={handleMouseEnter}
@@ -189,7 +187,7 @@ function ToolbarButtonOverlay({ component }: ToolbarButtonOverlayProps) {
   return (
     <div>
       {component ?
-        <motion.div>
+        <motion.div className="z-50">
           {component}
         </motion.div> :
         <motion.div className="min-w-xs flex items-center justify-center h-[100px] z-50">

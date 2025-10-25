@@ -3,7 +3,7 @@
   "name": "acme",
   "homepage": "https://acme.com",
   "items": [
-     {
+    {
       "name": "animated-input-bar",
       "type": "registry:block",
       "title": "Animated Input Bar",
@@ -12,43 +12,105 @@
         {
           "path": "components/animated-inputbar.tsx",
           "type": "registry:component",
-          "language" : "tsx"
+          "language": "tsx"
         }
+      ],
+      "dependencies": [
+        "motion",
+         "lucide-react"
+      ]
+      
+    },
+    {
+      "name": "animated-tabs",
+      "type": "registry:block",
+      "title": "Animated Tabs",
+      "description": "A reusable and customizable tabs component built with Radix UI and Motion. Supports smooth sliding highlight animations on tab triggers and fade-in/out transitions for tab content.",
+      "files": [
+        {
+          "path": "components/animated-tabs.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/animated-tabs-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "@radix-ui/react-tabs",
+         "lucide-react"
+    ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:block",
+      "title": "Code Block",
+      "description": "A reusable and customizable code block component built with React and Motion.",
+      "files": [
+        {
+          "path": "components/code-block.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/code-block-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": [
+
+        "motion",
+        "shiki",
+        "@shikijs/transformers",
+        "lucide-react"
       ]
     },
-     {
-  "name": "animated-tabs",
-  "type": "registry:block",
-  "title": "Animated Tabs",
-  "description": "A reusable and customizable tabs component built with Radix UI and Motion. Supports smooth sliding highlight animations on tab triggers and fade-in/out transitions for tab content, making tab interactions visually engaging and accessible.",
-  "files": [
     {
-      "path": "components/animated-tabs.tsx",
-      "type": "registry:component",
-      "language": "tsx"
-    },{
-      "path": "components/demo/animated-tabs-demo.tsx",
-      "type": "registry:component",
-      "language": "tsx"
-    }
+      "name": "music-player",
+      "type": "registry:block",
+      "title": "Music Player",
+      "description": "A customizable music player built with React and Framer Motion, supporting animated transitions and hover effects.",
+      "files": [
+        {
+          "path": "components/music-player.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/music-player-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
   ]
-},
-     {
-  "name": "code-block",
-  "type": "registry:block",
-  "title": "Animated Tabs",
-  "description": "A reusable and customizable code block component built with React and Motion.",
-  "files": [
+    },
     {
-      "path": "components/code-block.tsx",
-      "type": "registry:component",
-      "language": "tsx"
-    },{
-      "path": "components/demo/code-block-demo.tsx",
-      "type": "registry:component",
-      "language": "tsx"
-    }
+      "name": "wave-in-text",
+      "type": "registry:block",
+      "title": "WaveInText",
+      "description": "A customizable music player built with React and Framer Motion, supporting animated transitions and hover effects.",
+      "files": [
+        {
+          "path": "components/wave-in-text.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/wave-in-text-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
   ]
-}
+    }
   ]
 }

@@ -6,7 +6,6 @@ import { SiGithub } from "react-icons/si"
 import { CodeBlockDemo } from "./code-block-demo"
 import { MusicPlayer } from "../music-player"
 
-
 const tracks = [
   {
     id: "1",
@@ -17,6 +16,7 @@ const tracks = [
   },
 ]
 
+
 export function ToolbarDemo (){
 
   return (
@@ -25,7 +25,7 @@ export function ToolbarDemo (){
       <ToolbarButtonOverlay component= {<CodeBlockDemo/>}/>
       </ToolbarButton>
       <ToolbarButton heading = 'Theme' icon={<Moon size={18}/> }>
-      <ToolbarButtonOverlay component= {<MusicPlayer tracks={tracks}/>}/>
+      <ToolbarButtonOverlay component= {<MusicPlayer data={tracks}/>}/>
       </ToolbarButton>
       <ToolbarButton heading="Github" icon={<SiGithub size={18}/>}>
       <ToolbarButtonOverlay/>

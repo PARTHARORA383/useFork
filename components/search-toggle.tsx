@@ -46,7 +46,7 @@ export function LargeSearchToggle({
   hideIfDisabled,
   ...props
 }: ComponentProps<'button'> & {
-  hideIfDisabled?: boolean;
+  hideIfDisabled?: false;
 }) {
   const { enabled, hotKey, setOpenSearch } = useSearchContext();
   const { text } = useI18n();

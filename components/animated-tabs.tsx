@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "motion/react"
 import { cn } from "@/lib/utils"
 
 
@@ -62,6 +62,7 @@ export function AnimatedTabsTrigger({
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
   const activeTab = useActiveTab()
+  
   const playDrop = () => {
     const drop = new Audio("/sounds/click.mp3")
     drop.volume = 0.4
