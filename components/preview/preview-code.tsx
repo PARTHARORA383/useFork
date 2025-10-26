@@ -70,9 +70,9 @@ export function PreviewCode({ codePath, component, position = "center" }: Previe
 
   return (
     <>
-      <AnimatedTabs defaultValue="preview" className="max-w-3xl flex">
+      <AnimatedTabs defaultValue="preview" className="max-w-4xl flex gap-4">
 
-        <AnimatedTabsList className="max-w-[300px]">
+        <AnimatedTabsList className="max-w-[300px] py-1.5 px-2">
           <AnimatedTabsTrigger className="text-sm p-1.5" value="preview">Preview</AnimatedTabsTrigger>
           <AnimatedTabsTrigger className='text-sm p-1.5' value="code">Code</AnimatedTabsTrigger>
         </AnimatedTabsList>
@@ -87,7 +87,6 @@ export function PreviewCode({ codePath, component, position = "center" }: Previe
 
         <AnimatedTabsContent value="code" className="">
           <div className="">
-
             <CodeBlockComponent data = {data} />
           </div>
         </AnimatedTabsContent>

@@ -48,11 +48,14 @@ export function CustomSidebar(
     {
       heading: "minimilistic",
       items: [
-        { title: "ToolBar", href: "/docs/toolbar" },
         { title: "Music Player", href: "/docs/music-player" },
-        { title: "WaveInText", href: "/docs/wave-in-text" },
-
-
+      ],
+    },
+    {
+      heading: "text-wrappers",
+      items: [
+        { title: "Wave text wrapper", href: "/docs/wave-in-text" },
+        { title: "Text roll wrapper ", href: "/docs/roll-in-text" },
       ],
     },
 
@@ -91,16 +94,16 @@ export function CustomSidebar(
   return (
     <>
       <button
-        className="fixed top-15 left-3 md:left-10 p-2 text-muted-foreground hover:text-[var(--color-purple-500)] z-50 "
+        className="fixed top-15 lg:top-17 left-4 md:left-10 p-1 text-muted-foreground hover:text-[var(--color-purple-500)] dark:hover:text-[var(--color-purple-300)] z-50 hover:bg-muted3 transition-colors duration-200 rounded-md"
         onClick={() => {
           handleOnClick()
           sidebar.setOpen(!sidebar.open)
         }}
       >
         {sidebar.open ?
-          <ArrowLeftToLine />
+          <ArrowLeftToLine className="w-6 h-6"/>
           :
-          <ArrowRightToLine />
+          <ArrowRightToLine className="w-6 h-6"/>
         }
       </button>
       <AnimatePresence>

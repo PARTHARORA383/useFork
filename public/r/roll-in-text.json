@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "roll-in-text",
+  "type": "registry:block",
+  "title": "Text Roll Wrapper",
+  "description": "A fully reusable and customizable text wrapper with a smooth roll-in animation effect. Simply wrap your string with the component and watch the text come to life with motion magic.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "components/roll-in-text.tsx",
+      "content": "\r\n\"use client\";\r\n\r\n\r\nimport { cn } from \"@/lib/cn\";\r\nimport { motion } from \"motion/react\";\r\n\r\ninterface RollInTextProps {\r\n  children: string;\r\n  className?: string;\r\n  rotateY? : number[] | string[]\r\n  rotateX? : number[] |string[]\r\n  y ?: string[] | number[]\r\n  x ? : string[]|number[]\r\n  delay ? : number\r\n  duration ? : number\r\n}\r\n\r\n\r\nexport function RollInText({ children, className , rotateX , rotateY , y ,x , delay , duration }: RollInTextProps) {\r\n\r\n  const text = children.split(\"\").map((char) => (char === \" \" ? \"\\u00A0\" : char));\r\n\r\n  return (\r\n    <motion.div\r\n      className={cn(`inline-block text-5xl`,className)}\r\n      initial=\"hidden\"\r\n      whileInView=\"visible\"\r\n    >\r\n      {text.map((char, index) => (\r\n        <motion.span\r\n          className=\"\"\r\n          key={index}\r\n          style={{\r\n            display: \"inline-block\",\r\n            perspective: \"500px\",\r\n            overflow: \"hidden\",\r\n            height: \"1em\",\r\n          }}\r\n          variants={{\r\n            hidden: { opacity: 0 },\r\n            visible: {\r\n              opacity: 1,\r\n              transition: {\r\n                delay: index * 0.1,\r\n              },\r\n            },\r\n          }}\r\n        >\r\n          <motion.span\r\n            style={{ display: \"inline-block\" }}\r\n            animate={{\r\n              y: y ?? [\"100%\", \"-100%\", \"0%\"], // wheel-like motion\r\n              x : x ?? 0,\r\n              rotateX: rotateX ?? [0, 360, 0], // optional 3D flip\r\n              rotateY : rotateY ?? 0\r\n              \r\n            }}\r\n            transition={{\r\n              duration: duration ?? 1.4,\r\n              ease: \"easeInOut\",\r\n              delay: delay ? index * delay : index * 0.05,\r\n              repeatType: \"loop\",\r\n              repeat: 1\r\n            }}\r\n          >\r\n            {char}\r\n          </motion.span>\r\n\r\n        </motion.span>\r\n      ))}\r\n    </motion.div>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "components/demo/roll-in-text-demo.tsx",
+      "content": "\"use client\"\r\n\r\nimport { RollInText } from \"@/components/roll-in-text\";\r\n\r\n\r\nexport function RollInTextDemo() {\r\n  return (\r\n    <div>\r\n      <div className='flex items-center gap-4'>\r\n        <RollInText className=' playfair-display-400 font-bold  text-5xl text-red-500 '>\r\n          REDEFINING\r\n        </RollInText>\r\n        <RollInText className='font-medium  text-5xl '>\r\n          LIMITS\r\n        </RollInText>\r\n      </div>\r\n      <div className='flex items-center gap-4'>\r\n        <RollInText className='font-medium  text-5xl '>\r\n          FIGHTING FOR\r\n        </RollInText>\r\n        <RollInText className='font-bold  playfair-display-400  text-red-500 text-5xl '>\r\n          WINS\r\n        </RollInText>\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n\r\n",
+      "type": "registry:component"
+    }
+  ]
+}

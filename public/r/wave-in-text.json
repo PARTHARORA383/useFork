@@ -3,19 +3,19 @@
   "name": "wave-in-text",
   "type": "registry:block",
   "title": "WaveInText",
-  "description": "A customizable music player built with React and Framer Motion, supporting animated transitions and hover effects.",
+  "description": "A fully reusable and customizable text wrapper featuring a smooth, wave-like animation built with React and Framer Motion. Simply wrap your text with this component to bring it to life with fluid, elegant motion.",
   "dependencies": [
     "motion"
   ],
   "files": [
     {
       "path": "components/wave-in-text.tsx",
-      "content": "\r\n\"use client\"\r\n\r\nimport { motion, AnimatePresence } from \"framer-motion\";\r\n\r\ninterface WaveInTextProps {\r\n  children: string;\r\n  className?: string;\r\n  duration?: number; // animation duration per character\r\n  yOffset?: number; // vertical offset for entrance\r\n  blurAmount?: number; // initial blur\r\n  isVisible?: boolean; // control exit\r\n}\r\n\r\nexport const WaveInText = ({\r\n  children,\r\n  className,\r\n  duration = 0.5,\r\n  yOffset = 20,\r\n  blurAmount = 8,\r\n  isVisible = true,\r\n}: WaveInTextProps) => {\r\n  // Split text into characters including spaces\r\n  const characters = children.split(\"\").map((char) =>\r\n    char === \" \" ? \"\\u00A0\" : char\r\n  );\r\n\r\n  return (\r\n    <AnimatePresence>\r\n      {isVisible && (\r\n        <span className={`inline-block text-[17px] ${className}`}>\r\n          {characters.map((char, index) => (\r\n            <motion.span\r\n              key={index}\r\n              style={{ display: \"inline-block\" }}\r\n              initial={{ opacity: 0, y: yOffset, filter: `blur(${blurAmount}px)` }}\r\n              animate={{ opacity: 1, y: 0, filter: \"blur(0px)\" }}\r\n              exit={{ opacity: 0, y: yOffset, filter: `blur(${blurAmount}px)` }}\r\n              transition={{\r\n                duration,\r\n                delay: index * 0.05,\r\n                ease: \"easeOut\",\r\n              }}\r\n            >\r\n              {char}\r\n            </motion.span>\r\n          ))}\r\n        </span>\r\n      )}\r\n    </AnimatePresence>\r\n  );\r\n};\r\n",
+      "content": "\r\n\"use client\"\r\n\r\nimport { cn } from \"@/lib/cn\";\r\nimport { motion, AnimatePresence } from \"motion/react\";\r\n\r\ninterface WaveInTextProps {\r\n  children: string;\r\n  className?: string;\r\n  duration?: number; // animation duration per character\r\n  yOffset?: number; // vertical offset for entrance\r\n  blurAmount?: number; // initial blur\r\n  isVisible?: boolean; // control exit\r\n}\r\n\r\nexport const WaveInText = ({\r\n  children,\r\n  className,\r\n  duration = 0.5,\r\n  yOffset = 18,\r\n  blurAmount = 8,\r\n  isVisible = true,\r\n}: WaveInTextProps) => {\r\n\r\n const text =\r\n  typeof children === \"string\"\r\n    ? children.split(\"\").map((char) => (char === \" \" ? \"\\u00A0\" : char))\r\n    : [children];\r\n\r\n  \r\n  return (\r\n    <AnimatePresence>\r\n      {isVisible && (\r\n        <span className={cn(`inline-block text-[17px]` ,className)}>\r\n          {text.map((char, index) => (\r\n            <motion.span\r\n              key={index}\r\n              style={{ display: \"inline-block\" }}\r\n              initial={{ opacity: 0, y: yOffset, filter: `blur(${blurAmount}px)` }}\r\n              animate={{ opacity: 1, y: 0, filter: \"blur(0px)\" }}\r\n              exit={{ opacity: 0, y: yOffset, filter: `blur(${blurAmount}px)` }}\r\n              transition={{\r\n                duration,\r\n                delay: index * 0.05,\r\n                ease: \"easeOut\",\r\n              }}\r\n            >\r\n              {char}\r\n            </motion.span>\r\n          ))}\r\n        </span>\r\n      )}\r\n    </AnimatePresence>\r\n  );\r\n};\r\n\r\n\r\n",
       "type": "registry:component"
     },
     {
       "path": "components/demo/wave-in-text-demo.tsx",
-      "content": "\r\nimport { WaveInText } from \"@/components/wave-in-text\";\r\n\r\n\r\nexport function WaveInTextDemo (){\r\n\r\n  return (\r\n      <WaveInText>\r\n         Devouring Details Devouring Details Devouring Details\r\n      </WaveInText>\r\n\r\n    \r\n  )\r\n}",
+      "content": "\r\nimport { WaveInText } from \"@/components/wave-in-text\";\r\n\r\n\r\nexport function WaveInTextDemo (){\r\n\r\n  return (\r\n      <WaveInText  className =\"text-3xl font-medium\" duration={0.5}>\r\n         Dream beyond the ordinary\r\n      </WaveInText>\r\n  )\r\n}",
       "type": "registry:component"
     }
   ]

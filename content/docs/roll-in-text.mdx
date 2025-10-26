@@ -1,0 +1,67 @@
+---
+title: "Text Rollin Wrapper"
+description: "A fully reusable and customizable text wrapper with a smooth roll-in animation effect. Simply wrap your string with the component and watch the text come to life with motion magic"
+---
+
+
+<PreviewCode
+postition = ""
+component = {<RollInTextDemo/>}
+codePath = "/r/roll-in-text.json"
+/>
+
+---
+## Installation 
+
+<Installation command = {"https://useFork.com/wave-in-text.json"}/>
+
+
+
+
+
+
+## Props
+
+<Table data = {{
+  children: {
+    description: 'The text content to be animated within the RollInText component.',
+    type: 'string',
+    default: '""',
+  },
+  className: {
+    description: 'Optional custom CSS class for additional styling.',
+    type: 'string',
+    default: 'undefined',
+  },
+  rotateY: {
+    description: 'Defines the rotation along the Y-axis for the roll-in animation. Can be an array of numbers or strings.',
+    type: 'number[] | string[]',
+    default: '[0, 0]',
+  },
+  rotateX: {
+    description: 'Defines the rotation along the X-axis for the roll-in animation. Can be an array of numbers or strings.',
+    type: 'number[] | string[]',
+    default: '[0, 0]',
+  },
+  y: {
+    description: 'Controls the vertical translation (Y-axis) during the animation.',
+    type: 'string[] | number[]',
+    default: '[0, 0]',
+  },
+  x: {
+    description: 'Controls the horizontal translation (X-axis) during the animation.',
+    type: 'string[] | number[]',
+    default: '[0, 0]',
+  },
+  delay: {
+    description: 'The delay before the animation starts, in seconds.',
+    type: 'number',
+    default: 0,
+  },
+  duration: {
+    description: 'The duration of the roll-in animation, in seconds.',
+    type: 'number',
+    default: 0.2,
+  },
+}}/>
+

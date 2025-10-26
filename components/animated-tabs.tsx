@@ -23,7 +23,7 @@ export function AnimatedTabs({
       value={activeTab}
       onValueChange={setActiveTab}
       data-slot="tabs"
-      className={cn("flex flex-col gap-4 ", className)}
+      className={cn("flex flex-col gap-2 ", className)}
       {...props}
     >
       {/* Pass activeTab down via context */}
@@ -44,7 +44,7 @@ export function AnimatedTabsList({
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        "relative inline-flex bg-muted rounded-md p-1",
+        "relative inline-flex bg-muted rounded-md ",
         "text-sm font-medium text-muted-foreground ",
         className
       )}
@@ -94,7 +94,7 @@ export function AnimatedTabsTrigger({
       {activeTab === value && (
         <motion.div
           layoutId="tab-highlight"
-          className="absolute inset-0 -z-10 bg-card rounded-md shadow-md "
+          className="absolute inset-0 -z-10 bg-muted2 dark:bg-muted3 rounded-md shadow-md "
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
 
         />

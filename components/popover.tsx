@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn"
 import { ArrowRight, Command, Ghost, SearchIcon } from "lucide-react"
 import { Input } from "./ui/input"
 import Link from "next/link"
-import { createContext, ReactNode, SetStateAction, useContext, useEffect, useState } from "react"
+import { createContext, ReactNode, SetStateAction, useContext, useEffect, useRef, useState } from "react"
 import { WaveInText } from "./wave-in-text"
 
 
@@ -91,13 +91,14 @@ export function PopoverTrigger({ className, children, icon, ...props }: PopoverT
 
   return (
     <isOpenContext.Provider value={{ isOpen, setIsOpen }}>
-      <div className={cn('', className)} onClick={() => { setIsOpen(!isOpen) }}>
+      <div className={cn('', className)} onClick={(e) => {
+       setIsOpen(!isOpen)
+      }}>
         {icon}
       </div>
 
       <div>
         <AnimatePresence>
-
           {isOpen && <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -131,6 +132,25 @@ export function PopoverContent({ position = 'top' }: PopoverContentProps) {
   const { isOpen, setIsOpen } = useIsOpen()
   const [search, setSearch] = useState('')
   const [filterData, setFilterData] = useState<ObjectProps[]>()
+  const popoverRef = useRef<HTMLDivElement>(null)
+
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (popoverRef.current && !popoverRef.current.contains(e.target as Node)) {
+        setIsOpen(false)
+        console.log(e.target)
+      }
+    }
+
+    if (isOpen) {
+      window.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => window.removeEventListener('mousedown', handleClickOutside)
+
+  }, [isOpen, setIsOpen])
+
 
 
   useEffect(() => {
@@ -152,15 +172,15 @@ export function PopoverContent({ position = 'top' }: PopoverContentProps) {
     <>
 
       <motion.div
-        layout='preserve-aspect'
-        transition={{ layout: { duration: 0.1, ease: "easeInOut" } }}
-        className="fixed inset-0 bg-black/30 backdrop-blur-sm w-[100vw] h-[100vh] z-50" onClick={() => setIsOpen(false)} />
+        className="fixed inset-0 z-50 bg-black/30"
+      />
 
       <motion.div
+        ref={popoverRef}
         layout='preserve-aspect'
         transition={{ layout: { duration: 0.3, ease: "easeInOut" } }}
         className={cn(
-          "relative border  bg-muted2 rounded-xl z-[999] w-sm max-w-md md:min-w-lg md:max-w-xl lg:min-w-2xl max-h-[500px] overflow-scroll no-scrollbar lg:max-w-3xl shadow-[inset_1.5px_1.5px_4px_rgba(0,0,0,0.1),inset_-1.5px_-1.5px_5px_rgba(0,0,0,0.1)] dark:shadow-[inset_1px_1px_2px_rgba(255,255,255,0.08),inset_-1px_-1px_2px_rgba(255,255,255,0.08)]",
+          "relative border bg-muted2 rounded-xl z-[999] w-sm max-w-md md:min-w-lg md:max-w-xl lg:min-w-2xl max-h-[500px] overflow-scroll no-scrollbar lg:max-w-3xl shadow-[inset_1.5px_1.5px_4px_rgba(0,0,0,0.1),inset_-1.5px_-1.5px_5px_rgba(0,0,0,0.1)] dark:shadow-[inset_1px_1px_2px_rgba(255,255,255,0.08),inset_-1px_-1px_2px_rgba(255,255,255,0.08)]",
           positionClass
         )}
       >
@@ -187,10 +207,14 @@ export function PopoverContent({ position = 'top' }: PopoverContentProps) {
             {section.items.map((item: ItemProps) => (
               <div key={item.href} className="hover:bg-muted2 rounded-lg">
                 <Link
+
                   key={item.href}
                   className="text-[16px]"
                   href={item.href}
-                  onClick={() => { setIsOpen(false) }}
+                  onClick={(e) => {
+                    setIsOpen(false)
+                    e.stopPropagation()
+                  }}
                 >
                   <motion.div
                     className="delius-swash-caps-regular transform hover:scale-101 transition-transform duration-200 hover:translate-x-3 pl-4  py-1.5 rounded-lg flex items-center justify-start gap-3"

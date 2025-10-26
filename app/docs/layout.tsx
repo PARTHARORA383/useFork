@@ -9,8 +9,9 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
 
 
   return (
-    <DocsLayout   tree={source.pageTree} {...baseOptions()}  sidebar={{enabled : true ,component : <CustomSidebar/>} }   nav={{enabled : true, component : <CustomNavbar/>}}  searchToggle={{enabled : false}} >
-      <div className='pt-8 dark:bg-muted'>
+    <DocsLayout   tree={source.pageTree} {...baseOptions()}  sidebar={{enabled : true ,component : <CustomSidebar/>} }
+   nav={{enabled : true, component : <CustomNavbar/>}}  searchToggle={{enabled : false}} >
+      <div className='pt-8 dark:bg-muted '>
       <DynamicIsland/>
       {children} 
       </div>

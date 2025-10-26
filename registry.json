@@ -95,7 +95,7 @@
       "name": "wave-in-text",
       "type": "registry:block",
       "title": "WaveInText",
-      "description": "A customizable music player built with React and Framer Motion, supporting animated transitions and hover effects.",
+     "description": "A fully reusable and customizable text wrapper featuring a smooth, wave-like animation built with React and Framer Motion. Simply wrap your text with this component to bring it to life with fluid, elegant motion.",
       "files": [
         {
           "path": "components/wave-in-text.tsx",
@@ -111,6 +111,28 @@
       "dependencies": [
         "motion"
   ]
+    },
+  {
+  "name": "roll-in-text",
+  "type": "registry:block",
+  "title": "Text Roll Wrapper",
+  "description": "A fully reusable and customizable text wrapper with a smooth roll-in animation effect. Simply wrap your string with the component and watch the text come to life with motion magic.",
+  "files": [
+    {
+      "path": "components/roll-in-text.tsx",
+      "type": "registry:component",
+      "language": "tsx"
+    },
+    {
+      "path": "components/demo/roll-in-text-demo.tsx",
+      "type": "registry:component",
+      "language": "tsx"
     }
+  ],
+  "dependencies": [
+    "motion"
+  ]
+}
+
   ]
 }
