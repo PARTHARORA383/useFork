@@ -9,7 +9,7 @@ import { Table } from '@/components/table';
 import {AnimatedTabsDemo} from '@/components/demo/animated-tabs-demo'
 import { CodeBlockDemo } from '@/components/demo/code-block-demo';
 import { ToolbarDemo } from '@/components/demo/toolbar-demo';
-import { MusicPlayerDemo } from '@/components/demo/music-player-demo';
+// import { MusicPlayerDemo } from '@/components/demo/music-player-demo';
 import { WaveInTextDemo } from '@/components/demo/wave-in-text-demo';
 import { Installation } from '@/components/installation';
 import { RollInTextDemo } from '@/components/demo/roll-in-text-demo';
@@ -30,7 +30,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     AnimatedTabsDemo,
     CodeBlockDemo,
     ToolbarDemo,
-    MusicPlayerDemo,
+    // MusicPlayerDemo,
     WaveInTextDemo,
     RollInTextDemo,
   };

@@ -8,8 +8,4 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [
-    require("tailwind-scrollbar"),
-    // require("tailwind-scrollbar-hide"), // optional if you want to hide scrollbars
-  ],
 };

@@ -10,8 +10,19 @@ import {
 } from "@/components/code-block";
 import { motion } from 'motion/react'
 
-export function CodeBlockComponent({ data }: any) {
+interface CodeBlockDataType {
+code : string,
+language ?: string
+fileName  ? : string
+}
 
+interface DataProps{
+  data ?: CodeBlockDataType
+}
+
+
+export function CodeBlockComponent({ data }:DataProps) {
+if(!data)return ;
   return (
     <motion.div className=""
       initial={{ opacity: 0 }}

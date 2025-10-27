@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/cn"
 import { createContext, ReactNode, useContext, useEffect, useRef, useState } from "react"
-import { motion, AnimatePresence } from 'motion/react'
+import { motion, AnimatePresence, HTMLMotionProps } from 'motion/react'
 
 
 type ToolbarProps = {
@@ -57,12 +57,12 @@ function Toolbar({ children, className, position = "bottom-right", variant = "da
 export type ToolbarButtonProps = {
   children?: ReactNode;
   className?: string;
-  heading?: string
+  heading: string; // make heading required
   /** Accepts all icon types: Lucide, React Icons, custom SVGs, etc. */
-  icon?: ReactNode
-  onClick?: () => void
+  icon?: ReactNode;
+  onClick?: () => void;
   size?: number;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & Omit<HTMLMotionProps<"div">, "ref">; // Fix motion.div type conflict
 
 
 

@@ -4,30 +4,22 @@ import { Search } from 'lucide-react';
 import { useSearchContext } from 'fumadocs-ui/contexts/search';
 import { useI18n } from 'fumadocs-ui/contexts/i18n';
 import { cn } from '../lib/cn';
-import { type ButtonProps, buttonVariants } from './ui/button';
+import { buttonVariants } from './ui/button';
 
-interface SearchToggleProps
-  extends Omit<ComponentProps<'button'>, 'color'>,
-    ButtonProps {
-  hideIfDisabled?: boolean;
-}
+type SearchToggleProps = Omit<React.ComponentProps<'button'>, 'color'>;
+
 
 export function SearchToggle({
-  hideIfDisabled,
-  size = 'icon-sm',
-  color = 'ghost',
   ...props
 }: SearchToggleProps) {
   const { setOpenSearch, enabled } = useSearchContext();
-  if (hideIfDisabled && !enabled) return null;
+  if (!enabled) return null;
 
   return (
     <button
       type="button"
       className={cn(
         buttonVariants({
-          size,
-          color,
         }),
         props.className,
       )}
@@ -43,14 +35,13 @@ export function SearchToggle({
 }
 
 export function LargeSearchToggle({
-  hideIfDisabled,
   ...props
 }: ComponentProps<'button'> & {
   hideIfDisabled?: false;
 }) {
   const { enabled, hotKey, setOpenSearch } = useSearchContext();
   const { text } = useI18n();
-  if (hideIfDisabled && !enabled) return null;
+  if (!enabled) return null;
 
   return (
     <button

@@ -162,7 +162,6 @@ export function DocsLayout(props: DocsLayoutProps) {
           <SidebarCollapseTrigger
             className={cn(
               buttonVariants({
-                color: 'ghost',
                 size: 'icon-sm',
                 className: 'mt-px mb-auto text-fd-muted-foreground',
               }),
@@ -218,7 +217,7 @@ export function DocsLayout(props: DocsLayoutProps) {
               className={cn(
                 buttonVariants({
                   size: 'icon-sm',
-                  color: 'ghost',
+
                   className: 'lg:hidden',
                 }),
               )}
@@ -239,7 +238,6 @@ export function DocsLayout(props: DocsLayoutProps) {
             className={cn(
               buttonVariants({
                 size: 'icon-sm',
-                color: 'ghost',
                 className: 'ms-auto text-fd-muted-foreground',
               }),
             )}
@@ -261,7 +259,6 @@ export function DocsLayout(props: DocsLayoutProps) {
               className={cn(
                 buttonVariants({
                   size: 'icon-sm',
-                  color: 'ghost',
                 }),
                 'text-fd-muted-foreground lg:hidden',
                 i === iconLinks.length - 1 && 'me-auto',
@@ -360,7 +357,6 @@ function DocsNavbar({
             <SidebarCollapseTrigger
               className={cn(
                 buttonVariants({
-                  color: 'ghost',
                   size: 'icon-sm',
                 }),
                 'text-fd-muted-foreground data-[collapsed=false]:hidden max-md:hidden',
@@ -391,7 +387,7 @@ function DocsNavbar({
             </div>
           ) : (
             <LargeSearchToggle
-              hideIfDisabled
+
               className={cn(
                 'w-full my-auto max-md:hidden',
                 navMode === 'top'
@@ -420,7 +416,7 @@ function DocsNavbar({
                 key={i}
                 item={item}
                 className={cn(
-                  buttonVariants({ size: 'icon-sm', color: 'ghost' }),
+                  buttonVariants({ size: 'icon-sm'}),
                   'text-fd-muted-foreground max-lg:hidden',
                 )}
                 aria-label={item.label}
@@ -432,7 +428,7 @@ function DocsNavbar({
           <div className="flex items-center md:hidden">
             {searchToggle.enabled !== false &&
               (searchToggle.components?.sm ?? (
-                <SearchToggle hideIfDisabled className="p-2" />
+                <SearchToggle className="p-2" />
               ))}
             <NavbarSidebarTrigger className="p-2 -me-1.5" />
           </div>
@@ -451,7 +447,7 @@ function DocsNavbar({
               <SidebarCollapseTrigger
                 className={cn(
                   buttonVariants({
-                    color: 'secondary',
+
                     size: 'icon-sm',
                   }),
                   'text-fd-muted-foreground rounded-full -me-1.5',

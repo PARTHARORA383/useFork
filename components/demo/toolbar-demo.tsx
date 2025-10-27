@@ -4,7 +4,7 @@ import { Toolbar, ToolbarButton, ToolbarButtonOverlay } from "@/components/toolb
 import { Command, Moon, Search, Sun } from "lucide-react"
 import { SiGithub } from "react-icons/si"
 import { CodeBlockDemo } from "./code-block-demo"
-import { MusicPlayer } from "../music-player"
+// import { MusicPlayer } from "../music-player"
 
 const tracks = [
   {
@@ -24,9 +24,9 @@ export function ToolbarDemo (){
       <ToolbarButton heading="Search" icon={<Search  size={18}/>}>
       <ToolbarButtonOverlay component= {<CodeBlockDemo/>}/>
       </ToolbarButton>
-      <ToolbarButton heading = 'Theme' icon={<Moon size={18}/> }>
+      {/* <ToolbarButton heading = 'Theme' icon={<Moon size={18}/> }>
       <ToolbarButtonOverlay component= {<MusicPlayer data={tracks}/>}/>
-      </ToolbarButton>
+      </ToolbarButton> */}
       <ToolbarButton heading="Github" icon={<SiGithub size={18}/>}>
       <ToolbarButtonOverlay/>
       </ToolbarButton>

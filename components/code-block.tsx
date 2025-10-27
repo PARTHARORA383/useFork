@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/cn"
 import { HTMLAttributes, useEffect, useState, useCallback, ReactNode, MouseEvent, useRef } from "react"
-import { createHighlighter, type Highlighter } from "shiki"
+import { createHighlighter, type Highlighter , type BundledLanguage , type LanguageInput , type SpecialLanguage} from "shiki"
 import React from 'react'
 import { Check, Copy, LoaderCircle } from "lucide-react"
 import { AnimatePresence, motion , useMotionValue , useSpring } from "motion/react"
@@ -21,7 +21,7 @@ async function getHighlighter(lang: string, themes: string[]) {
 
   // ensure language is loaded
   if (!highlighter.getLoadedLanguages().includes(lang)) {
-    await highlighter.loadLanguage(lang as any)
+    await highlighter.loadLanguage(lang as BundledLanguage | LanguageInput | SpecialLanguage)
   }
 
   return highlighter
