@@ -1,56 +1,49 @@
 ---
-title: "WaveInText"
-description: "A reusable and customizable tabs component built with Radix UI and Motion. Supports smooth sliding highlight animations on tab triggers and fade-in/out transitions for tab content, making tab interactions visually engaging and accessible"
+title: 'WaveInText'
+description: 'A reusable and customizable tabs component built with Radix UI and Motion. Supports smooth sliding highlight animations on tab triggers and fade-in/out transitions for tab content, making tab interactions visually engaging and accessible'
 ---
 
-
-<PreviewCode
-postition = ""
-component = {<WaveInTextDemo/>}
-codePath = "/r/wave-in-text.json"
-/>
+<PreviewCode postition="" component={<WaveInTextDemo />} codePath="/r/wave-in-text.json" />
 
 ---
-## Installation 
 
-<Installation command = {"https://useFork.com/wave-in-text.json"}/>
+## Installation
 
-
+<Installation command={'https://useFork.com/wave-in-text.json'} />
 
 ## Props
 
-
-
-<Table data = {{
-  children: {
-    description: "The text or elements to apply the wave-in animation to",
-    type: "React.ReactNode",
-    default: null,
-  },
-  className: {
-    description: "Additional CSS classes for styling the container",
-    type: "string",
-    default: "",
-  },
-  duration: {
-    description: "The duration of the wave-in animation in seconds",
-    type: "number",
-    default: 0.5,
-  },
-  yOffset: {
-    description: "The vertical offset in pixels from which the text animates",
-    type: "number",
-    default: 18,
-  },
-  blurAmount: {
-    description: "The amount of blur applied during the wave-in animation",
-    type: "number",
-    default: 8,
-  },
-  isVisible: {
-    description: "Determines whether the wave-in animation should be visible",
-    type: "boolean",
-    default: true,
-  },
-}}
+<Table
+  data={{
+    children: {
+      description: 'The text or elements to apply the wave-in animation to',
+      type: 'React.ReactNode',
+      default: null,
+    },
+    className: {
+      description: 'Additional CSS classes for styling the container',
+      type: 'string',
+      default: '',
+    },
+    duration: {
+      description: 'The duration of the wave-in animation in seconds',
+      type: 'number',
+      default: 0.5,
+    },
+    yOffset: {
+      description: 'The vertical offset in pixels from which the text animates',
+      type: 'number',
+      default: 18,
+    },
+    blurAmount: {
+      description: 'The amount of blur applied during the wave-in animation',
+      type: 'number',
+      default: 8,
+    },
+    isVisible: {
+      description: 'Determines whether the wave-in animation should be visible',
+      type: 'boolean',
+      default: true,
+    },
+  }}
 />

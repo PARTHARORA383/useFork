@@ -1,11 +1,7 @@
 'use client';
 import { type ButtonHTMLAttributes, type HTMLAttributes } from 'react';
 import { useI18n } from 'fumadocs-ui/contexts/i18n';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from './ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import { cn } from '../lib/cn';
 import { buttonVariants } from './ui/button';
 
@@ -55,13 +51,9 @@ export function LanguageToggle(props: LanguageSelectProps): React.ReactElement {
   );
 }
 
-export function LanguageToggleText(
-  props: HTMLAttributes<HTMLSpanElement>,
-): React.ReactElement {
+export function LanguageToggleText(props: HTMLAttributes<HTMLSpanElement>): React.ReactElement {
   const context = useI18n();
-  const text = context.locales?.find(
-    (item) => item.locale === context.locale,
-  )?.name;
+  const text = context.locales?.find((item) => item.locale === context.locale)?.name;
 
   return <span {...props}>{text}</span>;
 }

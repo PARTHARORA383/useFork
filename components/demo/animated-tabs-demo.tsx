@@ -1,8 +1,11 @@
-import { AnimatedTabs, AnimatedTabsContent, AnimatedTabsList, AnimatedTabsTrigger } from "@/components/animated-tabs";
-
+import {
+  AnimatedTabs,
+  AnimatedTabsContent,
+  AnimatedTabsList,
+  AnimatedTabsTrigger,
+} from '@/components/animated-tabs';
 
 export function AnimatedTabsDemo() {
-
   return (
     <>
       <AnimatedTabs defaultValue="preview">
@@ -17,7 +20,9 @@ export function AnimatedTabsDemo() {
           <div className="p-4 rounded-lg border">Code Content</div>
         </AnimatedTabsContent>
       </AnimatedTabs>
-
     </>
-  )
+  );
 }
+
+//Creator - Partharora
+//X - https://x.com/partharora9128

@@ -1,8 +1,6 @@
-
 // "use client"
 
 // import { MusicPlayer } from "@/components/music-player"
-
 
 // export function MusicPlayerDemo (){
 
@@ -43,7 +41,6 @@
 //     cover: "https://i.pinimg.com/736x/3f/54/96/3f549606a9ce899a713dd1310ef02d0d.jpg",
 //   },
 // ]
-
 
 //   return (
 //     <MusicPlayer data={tracks}/>

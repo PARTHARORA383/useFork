@@ -5,11 +5,7 @@ function normalize(url: string) {
   return url;
 }
 
-export function isActive(
-  url: string,
-  pathname: string,
-  nested = true,
-): boolean {
+export function isActive(url: string, pathname: string, nested = true): boolean {
   url = normalize(url);
   pathname = normalize(pathname);
 

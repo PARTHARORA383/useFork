@@ -1,7 +1,7 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { AnimationOptions, useAnimate } from "motion/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+'use client';
+import { cn } from '@/lib/utils';
+import { AnimationOptions, useAnimate } from 'motion/react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export interface Splash3dButtonProps {
   disabled?: boolean;
@@ -10,12 +10,7 @@ export interface Splash3dButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Splash3dButton = ({
-  className,
-  children,
-  onClick,
-  disabled,
-}: Splash3dButtonProps) => {
+const Splash3dButton = ({ className, children, onClick, disabled }: Splash3dButtonProps) => {
   const { isActive, handlePress } = usePress();
   const [scope, animate] = useAnimate();
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -26,15 +21,13 @@ const Splash3dButton = ({
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     audioContextRef.current = new AudioContext();
 
-    fetch("/assets/click.mp3")
+    fetch('/assets/click.mp3')
       .then((response) => response.arrayBuffer())
-      .then((arrayBuffer) =>
-        audioContextRef.current!.decodeAudioData(arrayBuffer),
-      )
+      .then((arrayBuffer) => audioContextRef.current!.decodeAudioData(arrayBuffer))
       .then((decodedAudio) => {
         audioBufferRef.current = decodedAudio;
       })
-      .catch((err) => console.error("Error loading audio", err));
+      .catch((err) => console.error('Error loading audio', err));
   }, []);
 
   function playAudio() {
@@ -59,8 +52,8 @@ const Splash3dButton = ({
   }
 
   function createEle(x: string, y: string) {
-    const ele = document.createElement("div");
-    ele.className = cn("absolute rounded-full bg-black dark:bg-white");
+    const ele = document.createElement('div');
+    ele.className = cn('absolute rounded-full bg-black dark:bg-white');
 
     const size = random(15, 25);
 
@@ -69,7 +62,7 @@ const Splash3dButton = ({
       width: `${size}px`,
       left: x,
       top: y,
-      transform: "translate(-50%, -50%)",
+      transform: 'translate(-50%, -50%)',
     });
 
     return ele;
@@ -77,15 +70,15 @@ const Splash3dButton = ({
 
   async function animation(e: React.MouseEvent<HTMLButtonElement>) {
     if (!scope.current) return;
-    const t: AnimationOptions = { duration: 0.4, ease: "easeOut" };
-    const wrapper = scope.current.querySelector("#splash-wrapper");
+    const t: AnimationOptions = { duration: 0.4, ease: 'easeOut' };
+    const wrapper = scope.current.querySelector('#splash-wrapper');
 
     const numElements = Math.floor(Math.random() * 5) + 5; // 5 to 10
     const elements: HTMLElement[] = [];
 
     const bounding = e.currentTarget.getBoundingClientRect();
-    const clickX = e.clientX ? `${e.clientX - bounding.left}px` : "50%";
-    const clickY = e.clientY ? `${e.clientY - bounding.top}px` : "50%";
+    const clickX = e.clientX ? `${e.clientX - bounding.left}px` : '50%';
+    const clickY = e.clientY ? `${e.clientY - bounding.top}px` : '50%';
 
     for (let i = 0; i < numElements; i++) {
       const ele = createEle(clickX, clickY);
@@ -112,27 +105,19 @@ const Splash3dButton = ({
     <button
       ref={scope}
       disabled={disabled}
-      className={cn(
-        "group relative cursor-pointer",
-        "disabled:pointer-events-none",
-      )}
+      className={cn('group relative cursor-pointer', 'disabled:pointer-events-none')}
       onClick={handleClick}
       aria-label="3D Splash Button"
     >
       <span id="splash-wrapper" className="absolute inset-0" />
+      <span className={cn('absolute inset-0 translate-y-[4px] rounded-md', 'bg-d-fg/40')}></span>
       <span
         className={cn(
-          "absolute inset-0 translate-y-[4px] rounded-md",
-          "bg-d-fg/40",
-        )}
-      ></span>
-      <span
-        className={cn(
-          "relative flex items-center justify-center rounded-md px-3 py-2.5 inset-shadow-sm will-change-transform select-none",
-          "bg-gray-100 text-sm font-bold text-black/80 dark:bg-gray-800 dark:text-white",
-          "group-hover:translate-y-[-2px] group-hover:[transition-duration:250ms]",
-          "[transition:translate_600ms_ease-out]",
-          isActive && "translate-y-[4px]! [transition-duration:34ms]!",
+          'relative flex items-center justify-center rounded-md px-3 py-2.5 inset-shadow-sm will-change-transform select-none',
+          'bg-gray-100 text-sm font-bold text-black/80 dark:bg-gray-800 dark:text-white',
+          'group-hover:translate-y-[-2px] group-hover:[transition-duration:250ms]',
+          '[transition:translate_600ms_ease-out]',
+          isActive && 'translate-y-[4px]! [transition-duration:34ms]!',
           className,
         )}
       >

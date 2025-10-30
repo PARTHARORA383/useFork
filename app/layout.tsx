@@ -9,12 +9,14 @@ const inter = Inter({
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col ">
         <RootProvider
-            search={{
+          search={{
             enabled: false,
           }}
-        >{children}</RootProvider>
+        >
+          {children}
+        </RootProvider>
       </body>
     </html>
   );

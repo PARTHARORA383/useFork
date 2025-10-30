@@ -10,10 +10,7 @@ import { usePathname } from 'fumadocs-core/framework';
 import { isTabActive } from '../../../lib/is-active';
 import type { Option } from '../../root-toggle';
 
-export function Navbar({
-  mode,
-  ...props
-}: ComponentProps<'header'> & { mode: 'top' | 'auto' }) {
+export function Navbar({ mode, ...props }: ComponentProps<'header'> & { mode: 'top' | 'auto' }) {
   const { open, collapsed } = useSidebar();
   const { isTransparent } = useNav();
 
@@ -59,10 +56,7 @@ export function LayoutBody(props: ComponentProps<'main'>) {
   );
 }
 
-export function NavbarSidebarTrigger({
-  className,
-  ...props
-}: ComponentProps<'button'>) {
+export function NavbarSidebarTrigger({ className, ...props }: ComponentProps<'button'>) {
   const { setOpen } = useSidebar();
 
   return (
@@ -93,19 +87,9 @@ export function LayoutTabs({
   }, [options, pathname]);
 
   return (
-    <div
-      {...props}
-      className={cn(
-        'flex flex-row items-end gap-6 overflow-auto',
-        props.className,
-      )}
-    >
+    <div {...props} className={cn('flex flex-row items-end gap-6 overflow-auto', props.className)}>
       {options.map((option) => (
-        <LayoutTab
-          key={option.url}
-          selected={selected === option}
-          option={option}
-        />
+        <LayoutTab key={option.url} selected={selected === option} option={option} />
       ))}
     </div>
   );

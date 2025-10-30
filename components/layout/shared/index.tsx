@@ -146,10 +146,7 @@ export type LinkItemType =
 /**
  * Get Links Items with shortcuts
  */
-export function getLinks(
-  links: LinkItemType[] = [],
-  githubUrl?: string,
-): LinkItemType[] {
+export function getLinks(links: LinkItemType[] = [], githubUrl?: string): LinkItemType[] {
   let result = links ?? [];
 
   if (githubUrl)

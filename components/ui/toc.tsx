@@ -26,11 +26,7 @@ export function TOCProvider({
   );
 }
 
-export function TOCScrollArea({
-  ref,
-  className,
-  ...props
-}: ComponentProps<'div'>) {
+export function TOCScrollArea({ ref, className, ...props }: ComponentProps<'div'>) {
   const viewRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -42,9 +38,7 @@ export function TOCScrollArea({
       )}
       {...props}
     >
-      <Primitive.ScrollProvider containerRef={viewRef}>
-        {props.children}
-      </Primitive.ScrollProvider>
+      <Primitive.ScrollProvider containerRef={viewRef}>{props.children}</Primitive.ScrollProvider>
     </div>
   );
 }
@@ -69,10 +63,7 @@ export function TOCItems({ ref, className, ...props }: ComponentProps<'div'>) {
       />
       <div
         ref={mergeRefs(ref, containerRef)}
-        className={cn(
-          'flex flex-col border-s border-fd-foreground/10',
-          className,
-        )}
+        className={cn('flex flex-col border-s border-fd-foreground/10', className)}
         {...props}
       >
         {items.map((item) => (

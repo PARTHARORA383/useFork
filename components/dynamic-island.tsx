@@ -1,13 +1,12 @@
-"use client";
+'use client';
 
-import { Command, Moon, Search, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
-import { motion ,AnimatePresence } from "motion/react";
-import { SiGithub } from "react-icons/si";
-import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { PopoverContent, PopoverTrigger } from "./popover";
-
+import { Command, Moon, Search, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { motion, AnimatePresence } from 'motion/react';
+import { SiGithub } from 'react-icons/si';
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
+import { PopoverContent, PopoverTrigger } from './popover';
 
 function SearchButton() {
   const [hovered, setHovered] = useState(false);
@@ -15,11 +14,11 @@ function SearchButton() {
   return (
     <motion.div
       className={cn(
-        "relative rounded-full border bg-muted3 p-2 flex items-center justify-center cursor-pointer shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)] transition-transform active:scale-95"
+        'relative rounded-full border bg-muted3 p-2 flex items-center justify-center cursor-pointer shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)] transition-transform active:scale-95',
       )}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => console.log("Search Clicked")} // implement your search logic
+      onClick={() => console.log('Search Clicked')} // implement your search logic
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.3 }}
@@ -40,7 +39,6 @@ function SearchButton() {
   );
 }
 
-
 export function ThemeButton() {
   const { theme, setTheme } = useTheme();
   const [hovered, setHovered] = useState(false);
@@ -53,7 +51,6 @@ export function ThemeButton() {
     setIsAnimating(true);
   };
 
-
   const handleAnimationComplete = () => {
     setTheme(nextTheme);
     setIsAnimating(false);
@@ -64,7 +61,7 @@ export function ThemeButton() {
       {/* Theme button */}
       <motion.div
         className={cn(
-          "relative rounded-full border bg-muted3 p-2 flex items-center justify-center cursor-pointer shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)] transition-transform active:scale-95"
+          'relative rounded-full border bg-muted3 p-2 flex items-center justify-center cursor-pointer shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)] transition-transform active:scale-95',
         )}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -105,18 +102,17 @@ export function ThemeButton() {
   );
 }
 
-
 function GithubButton() {
   const [hovered, setHovered] = useState(false);
 
   return (
     <motion.div
       className={cn(
-        "relative rounded-full border bg-muted3 p-2 flex items-center justify-center cursor-pointer shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)] transition-transform active:scale-95"
+        'relative rounded-full border bg-muted3 p-2 flex items-center justify-center cursor-pointer shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)] transition-transform active:scale-95',
       )}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => window.open("https://github.com/Partharora383/useFork", "_blank")}
+      onClick={() => window.open('https://github.com/Partharora383/useFork', '_blank')}
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.3 }}
@@ -137,26 +133,27 @@ function GithubButton() {
   );
 }
 
-function CommandButton(){ 
-
-    const [hovered, setHovered] = useState(false);
-    const [isOpen , setIsOpen] = useState(false)
+function CommandButton() {
+  const [hovered, setHovered] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-      <motion.div
+    <motion.div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={()=>{setIsOpen(!isOpen)}}
+      onClick={() => {
+        setIsOpen(!isOpen);
+      }}
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.3 }}
       className={cn(
-        "rounded-full border bg-muted3 p-2 flex items-center justify-center cursor-pointer shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)] transition-transform active:scale-95"
-      )}  >
-        
-        <PopoverTrigger  asChild icon = {<Command className="w-4 h-4"/>}>
-          <PopoverContent/>
-          </PopoverTrigger>
+        'rounded-full border bg-muted3 p-2 flex items-center justify-center cursor-pointer shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)] transition-transform active:scale-95',
+      )}
+    >
+      <PopoverTrigger asChild icon={<Command className="w-4 h-4" />}>
+        <PopoverContent />
+      </PopoverTrigger>
 
       {hovered && (
         <motion.span
@@ -169,10 +166,9 @@ function CommandButton(){
           Cmd + K
         </motion.span>
       )}
-      </motion.div>
-  )
+    </motion.div>
+  );
 }
-
 
 export function DynamicIsland() {
   return (
