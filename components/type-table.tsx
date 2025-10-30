@@ -5,11 +5,7 @@ import Link from 'fumadocs-core/link';
 import { cva } from 'class-variance-authority';
 import { cn } from '../lib/cn';
 import { type ReactNode, useState } from 'react';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from './ui/collapsible';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
 
 export interface ParameterNode {
   name: string;
@@ -29,13 +25,16 @@ export interface TypeNode {
 }
 
 // Name styling: purple and optional strikethrough if deprecated
-const keyVariants = cva('font-sans text-[16px] dark:bg-gradient-to-br text-purple-400  dark:from-[var(--color-purple-300)] dark:to-white bg-clip-text dark:text-transparent ', {
-  variants: {
-    deprecated: {
-      true: 'line-through text-[var(--color-purple-300)/50]',
+const keyVariants = cva(
+  'font-sans text-[16px] dark:bg-gradient-to-br text-purple-400  dark:from-[var(--color-purple-300)] dark:to-white bg-clip-text dark:text-transparent ',
+  {
+    variants: {
+      deprecated: {
+        true: 'line-through text-[var(--color-purple-300)/50]',
+      },
     },
   },
-});
+);
 
 // Field labels like "Type", "Default"
 const fieldVariants = cva('font-sans text-[16px] text-fd-muted-foreground not-prose pe-2');
@@ -79,9 +78,7 @@ function Item({
       onOpenChange={setOpen}
       className={cn(
         'rounded-xl border overflow-hidden transition-all',
-        open
-          ? 'shadow-sm  not-last:mb-2 bg-muted3/50'
-          : 'border-transparent',
+        open ? 'shadow-sm  not-last:mb-2 bg-muted3/50' : 'border-transparent',
       )}
     >
       <CollapsibleTrigger className="relative flex flex-row items-center w-full group text-start px-3 py-2 not-prose hover:bg-muted3/50">
@@ -127,16 +124,11 @@ function Item({
               <p className={cn(fieldVariants())}>Parameters</p>
               <div className="flex flex-col gap-2">
                 {parameters.map((param) => (
-                  <div
-                    key={param.name}
-                    className="inline-flex items-center flex-wrap gap-1"
-                  >
+                  <div key={param.name} className="inline-flex items-center flex-wrap gap-1">
                     <p className="font-medium not-prose bg-gradient-to-br from-[var(--color-purple-300)] to-[var(--color-purple-500)] bg-clip-text text-transparent">
                       {param.name} -
                     </p>
-                    <div className="text-[16px] prose prose-no-margin">
-                      {param.description}
-                    </div>
+                    <div className="text-[16px] prose prose-no-margin">{param.description}</div>
                   </div>
                 ))}
               </div>
@@ -145,9 +137,7 @@ function Item({
           {returns && (
             <>
               <p className={cn(fieldVariants())}>Returns</p>
-              <div className="my-auto text-[16px] prose prose-no-margin">
-                {returns}
-              </div>
+              <div className="my-auto text-[16px] prose prose-no-margin">{returns}</div>
             </>
           )}
         </div>

@@ -78,9 +78,7 @@ export function RootToggle({
                 item.props?.className,
               )}
             >
-              <div className="shrink-0 size-9 md:mt-1 md:mb-auto md:size-5">
-                {item.icon}
-              </div>
+              <div className="shrink-0 size-9 md:mt-1 md:mb-auto md:size-5">{item.icon}</div>
               <div>
                 <p className="text-sm font-medium">{item.title}</p>
                 <p className="text-[13px] text-fd-muted-foreground empty:hidden">

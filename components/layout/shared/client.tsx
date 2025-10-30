@@ -12,18 +12,10 @@ export function BaseLinkItem({
 }: Omit<ComponentProps<'a'>, 'href'> & { item: BaseLinkType }) {
   const pathname = usePathname();
   const activeType = item.active ?? 'url';
-  const active =
-    activeType !== 'none' &&
-    isActive(item.url, pathname, activeType === 'nested-url');
+  const active = activeType !== 'none' && isActive(item.url, pathname, activeType === 'nested-url');
 
   return (
-    <Link
-      ref={ref}
-      href={item.url}
-      external={item.external}
-      {...props}
-      data-active={active}
-    >
+    <Link ref={ref} href={item.url} external={item.external} {...props} data-active={active}>
       {props.children}
     </Link>
   );

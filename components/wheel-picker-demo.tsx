@@ -1,42 +1,28 @@
-"use client";
+import type { WheelPickerOption } from "@/components/wheel-picker";
+import { WheelPicker, WheelPickerWrapper } from "@/components/wheel-picker";
 
-import {
-  WheelPicker,
-  WheelPickerWrapper,
-  type WheelPickerOption,
-} from "@/components/wheel-picker";
-import { useState, useEffect, useRef } from "react";
+const createArray = (length: number, add = 0): WheelPickerOption[] =>
+  Array.from({ length }, (_, i) => {
+    const value = i + add;
+    return {
+      label: value.toString().padStart(2, "0"),
+      value: value.toString(),
+    };
+  });
 
-const options: WheelPickerOption[] = [
-  { label: "React", value: "react" },
-  { label: "Vue", value: "vue" },
-  { label: "Angular", value: "angular" },
-  { label: "Svelte", value: "svelte" },
-  { label: "Next.js", value: "nextjs" },
+const hourOptions = createArray(12, 1);
+const minuteOptions = createArray(60);
+const meridiemOptions: WheelPickerOption[] = [
+  { label: "AM", value: "AM" },
+  { label: "PM", value: "PM" },
 ];
 
 export function WheelPickerDemo() {
-  const [value, setValue] = useState("react");
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  // Preload the click sound once
-  useEffect(() => {
-    audioRef.current = new Audio("/sounds/click.mp3");
-    audioRef.current.volume = 0.3; // subtle sound
-  }, []);
-
-  // Play sound on value change
-  useEffect(() => {
-    if (audioRef.current) {
-      // restart the sound each time to ensure consistent click
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(() => {});
-    }
-  }, [value]);
-
   return (
-    <WheelPickerWrapper className="max-w-lg">
-      <WheelPicker options={options} value={value} onValueChange={setValue} />
-    </WheelPickerWrapper>
+    <div className="w-56">
+      <WheelPickerWrapper>
+        <WheelPicker options={hourOptions} defaultValue="9" infinite />
+      </WheelPickerWrapper>
+    </div>
   );
 }

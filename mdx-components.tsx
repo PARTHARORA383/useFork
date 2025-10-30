@@ -3,17 +3,17 @@ import type { MDXComponents } from 'mdx/types';
 import { AnimatedInputBar } from './components/animated-inputbar';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
-import { PreviewCode } from '@/components/preview/preview-code'
+import { PreviewCode } from '@/components/preview/preview-code';
 import { Table } from '@/components/table';
 
-import {AnimatedTabsDemo} from '@/components/demo/animated-tabs-demo'
+import { AnimatedTabsDemo } from '@/components/demo/animated-tabs-demo';
 import { CodeBlockDemo } from '@/components/demo/code-block-demo';
 import { ToolbarDemo } from '@/components/demo/toolbar-demo';
 // import { MusicPlayerDemo } from '@/components/demo/music-player-demo';
 import { WaveInTextDemo } from '@/components/demo/wave-in-text-demo';
 import { Installation } from '@/components/installation';
 import { RollInTextDemo } from '@/components/demo/roll-in-text-demo';
-
+import { MouseParallaxImagesDemo } from '@/components/demo/parallax-images-demo';
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -33,5 +33,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     // MusicPlayerDemo,
     WaveInTextDemo,
     RollInTextDemo,
+    MouseParallaxImagesDemo,
   };
 }

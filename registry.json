@@ -15,11 +15,7 @@
           "language": "tsx"
         }
       ],
-      "dependencies": [
-        "motion",
-         "lucide-react"
-      ]
-      
+      "dependencies": ["motion", "lucide-react"]
     },
     {
       "name": "animated-tabs",
@@ -38,11 +34,7 @@
           "language": "tsx"
         }
       ],
-      "dependencies": [
-        "motion",
-        "@radix-ui/react-tabs",
-         "lucide-react"
-    ]
+      "dependencies": ["motion", "@radix-ui/react-tabs", "lucide-react"]
     },
     {
       "name": "code-block",
@@ -61,13 +53,7 @@
           "language": "tsx"
         }
       ],
-      "dependencies": [
-
-        "motion",
-        "shiki",
-        "@shikijs/transformers",
-        "lucide-react"
-      ]
+      "dependencies": ["motion", "shiki", "@shikijs/transformers", "lucide-react"]
     },
     {
       "name": "music-player",
@@ -86,16 +72,13 @@
           "language": "tsx"
         }
       ],
-      "dependencies": [
-        "motion",
-        "lucide-react"
-  ]
+      "dependencies": ["motion", "lucide-react"]
     },
     {
       "name": "wave-in-text",
       "type": "registry:block",
       "title": "WaveInText",
-     "description": "A fully reusable and customizable text wrapper featuring a smooth, wave-like animation built with React and Framer Motion. Simply wrap your text with this component to bring it to life with fluid, elegant motion.",
+      "description": "A fully reusable and customizable text wrapper featuring a smooth, wave-like animation built with React and Framer Motion. Simply wrap your text with this component to bring it to life with fluid, elegant motion.",
       "files": [
         {
           "path": "components/wave-in-text.tsx",
@@ -108,31 +91,45 @@
           "language": "tsx"
         }
       ],
-      "dependencies": [
-        "motion"
-  ]
-    },
-  {
-  "name": "roll-in-text",
-  "type": "registry:block",
-  "title": "Text Roll Wrapper",
-  "description": "A fully reusable and customizable text wrapper with a smooth roll-in animation effect. Simply wrap your string with the component and watch the text come to life with motion magic.",
-  "files": [
-    {
-      "path": "components/roll-in-text.tsx",
-      "type": "registry:component",
-      "language": "tsx"
+      "dependencies": ["motion"]
     },
     {
-      "path": "components/demo/roll-in-text-demo.tsx",
-      "type": "registry:component",
-      "language": "tsx"
+      "name": "roll-in-text",
+      "type": "registry:block",
+      "title": "Text Roll Wrapper",
+      "description": "A fully reusable and customizable text wrapper with a smooth roll-in animation effect. Simply wrap your string with the component and watch the text come to life with motion magic.",
+      "files": [
+        {
+          "path": "components/roll-in-text.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/roll-in-text-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "parallax-images",
+      "type": "registry:block",
+      "title": "Parallax Images",
+      "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
+      "files": [
+        {
+          "path": "components/parallax-images.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/parallax-images-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
     }
-  ],
-  "dependencies": [
-    "motion"
-  ]
-}
-
   ]
 }

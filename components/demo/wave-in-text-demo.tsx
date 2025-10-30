@@ -1,12 +1,12 @@
+import { WaveInText } from '@/components/wave-in-text';
 
-import { WaveInText } from "@/components/wave-in-text";
-
-
-export function WaveInTextDemo (){
-
+export function WaveInTextDemo() {
   return (
-      <WaveInText  className ="text-3xl font-medium" duration={0.5}>
-         Dream beyond the ordinary
-      </WaveInText>
-  )
+    <WaveInText className="text-3xl font-medium" duration={0.5}>
+      Dream beyond the ordinary
+    </WaveInText>
+  );
 }
+
+//Creator - Partharora
+//X - https://x.com/partharora9128

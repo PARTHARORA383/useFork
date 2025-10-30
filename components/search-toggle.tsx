@@ -8,21 +8,14 @@ import { buttonVariants } from './ui/button';
 
 type SearchToggleProps = Omit<React.ComponentProps<'button'>, 'color'>;
 
-
-export function SearchToggle({
-  ...props
-}: SearchToggleProps) {
+export function SearchToggle({ ...props }: SearchToggleProps) {
   const { setOpenSearch, enabled } = useSearchContext();
   if (!enabled) return null;
 
   return (
     <button
       type="button"
-      className={cn(
-        buttonVariants({
-        }),
-        props.className,
-      )}
+      className={cn(buttonVariants({}), props.className)}
       data-search=""
       aria-label="Open Search"
       onClick={() => {

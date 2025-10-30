@@ -1,10 +1,14 @@
+import {
+  CodeBlock,
+  CodeBlockContent,
+  CodeBlockCopyButton,
+  CodeBlockFilename,
+  CodeBlockHeader,
+} from '@/components/code-block';
 
-import { CodeBlock , CodeBlockContent , CodeBlockCopyButton , CodeBlockFilename , CodeBlockHeader} from "@/components/code-block";
-
-export function CodeBlockDemo(){
-
-const data = {
-  code: `import React from "react";
+export function CodeBlockDemo() {
+  const data = {
+    code: `import React from "react";
 
 export default function CodeBlock() {
   return (
@@ -13,18 +17,20 @@ export default function CodeBlock() {
     </div>
   )
 }`,
-  language: "tsx",
-  fileName: "components/code-block.tsx"
-}
-
+    language: 'tsx',
+    fileName: 'components/code-block.tsx',
+  };
 
   return (
-      <CodeBlock data={data}>
-        <CodeBlockHeader>
-          <CodeBlockFilename/>
-          <CodeBlockCopyButton/>
-        </CodeBlockHeader>
-        <CodeBlockContent/>
-      </CodeBlock>
-  )
+    <CodeBlock data={data}>
+      <CodeBlockHeader>
+        <CodeBlockFilename />
+        <CodeBlockCopyButton />
+      </CodeBlockHeader>
+      <CodeBlockContent />
+    </CodeBlock>
+  );
 }
+
+//Creator - Partharora
+//X - https://x.com/partharora9128

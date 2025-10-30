@@ -137,7 +137,6 @@
 //   )
 // }
 
-
 // export const DefaultControls = () => {
 //   const { isPaused, setIsPaused, tracks, currentTrackIndex, setCurrentTrackIndex } = useTracks()
 //   const [hovered, setHovered] = useState(false)
