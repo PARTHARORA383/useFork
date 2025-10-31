@@ -62,7 +62,7 @@ import { FiArrowRight } from 'react-icons/fi'; // Using react-icons for the arro
 import Link from 'next/link';
 import { WaveInText } from '@/components/wave-in-text';
 
- function HeroButton() {
+function HeroButton() {
   return (
     <div className="flex items-center justify-start gap-6">
       <Link href={'/docs'}>
@@ -82,7 +82,7 @@ import { WaveInText } from '@/components/wave-in-text';
   );
 }
 
- function Navbar() {
+function Navbar() {
   return (
     <div className="fixed top-6 left-0 min-w-[768px] w-full border rounded-xl h-16 z-50 flex items-center justify-between px-8">
       {/* Logo */}

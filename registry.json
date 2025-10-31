@@ -130,6 +130,25 @@
         }
       ],
       "dependencies": ["motion"]
+    },
+    {
+      "name": "banner-carousal",
+      "type": "registry:block",
+      "title": "Banner Carousal",
+      "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
+      "files": [
+        {
+          "path": "components/carousals/banner-carousal.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/banner-carousal-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
     }
   ]
 }

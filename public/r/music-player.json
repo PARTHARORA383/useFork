@@ -4,7 +4,10 @@
   "type": "registry:block",
   "title": "Music Player",
   "description": "A customizable music player built with React and Framer Motion, supporting animated transitions and hover effects.",
-  "dependencies": ["motion", "lucide-react"],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
   "files": [
     {
       "path": "components/music-player.tsx",

@@ -30,20 +30,20 @@ export function CustomSidebar() {
   const data = [
     {
       heading: 'utilities',
-      items: [{ title: 'Code block', href: '/docs/code-block' }],
+      items: [{ title: 'Code Block', href: '/docs/code-block' }],
     },
     {
       heading: 'minimilistic',
       items: [
-        { title: 'Music Player', href: '/docs/music-player' },
         { title: 'Parallax Image', href: '/docs/parallax-images' },
+        { title: 'Banner Carousal', href: '/docs/banner-carousal' },
       ],
     },
     {
       heading: 'text-wrappers',
       items: [
-        { title: 'Wave text wrapper', href: '/docs/wave-in-text' },
-        { title: 'Text roll wrapper ', href: '/docs/roll-in-text' },
+        { title: 'Wave Effect', href: '/docs/wave-in-text' },
+        { title: 'Rollin Effect ', href: '/docs/roll-in-text' },
       ],
     },
   ];

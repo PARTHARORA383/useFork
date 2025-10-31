@@ -4,7 +4,11 @@
   "type": "registry:block",
   "title": "Animated Tabs",
   "description": "A reusable and customizable tabs component built with Radix UI and Motion. Supports smooth sliding highlight animations on tab triggers and fade-in/out transitions for tab content.",
-  "dependencies": ["motion", "@radix-ui/react-tabs", "lucide-react"],
+  "dependencies": [
+    "motion",
+    "@radix-ui/react-tabs",
+    "lucide-react"
+  ],
   "files": [
     {
       "path": "components/animated-tabs.tsx",

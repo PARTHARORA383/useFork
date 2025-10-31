@@ -4,7 +4,12 @@
   "type": "registry:block",
   "title": "Code Block",
   "description": "A reusable and customizable code block component built with React and Motion.",
-  "dependencies": ["motion", "shiki", "@shikijs/transformers", "lucide-react"],
+  "dependencies": [
+    "motion",
+    "shiki",
+    "@shikijs/transformers",
+    "lucide-react"
+  ],
   "files": [
     {
       "path": "components/code-block.tsx",

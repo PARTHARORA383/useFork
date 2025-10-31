@@ -96,7 +96,9 @@ export function PreviewCode({
               className,
             )}
           >
-            <div className={cn('lg:min-w-2xl', positionClasses, secondClassName)}>{component}</div>
+            <div className={cn('lg:min-w-[32rem]', secondClassName, positionClasses)}>
+              {component}
+            </div>
           </div>
         </AnimatedTabsContent>
 
