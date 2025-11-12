@@ -14,6 +14,7 @@ import { WaveInTextDemo } from '@/components/demo/wave-in-text-demo';
 import { Installation } from '@/components/installation';
 import { RollInTextDemo } from '@/components/demo/roll-in-text-demo';
 import { MouseParallaxImagesDemo } from '@/components/demo/parallax-images-demo';
+import { StopwatchDemo } from '@/components/demo/stopwatch-demo';
 import { BannerCarousalDemo } from '@/components/demo/banner-carousal-demo';
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -35,5 +36,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     RollInTextDemo,
     MouseParallaxImagesDemo,
     BannerCarousalDemo,
+    StopwatchDemo,
   };
 }

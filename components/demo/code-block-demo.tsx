@@ -1,3 +1,5 @@
+'use client';
+
 import {
   CodeBlock,
   CodeBlockContent,
@@ -32,5 +34,5 @@ export default function CodeBlock() {
   );
 }
 
-//Creator - Partharora
+//Creator - Parth Arora
 //X - https://x.com/partharora9128

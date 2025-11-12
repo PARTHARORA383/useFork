@@ -40,16 +40,16 @@ export function BannerCarousal({ images, children, className }: CarousalProps) {
 
   const defaultImages: ImageData[] = [
     {
-      title: 'Explore the Future',
-      src: 'https://i.pinimg.com/1200x/4a/77/c6/4a77c637002bdad56f7ce71f4a3ad6ae.jpg',
+      src: 'https://i.pinimg.com/736x/6d/2b/a8/6d2ba8add2b39bba3a630922bcbbfce5.jpg',
     },
     {
-      title: 'Innovation in Motion',
-      src: 'https://i.pinimg.com/736x/51/36/94/513694082de441efa640d307d7661369.jpg',
+      src: 'https://i.pinimg.com/736x/b2/fb/20/b2fb20cd5286f15c7b4aeade50a948d1.jpg',
     },
     {
-      title: 'Design Meets Technology',
-      src: 'https://i.pinimg.com/736x/20/53/1d/20531d35e197174cf984aa4f76b52a70.jpg',
+      src: 'https://i.pinimg.com/1200x/15/29/de/1529dec3f7e010bd71a3b02f4fe9e156.jpg',
+    },
+    {
+      src: 'https://i.pinimg.com/1200x/22/46/c2/2246c21e61d756b8d6821e72799bf0e1.jpg',
     },
   ];
 

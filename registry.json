@@ -149,6 +149,25 @@
         }
       ],
       "dependencies": ["motion"]
+    },
+    {
+      "name": "stopwatch",
+      "type": "registry:block",
+      "title": "Stopwatch",
+      "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
+      "files": [
+        {
+          "path": "components/stopwatch.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/stopwatch-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "animate-ui/icons-icon"]
     }
   ]
 }

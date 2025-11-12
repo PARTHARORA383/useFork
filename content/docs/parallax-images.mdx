@@ -10,3 +10,46 @@ description: 'An interactive parallax showcase where images drift in dual lanes,
   component={<MouseParallaxImagesDemo />}
   codePath="/r/parallax-images.json"
 />
+
+---
+
+## Installation
+
+<Installation command={'https://use-fork.vercel.app/parallax-images.json'} />
+
+---
+
+## Props
+
+<Table
+  data={{
+    leftLane: {
+      description:
+        'An optional array of image objects for the left vertical lane. Each object should contain a `src` string pointing to the image URL.',
+      type: '{ src: string }[]',
+      default: '[{ src: topSrc }, { src: bottomSrc }]',
+    },
+    rightLane: {
+      description:
+        'An optional array of image objects for the right vertical lane. Each object should contain a `src` string pointing to the image URL.',
+      type: '{ src: string }[]',
+      default: '[{ src: leftSrc }, { src: rightSrc }]',
+    },
+    maxOffset: {
+      description:
+        'The maximum vertical offset applied to the parallax effect when moving the cursor. Higher values increase movement depth.',
+      type: 'number',
+      default: 40,
+    },
+    imageWidth: {
+      description: 'Defines the width (in pixels) for each displayed image in the parallax lanes.',
+      type: 'number',
+      default: 300,
+    },
+    imageHeight: {
+      description: 'Defines the height (in pixels) for each displayed image in the parallax lanes.',
+      type: 'number',
+      default: 400,
+    },
+  }}
+/>

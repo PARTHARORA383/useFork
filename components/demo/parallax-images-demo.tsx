@@ -1,3 +1,5 @@
+'use client';
+
 import { MouseParallaxImages } from '@/components/parallax-images';
 
 export function MouseParallaxImagesDemo() {
@@ -18,5 +20,6 @@ export function MouseParallaxImagesDemo() {
   );
 }
 
-//Creator - Partharora
+//Creator - Parth Arora
 //X - https://x.com/partharora9128
+

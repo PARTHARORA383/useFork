@@ -15,7 +15,7 @@
     },
     {
       "path": "components/demo/wave-in-text-demo.tsx",
-      "content": "import { WaveInText } from '@/components/wave-in-text';\n\nexport function WaveInTextDemo() {\n  return (\n    <WaveInText className=\"text-3xl font-medium\" duration={0.5}>\n      Dream beyond the ordinary\n    </WaveInText>\n  );\n}\n\n//Creator - Partharora\n//X - https://x.com/partharora9128\n",
+      "content": "'use client';\n\nimport { WaveInText } from '@/components/wave-in-text';\n\nexport function WaveInTextDemo() {\n  return (\n    <WaveInText className=\"text-3xl font-medium\" duration={0.5}>\n      Dream beyond the ordinary\n    </WaveInText>\n  );\n}\n\n//Creator - Parth Arora\n//X - https://x.com/partharora9128\n",
       "type": "registry:component"
     }
   ]

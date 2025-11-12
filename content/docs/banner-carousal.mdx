@@ -8,5 +8,49 @@ description: 'A dynamic and reusable Banner Carousel built with React and Motion
   secondClassName="lg:min-w-3xl"
   postition="center"
   component={<BannerCarousalDemo />}
-  codePath="/r/banner-carousal.json" 
+  codePath="/r/banner-carousal.json"
+/>
+
+---
+
+## Installation
+
+<Installation command={'https://use-fork.vercel.app/banner-carousal.json'} />
+
+---
+
+## Props
+
+<Table
+  data={{
+    images: {
+      description:
+        'An optional array of image objects used in the carousel. Each object follows the `ImageData` interface with `src` and an optional `title`. If not provided, a default image set is used.',
+      type: 'ImageData[]',
+      default: 'Default image array (4 preset images)',
+    },
+    children: {
+      description:
+        'The nested elements rendered inside the carousel, typically the `BannerSlides` component.',
+      type: 'React.ReactNode',
+      default: 'undefined',
+    },
+    className: {
+      description: 'Optional CSS class applied to the main carousel wrapper for custom styling.',
+      type: 'string',
+      default: 'undefined',
+    },
+    showBackground: {
+      description:
+        'Determines whether to display the active background image behind the overlay animation.',
+      type: 'boolean',
+      default: 'true',
+    },
+    showOverlay: {
+      description:
+        'Controls whether the overlay animation that previews the next background image is visible.',
+      type: 'boolean',
+      default: 'true',
+    },
+  }}
 />

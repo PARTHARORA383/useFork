@@ -18,7 +18,7 @@
     },
     {
       "path": "components/demo/code-block-demo.tsx",
-      "content": "import {\n  CodeBlock,\n  CodeBlockContent,\n  CodeBlockCopyButton,\n  CodeBlockFilename,\n  CodeBlockHeader,\n} from '@/components/code-block';\n\nexport function CodeBlockDemo() {\n  const data = {\n    code: `import React from \"react\";\n\nexport default function CodeBlock() {\n  return (\n    <div>\n      <h1>Hello, beautifull code block here! </h1>\n    </div>\n  )\n}`,\n    language: 'tsx',\n    fileName: 'components/code-block.tsx',\n  };\n\n  return (\n    <CodeBlock data={data}>\n      <CodeBlockHeader>\n        <CodeBlockFilename />\n        <CodeBlockCopyButton />\n      </CodeBlockHeader>\n      <CodeBlockContent />\n    </CodeBlock>\n  );\n}\n\n//Creator - Partharora\n//X - https://x.com/partharora9128\n",
+      "content": "'use client';\n\nimport {\n  CodeBlock,\n  CodeBlockContent,\n  CodeBlockCopyButton,\n  CodeBlockFilename,\n  CodeBlockHeader,\n} from '@/components/code-block';\n\nexport function CodeBlockDemo() {\n  const data = {\n    code: `import React from \"react\";\n\nexport default function CodeBlock() {\n  return (\n    <div>\n      <h1>Hello, beautifull code block here! </h1>\n    </div>\n  )\n}`,\n    language: 'tsx',\n    fileName: 'components/code-block.tsx',\n  };\n\n  return (\n    <CodeBlock data={data}>\n      <CodeBlockHeader>\n        <CodeBlockFilename />\n        <CodeBlockCopyButton />\n      </CodeBlockHeader>\n      <CodeBlockContent />\n    </CodeBlock>\n  );\n}\n\n//Creator - Parth Arora\n//X - https://x.com/partharora9128\n",
       "type": "registry:component"
     }
   ]

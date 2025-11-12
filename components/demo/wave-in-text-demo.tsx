@@ -1,3 +1,5 @@
+'use client';
+
 import { WaveInText } from '@/components/wave-in-text';
 
 export function WaveInTextDemo() {
@@ -8,5 +10,5 @@ export function WaveInTextDemo() {
   );
 }
 
-//Creator - Partharora
+//Creator - Parth Arora
 //X - https://x.com/partharora9128

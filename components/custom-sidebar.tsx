@@ -30,7 +30,10 @@ export function CustomSidebar() {
   const data = [
     {
       heading: 'utilities',
-      items: [{ title: 'Code Block', href: '/docs/code-block' }],
+      items: [
+        { title: 'Code Block', href: '/docs/code-block' },
+        { title: 'StopWatch', href: '/docs/stopwatch' },
+      ],
     },
     {
       heading: 'minimilistic',

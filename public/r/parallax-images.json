@@ -15,7 +15,7 @@
     },
     {
       "path": "components/demo/parallax-images-demo.tsx",
-      "content": "import { MouseParallaxImages } from '@/components/parallax-images';\n\nexport function MouseParallaxImagesDemo() {\n  const left = [\n    { src: 'https://i.pinimg.com/736x/fa/2e/b8/fa2eb8fe7012d991cfb06b9ff58ebf2b.jpg' },\n    { src: 'https://i.pinimg.com/1200x/28/ae/db/28aedb0c63b1cdf0739e90e08653af0b.jpg' },\n  ];\n\n  const right = [\n    { src: 'https://i.pinimg.com/736x/f7/38/ac/f738ace16139857c6bbb173120bc5b84.jpg' },\n    { src: 'https://i.pinimg.com/1200x/58/85/d1/5885d1f6220c22bd6018c3451a3cc23d.jpg' },\n  ];\n\n  return (\n    <div className=\"w-full h-full\">\n      <MouseParallaxImages leftLane={left} rightLane={right} />\n    </div>\n  );\n}\n\n//Creator - Partharora\n//X - https://x.com/partharora9128\n",
+      "content": "'use client';\n\nimport { MouseParallaxImages } from '@/components/parallax-images';\n\nexport function MouseParallaxImagesDemo() {\n  const left = [\n    { src: 'https://i.pinimg.com/736x/fa/2e/b8/fa2eb8fe7012d991cfb06b9ff58ebf2b.jpg' },\n    { src: 'https://i.pinimg.com/1200x/28/ae/db/28aedb0c63b1cdf0739e90e08653af0b.jpg' },\n  ];\n\n  const right = [\n    { src: 'https://i.pinimg.com/736x/f7/38/ac/f738ace16139857c6bbb173120bc5b84.jpg' },\n    { src: 'https://i.pinimg.com/1200x/58/85/d1/5885d1f6220c22bd6018c3451a3cc23d.jpg' },\n  ];\n\n  return (\n    <div className=\"w-full h-full\">\n      <MouseParallaxImages leftLane={left} rightLane={right} />\n    </div>\n  );\n}\n\n//Creator - Parth Arora\n//X - https://x.com/partharora9128\n\n",
       "type": "registry:component"
     }
   ]
