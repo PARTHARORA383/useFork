@@ -144,9 +144,7 @@ export const Stopwatch = () => {
 
               <IconButton title={"Reset"} icon={<RefreshCw animateOnHover className="w-5 h-5" />
               } onClick={() => {
-                if (isRunning) {
                   handleReset()
-                }
                 setIsHover(false)
               }} />
             </motion.div>

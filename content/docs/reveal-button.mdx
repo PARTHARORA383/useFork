@@ -1,0 +1,55 @@
+---
+title: 'Reveal Button'
+description: 'A reusable animated button that reveals its title with a smooth expanding motion when clicked, adding a subtle interactive touch to the UI.'
+---
+
+
+<PreviewCode
+  component={<RevealButtonDemo />}
+  codePath="/r/reveal-button.json"
+/>
+
+---
+
+## Installation
+
+<Installation command={'https://use-fork.vercel.app/r/reveal-button.json'} />
+
+
+
+## Props
+
+<Table
+  data={{
+    title: {
+      description: 'The label text displayed when the RevealButton expands. Accepts any string value.',
+      type: 'string',
+      default: 'undefined',
+    },
+    className: {
+      description: 'Optional custom CSS class for applying additional styles to the RevealButton container.',
+      type: 'string',
+      default: 'undefined',
+    },
+    children: {
+      description:
+        'The inner elements rendered inside the RevealButton. Typically includes `RevealButtonIcon` and `RevealButtonTitle` components.',
+      type: 'React.ReactNode',
+      default: 'undefined',
+    },
+    onClick: {
+      description:
+        'Callback function triggered when the expanded RevealButton is clicked. Used to handle button actions or events.',
+      type: '() => void',
+      default: 'undefined',
+    },
+    RadialIconProps: {
+      description:
+        `icon: lucide-react or heroicons icon component\n
+        className: optional string for custom icon styling`,
+      type: 'RadialIconProps',
+      default: 'undefined',
+    },
+  }}
+/>
+

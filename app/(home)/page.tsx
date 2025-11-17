@@ -21,7 +21,7 @@ const greetings = ['Hey,', 'Hola', 'Bonjour', 'Ciao', 'Namaste', 'Ni hoa', '„Åì„
 
 export default function HomePage() {
   return (
-    <div className="relative flex items-center justify-center rounded-2xl  bg-amber-50 h-[calc(100vh-1.5rem)] w-[calc(100vw-1rem)] ">
+    <div className="relative flex py-48 md:-py-0 md:items-center justify-center rounded-2xl  bg-amber-50 h-[calc(100vh-1.5rem)] w-[calc(100vw-1rem)] px-4 lg:px-0">
       <div className=" flex flex-col items-start gap-2">
         <Navbar />
         <Greetings data={greetings} />
@@ -45,11 +45,11 @@ function HeroHeader() {
   return (
     <div className="max-w-2xl leading-8 ">
       <div className="text-2xl pb-1 text-[#0a0a0a] delius-swash-caps-regular">
-        <WaveInText className="text-2xl" duration={0.3}>
+        <WaveInText className=" text-xl md:text-2xl" duration={0.3}>
           bridging the gap between design and development -
         </WaveInText>
       </div>
-      <div className="text-2xl leading-8 text-[#737373]">
+      <div className="text-xl md:text-2xl leading-8 text-[#737373]">
         The website is a collection of cool{' '}
         <span className="delius-swash-caps-regular text-[#0a0a0a]">designer components</span>{' '}
         reimagined from the web for shadcn ui.

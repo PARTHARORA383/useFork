@@ -245,11 +245,6 @@ function CodeBlockContent({ className, themes, rippleEffect, ...props }: CodeBlo
   const [highlighted, setHighlighted] = useState<string>('');
   const { data } = useCodeContext();
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const [scrollThumbTop, setScrollThumbTop] = useState(0);
-  const [scrollThumbHeight, setScrollThumbHeight] = useState(20);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [scrollActivity, setScrollActivity] = useState(0);
-  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
   const [thumbTop, setThumbTop] = useState(0);
   const [thumbHeight, setThumbHeight] = useState(20);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -275,20 +270,6 @@ function CodeBlockContent({ className, themes, rippleEffect, ...props }: CodeBlo
     x.set(e.clientX - rect.left - 10);
     y.set(e.clientY - rect.top - 10);
   };
-
-  // const handleMouseEnter = () => {
-  //   setHovered(true)
-  //   playDrop()
-  //   setTimeout(()=>setShowBall(true) ,100)
-  //   console.log("Enter" , showBall)
-  // }
-
-  // const handleMouseLeave = () => {
-  //   setHovered(false)
-  //   playDrop()
-  //   setTimeout(() => setShowBall(false), 100)
-  //   console.log("Leave",showBall)
-  // }
 
   const handleClick = () => {
     playDrop();

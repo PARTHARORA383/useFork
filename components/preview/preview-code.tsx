@@ -43,11 +43,11 @@ export function PreviewCode({
   position = 'center',
 }: PreviewCodeProps) {
   const positionClasses = {
-    center: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
-    top: 'absolute top-5 left-1/2 -translate-x-1/2',
-    bottom: 'absolute bottom-5 left-1/2 -translate-x-1/2',
-    left: 'absolute left-0 top-1/2 -translate-y-1/2',
-    right: 'absolute right-5 top-1/2 -translate-y-1/2',
+    'center': 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+    'top': 'absolute top-5 left-1/2 -translate-x-1/2',
+      'bottom': 'absolute bottom-5 left-1/2 -translate-x-1/2',
+    'left': 'absolute left-0 top-1/2 -translate-y-1/2',
+    'right': 'absolute right-5 top-1/2 -translate-y-1/2',
     'top-right': 'absolute top-5 right-5',
     'top-left': 'absolute top-5 left-5',
     'bottom-right': 'absolute bottom-5 right-5',
@@ -96,7 +96,7 @@ export function PreviewCode({
               className,
             )}
           >
-            <div className={cn('lg:min-w-[32rem]', secondClassName, positionClasses)}>
+            <div className={cn('', secondClassName, positionClasses)}>
               {component}
             </div>
           </div>

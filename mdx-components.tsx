@@ -16,6 +16,9 @@ import { RollInTextDemo } from '@/components/demo/roll-in-text-demo';
 import { MouseParallaxImagesDemo } from '@/components/demo/parallax-images-demo';
 import { StopwatchDemo } from '@/components/demo/stopwatch-demo';
 import { BannerCarousalDemo } from '@/components/demo/banner-carousal-demo';
+import { RevealButtonDemo } from '@/components/demo/reveal-button-demo';
+import { RollOverTextDemo } from '@/components/demo/roll-over-text-demo';
+import { SaveToggleDemo } from '@/components/demo/save-toggle-demo';
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -34,8 +37,11 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     // MusicPlayerDemo,
     WaveInTextDemo,
     RollInTextDemo,
+    RollOverTextDemo,
     MouseParallaxImagesDemo,
     BannerCarousalDemo,
     StopwatchDemo,
+    RevealButtonDemo,
+    SaveToggleDemo,
   };
 }

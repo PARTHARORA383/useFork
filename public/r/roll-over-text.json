@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "roll-over-text",
+  "type": "registry:block",
+  "title": "Text RollOver Wrapper",
+  "description": "A fully reusable and customizable text wrapper with a smooth roll-in animation effect. Simply wrap your string with the component and watch the text come to life with motion magic.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "components/roll-over-text.tsx",
+      "content": "\"use client\";\r\n\r\nimport { motion } from \"motion/react\";\r\nimport { cn } from \"@/lib/cn\";\r\n\r\ninterface RollOverTextProps {\r\n  children: string;\r\n  className?: string;\r\n  staggerDelay?: number; // delay between each character\r\n}\r\n\r\nexport function RollOverText({\r\n  children,\r\n  className,\r\n  staggerDelay = 0.03,\r\n}: RollOverTextProps) {\r\n  const text = children.split(\"\").map((char) => (char === \" \" ? \"\\u00A0\" : char));\r\n\r\n  // Variants for front layer (roll up + blur on hover)\r\n  const frontVariants = {\r\n    initial: { y: 0, filter: \"blur(0px)\" },\r\n    hovered: { y: \"-100%\", filter: \"blur(2px)\" },\r\n  };\r\n\r\n  // Variants for back layer (slide in from bottom + blur)\r\n  const backVariants = {\r\n    initial: { y: \"100%\", filter: \"blur(2px)\" },\r\n    hovered: { y: 0, filter: \"blur(0px)\" },\r\n  };\r\n\r\n\r\n  return (\r\n    <motion.div\r\n      initial=\"initial\"\r\n      whileHover=\"hovered\"\r\n      className={cn(\"relative inline-block overflow-hidden\", className)}\r\n    >\r\n      {/* Front layer */}\r\n      <div className=\"relative block\">\r\n        {text.map((char, i) => (\r\n\r\n          <motion.span\r\n            key={`front-${i}`}\r\n            variants={frontVariants}\r\n            transition={{ ease: \"easeInOut\", duration: 0.3, delay: i * staggerDelay }}\r\n            className=\"inline-block\"\r\n          >\r\n            {char}\r\n          </motion.span>\r\n        ))}\r\n      </div>\r\n\r\n      {/* Back layer */}\r\n      <div className=\"absolute inset-0\">\r\n        {text.map((char, i) => (\r\n          <motion.span\r\n            key={`back-${i}`}\r\n            variants={backVariants}\r\n            transition={{ ease: \"easeInOut\", duration: 0.3, delay: i * staggerDelay }}\r\n            className=\"inline-block\"\r\n          >\r\n            {char}\r\n          </motion.span>\r\n        ))}\r\n      </div>\r\n    </motion.div>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "components/demo/roll-over-text-demo.tsx",
+      "content": "import { RollOverText } from \"@/components/roll-over-text\";\r\n\r\n\r\nexport function RollOverTextDemo(){\r\n\r\n  return (\r\n  <RollOverText className=\"text-2xl\">\r\n    REDEFINING LIMITS, FIGHTING FOR WINS \r\n  </RollOverText>\r\n  )\r\n}",
+      "type": "registry:component"
+    }
+  ]
+}

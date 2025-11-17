@@ -32,7 +32,7 @@ export function Greetings({ data }: DataProps) {
             duration: 0.3,
             ease: 'easeOut',
           }}
-          className="font-medium text-3xl"
+          className="font-medium text-2xl md:text-3xl"
         >
           {data[activeIndex]}
         </motion.div>

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reveal-button",
+  "type": "registry:block",
+  "title": "Stopwatch",
+  "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
+  "dependencies": [
+    "motion",
+    "animate-ui/icons-icon"
+  ],
+  "files": [
+    {
+      "path": "components/reveal-button.tsx",
+      "content": "\r\nimport { cn } from '@/lib/cn';\r\nimport { is } from '@react-three/fiber/dist/declarations/src/core/utils';\r\nimport { AnimatePresence, motion } from 'motion/react';\r\nimport React, { cloneElement, useContext, useEffect, useRef, useState } from 'react';\r\n\r\n\r\ninterface RevealButtonProps {\r\n  title?: string\r\n  children: React.ReactNode; // expects RadialIcon and RadialTitle\r\n  onClick?: () => void;\r\n  className?: string;\r\n}\r\n\r\n\r\nfunction RevealButton({\r\n  title, children, onClick, className\r\n}: RevealButtonProps) {\r\n\r\n  const [isActive, setIsActive] = useState(false)\r\n  const containerRef = useRef<HTMLDivElement>(null);\r\n\r\n  useEffect(() => {\r\n    const handleClickOutside = (e: MouseEvent) => {\r\n      if (\r\n        isActive && containerRef.current && !containerRef.current.contains(e.target as Node)\r\n      ) {\r\n        console.log(\"outside\")\r\n        setIsActive(false)\r\n      }\r\n    }\r\n    document.addEventListener('mousedown', handleClickOutside)\r\n    return () => {\r\n      document.removeEventListener('mousedown', handleClickOutside)\r\n    }\r\n\r\n  }, [isActive])\r\n\r\n  return (\r\n    <motion.div className='flex items-center justify-center gap-2'>\r\n      <motion.div\r\n        ref={containerRef}\r\n        className={`flex items-center justify-center gap-2 border rounded-full p-1.5 border-muted-foreground origin-left overflow-hidden  ${isActive ? 'hover:bg-muted3 cursor-pointer' : \"hover:bg-muted2 cursor-default\"}`}\r\n        onClick={() => {\r\n          isActive ? onClick?.() : setIsActive(true)\r\n        }}>\r\n\r\n          {children}\r\n          <AnimatePresence>\r\n          {isActive && (\r\n            <RevealButtonTitle title={title} />\r\n          )}\r\n        </AnimatePresence>\r\n\r\n      </motion.div>\r\n    </motion.div>\r\n  )\r\n}\r\n\r\ninterface RevealButtonIconProps {\r\n  icon: React.ReactNode\r\n  className?: string\r\n}\r\n\r\nfunction RevealButtonIcon({ icon, className, ...props }: RevealButtonIconProps) {\r\n  return (\r\n    <motion.div\r\n      className={cn('', className)}\r\n      {...props}\r\n    >\r\n      {icon}\r\n    </motion.div>\r\n  )\r\n}\r\n\r\nRevealButtonIcon.displayName = 'RevealButtonIcon';\r\n\r\ninterface RadialTitleProps {\r\n  title?: string;\r\n  \r\n  className?: string;\r\n}\r\n\r\nfunction RevealButtonTitle({ title, className }: RadialTitleProps) {\r\n  return (\r\n    <motion.div\r\n      layout\r\n      initial={{ width: 0, opacity: 0, filter: 'blur(2px)' }}\r\n      animate={{ width: 'auto', opacity: 1, filter: 'blur(0px)' }}\r\n      exit={{ width: 0, opacity: 0, filter: 'blur(2px)' }}\r\n      transition={{ duration: 0.4, ease: 'easeInOut' }}\r\n      className={cn('', className)}\r\n    >\r\n      {title}\r\n    </motion.div>\r\n  );\r\n};\r\n\r\nRevealButtonTitle.displayName = 'RevealButtonTitle'\r\n\r\n\r\nexport { RevealButton, RevealButtonIcon, RevealButtonTitle }",
+      "type": "registry:component"
+    },
+    {
+      "path": "components/demo/reveal-button-demo.tsx",
+      "content": "'use client'\r\n\r\nimport { RevealButton, RevealButtonIcon } from \"@/components/reveal-button\";\r\nimport { Bookmark } from \"lucide-react\";\r\n\r\n\r\nexport function RevealButtonDemo() {\r\n\r\n  return (\r\n    <RevealButton title=\"Bookmark\">\r\n      <RevealButtonIcon icon={<Bookmark className=\"w-5 h-5\" />} />\r\n    </RevealButton>\r\n  )\r\n  \r\n}",
+      "type": "registry:component"
+    }
+  ]
+}

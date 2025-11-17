@@ -1,11 +1,10 @@
 
 import { cn } from '@/lib/cn';
-import { is } from '@react-three/fiber/dist/declarations/src/core/utils';
 import { AnimatePresence, motion } from 'motion/react';
-import React, { cloneElement, useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 
-interface RadialButtonProps {
+interface RevealButtonProps {
   title?: string
   children: React.ReactNode; // expects RadialIcon and RadialTitle
   onClick?: () => void;
@@ -13,9 +12,9 @@ interface RadialButtonProps {
 }
 
 
-function RadialButton({
+function RevealButton({
   title, children, onClick, className
-}: RadialButtonProps) {
+}: RevealButtonProps) {
 
   const [isActive, setIsActive] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null);
@@ -48,7 +47,7 @@ function RadialButton({
           {children}
           <AnimatePresence>
           {isActive && (
-            <RadialButtonTitle title={title} />
+            <RevealButtonTitle title={title} />
           )}
         </AnimatePresence>
 
@@ -57,12 +56,12 @@ function RadialButton({
   )
 }
 
-interface RadialButtonIconProps {
+interface RevealButtonIconProps {
   icon: React.ReactNode
   className?: string
 }
 
-function RadialButtonIcon({ icon, className, ...props }: RadialButtonIconProps) {
+function RevealButtonIcon({ icon, className, ...props }: RevealButtonIconProps) {
   return (
     <motion.div
       className={cn('', className)}
@@ -73,7 +72,7 @@ function RadialButtonIcon({ icon, className, ...props }: RadialButtonIconProps) 
   )
 }
 
-RadialButtonIcon.displayName = 'RadialButtonIcon';
+RevealButtonIcon.displayName = 'RevealButtonIcon';
 
 interface RadialTitleProps {
   title?: string;
@@ -81,7 +80,7 @@ interface RadialTitleProps {
   className?: string;
 }
 
-function RadialButtonTitle({ title, className }: RadialTitleProps) {
+function RevealButtonTitle({ title, className }: RadialTitleProps) {
   return (
     <motion.div
       layout
@@ -96,7 +95,7 @@ function RadialButtonTitle({ title, className }: RadialTitleProps) {
   );
 };
 
-RadialButtonTitle.displayName = 'RadialButtonTitle'
+RevealButtonTitle.displayName = 'RevealButtonTitle'
 
 
-export { RadialButton, RadialButtonIcon, RadialButtonTitle }
+export { RevealButton, RevealButtonIcon, RevealButtonTitle }

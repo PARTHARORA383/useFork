@@ -1,15 +1,18 @@
 "use client"
 
-import { RadialButton, RadialButtonIcon, RadialButtonTitle } from "@/components/radial-button";
-import { Bookmark } from "lucide-react";
+import CursorTrail from "@/components/cursor-trail";
+import {LoaderCircle} from "@/components/loader-circle";
+import { RevealButton, RevealButtonIcon } from "@/components/reveal-button";
+import { RollOverText } from "@/components/roll-over-text";
+import {  SaveToggle} from "@/components/save-toggle";
+import { Bookmark, CheckIcon, SaveIcon, SplinePointerIcon } from "lucide-react";
 
 
 export default function TestPage() {
-  return (
+  return(
     <div className=" flex items-center justify-center h-screen">
-      <RadialButton title="Bookmark">
-        <RadialButtonIcon icon = {<Bookmark className="w-5 h-5"/>}/>
-      </RadialButton>
+
+      <CursorTrail/>
     </div>
-  );
+);
 }

@@ -32,14 +32,16 @@ export function CustomSidebar() {
       heading: 'utilities',
       items: [
         { title: 'Code Block', href: '/docs/code-block' },
-        { title: 'StopWatch', href: '/docs/stopwatch' },
       ],
     },
     {
       heading: 'minimilistic',
       items: [
+        { title: 'Reveal Button', href: '/docs/reveal-button' },
+        { title: 'StopWatch', href: '/docs/stopwatch' },
         { title: 'Parallax Image', href: '/docs/parallax-images' },
         { title: 'Banner Carousal', href: '/docs/banner-carousal' },
+        { title: 'Save Toggle', href: '/docs/save-toggle' },
       ],
     },
     {
@@ -47,6 +49,7 @@ export function CustomSidebar() {
       items: [
         { title: 'Wave Effect', href: '/docs/wave-in-text' },
         { title: 'Rollin Effect ', href: '/docs/roll-in-text' },
+        { title: 'RollOver Effect ', href: '/docs/roll-over-text' },
       ],
     },
   ];
@@ -72,7 +75,7 @@ export function CustomSidebar() {
   const playDrop = () => {
     const drop = new Audio('/sounds/click.mp3');
     drop.volume = 0.4;
-    drop.play().catch(() => {});
+    drop.play().catch(() => { });
   };
 
   const handleOnClick = () => {
@@ -119,7 +122,7 @@ export function CustomSidebar() {
                 {section.items.map((item: ItemProps) => (
                   <motion.div
                     key={item.href}
-                    onClick={() => {}}
+                    onClick={() => { }}
                     className=" transform text-muted-foreground hover:scale-101 transition-transform  duration-200 hover:translate-x-3 hover:text-[var(--color-purple-500)]  hover:dark:text-[var(--color-purple-300)] pl-20 "
                   >
                     <Link
