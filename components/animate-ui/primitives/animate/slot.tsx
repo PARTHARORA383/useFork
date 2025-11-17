@@ -1,6 +1,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
+
 'use client';
 
 import * as React from 'react';
@@ -23,7 +24,9 @@ type SlotProps<T extends HTMLElement = HTMLElement> = {
   children?: any;
 } & DOMMotionProps<T>;
 
-function mergeRefs<T>(...refs: (React.Ref<T> | undefined)[]): React.RefCallback<T> {
+function mergeRefs<T>(
+  ...refs: (React.Ref<T> | undefined)[]
+): React.RefCallback<T> {
   return (node) => {
     refs.forEach((ref) => {
       if (!ref) return;
@@ -43,7 +46,10 @@ function mergeProps<T extends HTMLElement>(
   const merged: AnyProps = { ...childProps, ...slotProps };
 
   if (childProps.className || slotProps.className) {
-    merged.className = cn(childProps.className as string, slotProps.className as string);
+    merged.className = cn(
+      childProps.className as string,
+      slotProps.className as string,
+    );
   }
 
   if (childProps.style || slotProps.style) {
@@ -56,9 +62,15 @@ function mergeProps<T extends HTMLElement>(
   return merged;
 }
 
-function Slot<T extends HTMLElement = HTMLElement>({ children, ref, ...props }: SlotProps<T>) {
+function Slot<T extends HTMLElement = HTMLElement>({
+  children,
+  ref,
+  ...props
+}: SlotProps<T>) {
   const isAlreadyMotion =
-    typeof children.type === 'object' && children.type !== null && isMotionComponent(children.type);
+    typeof children.type === 'object' &&
+    children.type !== null &&
+    isMotionComponent(children.type);
 
   const Base = React.useMemo(
     () =>
@@ -74,8 +86,15 @@ function Slot<T extends HTMLElement = HTMLElement>({ children, ref, ...props }: 
 
   const mergedProps = mergeProps(childProps, props);
 
-
-  return <Base {...mergedProps  as any} ref={mergeRefs(childRef as React.Ref<T>, ref) as any} />;
+  return (
+    <Base {...mergedProps} ref={mergeRefs(childRef as React.Ref<T>, ref)} />
+  );
 }
 
-export { Slot, type SlotProps, type WithAsChild, type DOMMotionProps, type AnyProps };
+export {
+  Slot,
+  type SlotProps,
+  type WithAsChild,
+  type DOMMotionProps,
+  type AnyProps,
+};
