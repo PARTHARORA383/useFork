@@ -19,6 +19,7 @@ import { BannerCarousalDemo } from '@/components/demo/banner-carousal-demo';
 import { RevealButtonDemo } from '@/components/demo/reveal-button-demo';
 import { RollOverTextDemo } from '@/components/demo/roll-over-text-demo';
 import { SaveToggleDemo } from '@/components/demo/save-toggle-demo';
+import { FlipCardOnHoverDemo } from '@/components/demo/flip-card-hover-demo';
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -43,5 +44,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     StopwatchDemo,
     RevealButtonDemo,
     SaveToggleDemo,
+    FlipCardOnHoverDemo,
   };
 }

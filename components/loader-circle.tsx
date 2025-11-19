@@ -27,12 +27,12 @@ export function LoaderCircle({ radius }: LoaderProps) {
         {/* 🌈 SKY GRADIENT */}
         <defs>
           <linearGradient id="skyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#0ea5e9" />   {/* sky-500 */}
+            <stop offset="0%" stopColor="#0ea5e9" /> {/* sky-500 */}
             <stop offset="100%" stopColor="#7dd3fc" /> {/* sky-300 */}
           </linearGradient>
 
           <linearGradient id="skyGradientSoft" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#bae6fd" />   {/* sky-200 */}
+            <stop offset="0%" stopColor="#bae6fd" /> {/* sky-200 */}
             <stop offset="100%" stopColor="#e0f2fe" /> {/* sky-100 */}
           </linearGradient>
         </defs>

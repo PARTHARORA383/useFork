@@ -397,7 +397,7 @@ function CodeBlockContent({ className, themes, rippleEffect, ...props }: CodeBlo
             <div
               ref={containerRef}
               className={cn(
-                'overflow-visible not-prose bg-muted dark:bg-card cursor-none ', // ⬅ hide system cursor here too
+                'overflow-visible not-prose bg-muted dark:bg-card',
                 className,
                 codeBlockClassName,
                 darkModeClassNames,

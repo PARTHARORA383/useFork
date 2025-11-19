@@ -154,7 +154,7 @@
       "name": "banner-carousal",
       "type": "registry:block",
       "title": "Banner Carousal",
-      "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
+      "description": "A dynamic and reusable Banner Carousel built with React and Motion. It features smooth animated transitions, including overlay previews that expand into the main background, creating an engaging and visually appealing slideshow. Fully responsive and customizable for any set of images",
       "files": [
         {
           "path": "components/carousals/banner-carousal.tsx",
@@ -173,7 +173,7 @@
       "name": "stopwatch",
       "type": "registry:block",
       "title": "Stopwatch",
-      "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
+      "description": "A responsive and animated stopwatch component built with Motion. Features smooth layout transitions, start/pause/reset functionality, and fluid time updates for an engaging and interactive user experience. Ideal for dashboards, timers, and productivity tools.",
       "files": [
         {
           "path": "components/stopwatch.tsx",
@@ -191,8 +191,8 @@
     {
       "name": "reveal-button",
       "type": "registry:block",
-      "title": "Stopwatch",
-      "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
+      "title": "Reveal Button",
+      "description": "A reusable animated button that reveals its title with a smooth expanding motion when clicked, adding a subtle interactive touch to the UI.",
       "files": [
         {
           "path": "components/reveal-button.tsx",
@@ -225,6 +225,25 @@
         },
         {
           "path": "components/loader-circle.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "lucide-react"]
+    },
+    {
+      "name": "flip-card-hover",
+      "type": "registry:block",
+      "title": "Flip Card On Hover",
+      "description": "A sleek, motion-powered FlipCard with directional flip animations. Fully customizable, fluid, and responsive—perfect for elevating product or brand storytelling. It was inspired by the merch of DodoPayments.",
+      "files": [
+        {
+          "path": "components/flip-card-hover.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/flip-card-hover-demo.tsx",
           "type": "registry:component",
           "language": "tsx"
         }

@@ -1,0 +1,75 @@
+---
+title: 'Flip Card On Hover'
+description: 'A sleek, motion-powered FlipCard with directional flip animations. Fully customizable, fluid, and responsive—perfect for elevating product or brand storytelling. It was inspired by the merch of DodoPayments.'
+---
+
+<PreviewCode
+  className="min-h-[700px]"
+  postition="center"
+  component={<FlipCardOnHoverDemo />}
+  codePath="/r/flip-card-hover.json"
+/>
+
+
+
+## Installation
+
+<Installation command={'https://use-fork.vercel.app/r/flip-card-hover.json'} />
+
+
+
+## Props
+
+<Table
+  data={{
+    front: {
+      description:
+        "Custom content for the front side of the flip card. If provided, it completely replaces the default front layout.",
+      type: "React.ReactNode",
+      default: "Default front layout (image, quote, brand text)",
+    },
+
+    back: {
+      description:
+        "Custom content for the back side of the flip card. When passed, it overrides the default back content.",
+      type: "React.ReactNode",
+      default: "Default back layout (heading, quote, brand text)",
+    },
+
+    className: {
+      description:
+        "Optional CSS class applied to the main card wrapper for custom sizing or styling.",
+      type: "string",
+      default: "undefined",
+    },
+
+    defaultFrontImage: {
+      description:
+        "Image used for the default front side when no custom `front` content is passed.",
+      type: "string (URL)",
+      default: "Preset useFork promo image URL",
+    },
+
+    defaultHeading: {
+      description:
+        "Heading text shown on the default back side when no custom `back` is provided.",
+      type: "string",
+      default: `"Welcome to Our Journey"`,
+    },
+
+    defaultQuote: {
+      description:
+        "A short descriptive message displayed on the default back side. Helps explain the card's story or purpose.",
+      type: "string",
+      default:
+        `"useFork began as a simple idea — to bridge the gap between design and development..."`,
+    },
+
+    defaultBrand: {
+      description:
+        "Brand label shown on both the default front and back sides of the card.",
+      type: "string",
+      default: `"useFork"`,
+    },
+  }}
+/>

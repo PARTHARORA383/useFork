@@ -12,7 +12,9 @@ export function RollInTextDemo() {
         <RollInText className="font-medium  text-xl md:text-2xl lg:text-4xl ">LIMITS,</RollInText>
       </div>
       <div className="flex items-center justify-center gap-2 md:gap-4">
-        <RollInText className="font-medium text-xl md:text-2xl lg:text-4xl ">FIGHTING FOR</RollInText>
+        <RollInText className="font-medium text-xl md:text-2xl lg:text-4xl ">
+          FIGHTING FOR
+        </RollInText>
         <RollInText className="font-bold  playfair-display-400  text-red-500 text-xl md:text-2xl lg:text-4xl ">
           WINS
         </RollInText>
@@ -23,4 +25,3 @@ export function RollInTextDemo() {
 
 //Creator - Parth Arora
 //X - https://x.com/partharora9128
-

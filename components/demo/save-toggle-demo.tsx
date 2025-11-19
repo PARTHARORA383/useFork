@@ -1,10 +1,7 @@
-"use client"
+'use client';
 
-import { SaveToggle } from "@/components/save-toggle";
+import { SaveToggle } from '@/components/save-toggle';
 
-export function SaveToggleDemo(){
-
-  return(
-    <SaveToggle/>
-  )
+export function SaveToggleDemo() {
+  return <SaveToggle />;
 }

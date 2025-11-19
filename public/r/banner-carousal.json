@@ -3,7 +3,7 @@
   "name": "banner-carousal",
   "type": "registry:block",
   "title": "Banner Carousal",
-  "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
+  "description": "A dynamic and reusable Banner Carousel built with React and Motion. It features smooth animated transitions, including overlay previews that expand into the main background, creating an engaging and visually appealing slideshow. Fully responsive and customizable for any set of images",
   "dependencies": [
     "motion"
   ],

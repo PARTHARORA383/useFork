@@ -30,9 +30,7 @@ export function CustomSidebar() {
   const data = [
     {
       heading: 'utilities',
-      items: [
-        { title: 'Code Block', href: '/docs/code-block' },
-      ],
+      items: [{ title: 'Code Block', href: '/docs/code-block' }],
     },
     {
       heading: 'minimilistic',
@@ -42,6 +40,7 @@ export function CustomSidebar() {
         { title: 'Parallax Image', href: '/docs/parallax-images' },
         { title: 'Banner Carousal', href: '/docs/banner-carousal' },
         { title: 'Save Toggle', href: '/docs/save-toggle' },
+        { title: 'Flip Card', href: '/docs/flip-card-hover' },
       ],
     },
     {
@@ -75,7 +74,7 @@ export function CustomSidebar() {
   const playDrop = () => {
     const drop = new Audio('/sounds/click.mp3');
     drop.volume = 0.4;
-    drop.play().catch(() => { });
+    drop.play().catch(() => {});
   };
 
   const handleOnClick = () => {
@@ -122,7 +121,7 @@ export function CustomSidebar() {
                 {section.items.map((item: ItemProps) => (
                   <motion.div
                     key={item.href}
-                    onClick={() => { }}
+                    onClick={() => {}}
                     className=" transform text-muted-foreground hover:scale-101 transition-transform  duration-200 hover:translate-x-3 hover:text-[var(--color-purple-500)]  hover:dark:text-[var(--color-purple-300)] pl-20 "
                   >
                     <Link

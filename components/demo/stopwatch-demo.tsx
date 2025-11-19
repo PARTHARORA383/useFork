@@ -1,6 +1,6 @@
 'use client';
 
-import {Stopwatch} from '@/components/stopwatch';
+import { Stopwatch } from '@/components/stopwatch';
 
 export function StopwatchDemo() {
   return (
@@ -12,4 +12,3 @@ export function StopwatchDemo() {
 
 //Creator - Parth Arora
 //X - https://x.com/partharora9128
-
