@@ -172,7 +172,7 @@ function CommandButton() {
 
 export function DynamicIsland() {
   return (
-    <div className="fixed right-3 bottom-5 z-20">
+    <div className="fixed right-3 bottom-5 z-10">
       <div className="relative bg-muted2 border rounded-2xl flex items-center justify-between gap-3 px-4 py-2 shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)]">
         <SearchButton />
         <ThemeButton />
