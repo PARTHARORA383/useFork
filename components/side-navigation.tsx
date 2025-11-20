@@ -16,7 +16,7 @@ export function SideNavigation({ children, ...props }: SideNavigationProps) {
   const items = React.Children.toArray(children)
 
   return (
-    <motion.div className="fixed left-0 top-1/2 -translate-y-1/2 flex flex-col  rounded-r-lg gap-0.5 bg-foreground border"
+    <motion.div className="fixed left-0 top-1/2 -translate-y-1/2 flex flex-col  rounded-r-lg gap-0.5 bg-foreground dark:bg-muted3 border"
       {...props}
       layout
       onMouseEnter={() => {
@@ -46,7 +46,7 @@ export function SideNavigation({ children, ...props }: SideNavigationProps) {
             <motion.div
               animate={show ? { x: "20%", opacity: 0 } : { x: 0, opacity: 1 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className=" w-5 h-5 text-background rounded flex items-center justify-center text-right ">
+              className=" w-5 h-5 text-background dark:text-foreground rounded flex items-center justify-center text-right ">
               {index + 1}
             </motion.div>
           </AnimatePresence>
@@ -66,7 +66,7 @@ interface SideNavigationItemProps {
 
 export function SideNavigationItem({ title, href, className, ...props }: SideNavigationItemProps) {
   return (
-    <Link className={cn("text-muted3 hover:text-background transition-colors duration-200", className)}
+    <Link className={cn(" no-underline text-foreground  after:content-['']  after:absolute  after:left-0 after:bottom-0 after:h-[1.5px] after:w-full after:bg-foreground after:scale-x-0 after:origin-left after:rounded-lg after:transition-transform  after:duration-200 hover:after:scale-x-100", className)}
       {...props} href={href} >
       {title}
     </Link>
