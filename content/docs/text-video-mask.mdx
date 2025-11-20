@@ -1,0 +1,39 @@
+---
+title: 'Text Video Mask'
+description: 'A reusable and fully customizable Text-Video Mask component that blends video backgrounds inside bold, animated text. Perfect for creating high-impact hero sections, branding visuals, and dynamic landing pages.
+'
+---
+
+
+
+<PreviewCode
+secondClassName = 'w-full h-full absolute'
+position = "left" 
+className = 'min-h-[750px]  relative' component={<TextVideoMaskDemo />} codePath="/r/text-video-mask.json" />
+
+
+---
+
+## Installation
+
+<Installation command={'https://use-fork.vercel.app/r/text-video-mask.json'} />
+
+---
+
+## Props
+
+
+### TextVideoMaskContainer
+
+<Table data={{ children: { description: "Video background and masked text components to be rendered inside the container.", type: "ReactNode", default: "undefined", }, }} />
+
+### VideoBackground
+
+<Table data={{ src: { description: "The source path of the video to display as the background.", type: "string", default: '""', }, }} />
+
+### MaskedText
+
+<Table data={{ texts: { description: "Array of words that cycle and appear as the masked text.", type: "string[]", default: '["DRIVE", "DESIGN", "PASSION"]', }, className: { description: "Optional additional CSS classes for styling the text.", type: "string", default: "undefined", }, opacity: { description: "The transparency level of the text mask.", type: "number", default: "0.8", }, }} />
+
+
+---

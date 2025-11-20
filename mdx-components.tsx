@@ -21,6 +21,8 @@ import { RollOverTextDemo } from '@/components/demo/roll-over-text-demo';
 import { SaveToggleDemo } from '@/components/demo/save-toggle-demo';
 import { FlipCardOnHoverDemo } from '@/components/demo/flip-card-hover-demo';
 import { SideNavigationDemo } from '@/components/demo/side-navigation-demo';
+import { TextVideoMaskDemo } from '@/components/demo/text-video-mask-demo';
+
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -46,6 +48,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     RevealButtonDemo,
     SaveToggleDemo,
     FlipCardOnHoverDemo,
-    SideNavigationDemo
+    SideNavigationDemo,
+    TextVideoMaskDemo
   };
 }
