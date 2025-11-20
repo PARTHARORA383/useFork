@@ -42,6 +42,7 @@ export function PreviewCode({
   component,
   position = 'center',
 }: PreviewCodeProps) {
+
   const positionClasses = {
     center: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
     top: 'absolute top-5 left-1/2 -translate-x-1/2',
@@ -96,7 +97,7 @@ export function PreviewCode({
               className,
             )}
           >
-            <div className={cn('', secondClassName, positionClasses)}>{component}</div>
+            <div className={cn('', positionClasses , secondClassName )}>{component}</div>
           </div>
         </AnimatedTabsContent>
 
