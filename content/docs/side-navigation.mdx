@@ -1,0 +1,55 @@
+---
+title: 'Side Navigation '
+description: 'A reusable and customizable tabs component built with Radix UI and Motion. Supports smooth sliding highlight animations on tab triggers and fade-in/out transitions for tab content, making tab interactions visually engaging and accessible'
+---
+
+
+
+<PreviewCode position='left' 
+ className = 'relative'
+component={<SideNavigationDemo />} codePath="/r/side-navigation.json" />
+
+---
+
+## Installation
+
+<Installation command={'https://use-fork.vercel.app/r/side-navigation.json'}/>
+
+
+## Props
+
+
+### SideNavigation
+
+<Table
+  data={{
+    children: {
+      description: "SideNavigationItems passed as children to render inside the vertical navigation.",
+      type: "ReactNode",
+      default: "undefined",
+    },
+  }}
+/>
+
+
+### SideNavigationItem
+
+<Table
+  data={{
+    title: {
+      description: "The text label shown for the navigation link.",
+      type: "string",
+      default: '""',
+    },
+    href: {
+      description: "The URL the navigation item should navigate to.",
+      type: "string",
+      default: '""',
+    },
+    className: {
+      description: "Optional custom CSS classes for styling the link.",
+      type: "string",
+      default: "undefined",
+    },
+  }}
+/>

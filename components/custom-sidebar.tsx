@@ -29,18 +29,16 @@ export function CustomSidebar() {
 
   const data = [
     {
-      heading: 'utilities',
-      items: [{ title: 'Code Block', href: '/docs/code-block' }],
-    },
-    {
-      heading: 'minimilistic',
+      heading: 'interactive',
       items: [
         { title: 'Reveal Button', href: '/docs/reveal-button' },
         { title: 'StopWatch', href: '/docs/stopwatch' },
         { title: 'Parallax Image', href: '/docs/parallax-images' },
         { title: 'Banner Carousal', href: '/docs/banner-carousal' },
+        { title: 'Code Block', href: '/docs/code-block' },
         { title: 'Save Toggle', href: '/docs/save-toggle' },
         { title: 'Flip Card', href: '/docs/flip-card-hover' },
+        { title: 'Side Navigation', href: '/docs/side-navigation' },
       ],
     },
     {

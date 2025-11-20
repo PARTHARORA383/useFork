@@ -92,7 +92,7 @@ export function PreviewCode({
         <AnimatedTabsContent value="preview">
           <div
             className={cn(
-              'relative bg-[var(--muted2)] dark:bg-[var(--muted2)] border rounded-lg overflow-hidden min-h-[500px]',
+              ' bg-[var(--muted2)] dark:bg-[var(--muted2)] border rounded-lg overflow-hidden min-h-[500px]',
               className,
             )}
           >

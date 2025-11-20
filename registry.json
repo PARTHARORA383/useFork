@@ -249,6 +249,25 @@
         }
       ],
       "dependencies": ["motion", "lucide-react"]
+    },
+    {
+      "name": "side-navigation",
+      "type": "registry:block",
+      "title": "Side Navigation",
+      "description": "A sleek side navigation bar that smoothly expands on hover using Motion animations. It provides an interactive, minimal UI with auto-indexing items for quick navigation.",
+      "files": [
+        {
+          "path": "components/side-navigation.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/side-navigation-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
     }
   ]
 }
