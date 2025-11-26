@@ -4,7 +4,10 @@
   "type": "registry:block",
   "title": "Stopwatch",
   "description": "A responsive and animated stopwatch component built with Motion. Features smooth layout transitions, start/pause/reset functionality, and fluid time updates for an engaging and interactive user experience. Ideal for dashboards, timers, and productivity tools.",
-  "dependencies": ["motion", "animate-ui/icons-icon"],
+  "dependencies": [
+    "motion",
+    "animate-ui/icons-icon"
+  ],
   "files": [
     {
       "path": "components/stopwatch.tsx",

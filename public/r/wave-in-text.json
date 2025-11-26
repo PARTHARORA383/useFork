@@ -4,7 +4,9 @@
   "type": "registry:block",
   "title": "WaveInText",
   "description": "A fully reusable and customizable text wrapper featuring a smooth, wave-like animation built with React and Framer Motion. Simply wrap your text with this component to bring it to life with fluid, elegant motion.",
-  "dependencies": ["motion"],
+  "dependencies": [
+    "motion"
+  ],
   "files": [
     {
       "path": "components/wave-in-text.tsx",

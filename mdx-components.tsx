@@ -1,3 +1,5 @@
+
+import dynamic from 'next/dynamic';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
 import { AnimatedInputBar } from './components/animated-inputbar';
@@ -5,7 +7,7 @@ import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 import { PreviewCode } from '@/components/preview/preview-code';
 import { CodePopup } from '@/components/preview/code-popup';
-import { CodeBlockComponent } from '@/components/code-block-component';
+import { CodeBlockComponent } from '@/components/code-block-component'
 import { CLIManualBlock } from '@/components/preview/cli-manual';
 import { Table } from '@/components/table';
 import { HeadingDescription } from '@/components/preview/heading-description';

@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CodeBlockComponent } from '../code-block-component';
 import { Installation } from '../installation';
 import { ButtonCopy } from '../code-block';

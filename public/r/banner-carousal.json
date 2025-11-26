@@ -4,7 +4,9 @@
   "type": "registry:block",
   "title": "Banner Carousal",
   "description": "A dynamic and reusable Banner Carousel built with React and Motion. It features smooth animated transitions, including overlay previews that expand into the main background, creating an engaging and visually appealing slideshow. Fully responsive and customizable for any set of images",
-  "dependencies": ["motion"],
+  "dependencies": [
+    "motion"
+  ],
   "files": [
     {
       "path": "components/carousals/banner-carousal.tsx",
