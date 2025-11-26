@@ -6,8 +6,8 @@ import {
   AnimatedTabsList,
   AnimatedTabsTrigger,
 } from '@/components/animated-tabs';
-import { WaveInText } from '@/components/wave-in-text';
 import { ButtonCopy } from './code-block';
+import { motion } from 'motion/react';
 
 interface InstallationProps {
   command: string;
@@ -27,9 +27,9 @@ export function Installation({ command }: InstallationProps) {
   };
 
   return (
-    <div className="lg:min-w-3xl max-w-4xl border rounded-xl overflow-x-auto no-scrollbar shadow-sm">
+    <div className="border rounded-xl overflow-x-auto no-scrollbar shadow-sm">
       <AnimatedTabs defaultValue="npm" className="relative bg-muted  dark:bg-muted2 gap-0">
-        <AnimatedTabsList className="gap-2 max-w-lg rounded-t-xl px-2 py-1 dark:bg-muted2">
+        <AnimatedTabsList className="gap-1 max-w-sm rounded-t-xl px-2 py-1 dark:bg-muted2">
           <AnimatedTabsTrigger value="npm">npm</AnimatedTabsTrigger>
           <AnimatedTabsTrigger value="pnpm">pnpm</AnimatedTabsTrigger>
           <AnimatedTabsTrigger value="yarn">yarn</AnimatedTabsTrigger>
@@ -42,9 +42,16 @@ export function Installation({ command }: InstallationProps) {
             value={key}
             className=" w-full bg-background dark:bg-muted border-t px-8 py-3.5"
           >
-            <WaveInText yOffset={0} duration={0.5} className="">
-              {`${base} ${command}`}
-            </WaveInText>
+            <motion.span
+              initial={{ filter: 'blur(2px)', scaleY: 1.2 }}
+              animate={{ filter: 'blur(0px)', scaleY: 1 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="flex gap-1.5"
+            >
+              <span className="text-[var(--color-purple-300)]">{`${base}`}</span>
+              <span>{`${command}`}</span>
+            </motion.span>
+
             <div className="absolute right-5 top-2">
               <ButtonCopy
                 onCopy={() => {

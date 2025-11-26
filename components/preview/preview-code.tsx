@@ -9,6 +9,8 @@ import {
 } from '@/components/animated-tabs';
 import { CodeBlockComponent } from '@/components/code-block-component';
 import { cn } from '@/lib/cn';
+import { NavigationMenu } from '../navigation-menu';
+import { AnimatedMenu } from '../animated-menu';
 
 type position =
   | 'center'
@@ -42,7 +44,6 @@ export function PreviewCode({
   component,
   position = 'center',
 }: PreviewCodeProps) {
-
   const positionClasses = {
     center: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
     top: 'absolute top-5 left-1/2 -translate-x-1/2',
@@ -80,32 +81,22 @@ export function PreviewCode({
 
   return (
     <>
-      <AnimatedTabs defaultValue="preview" className="max-w-4xl flex gap-4">
-        <AnimatedTabsList className="max-w-[300px] py-1.5 px-2">
-          <AnimatedTabsTrigger className="text-sm p-1.5" value="preview">
-            Preview
-          </AnimatedTabsTrigger>
-          <AnimatedTabsTrigger className="text-sm p-1.5" value="code">
-            Code
-          </AnimatedTabsTrigger>
-        </AnimatedTabsList>
+      <AnimatedTabs
+        defaultValue="preview"
+        className="fixed inset-0 overflow-y-scroll no-scrollbar h-[calc(100vh-2rem)] w-[calc(100vw-1rem)] rounded-lg flex gap-4 ml-2 mt-4 border overflow-x-scroll"
+      >
+        <div className="fixed right-6 bottom-7 z-20">
+          <AnimatedMenu />
+        </div>
 
-        <AnimatedTabsContent value="preview">
-          <div
-            className={cn(
-              ' bg-[var(--muted2)] dark:bg-[var(--muted2)] border rounded-lg overflow-hidden min-h-[500px]',
-              className,
-            )}
-          >
-            <div className={cn('', positionClasses , secondClassName )}>{component}</div>
-          </div>
-        </AnimatedTabsContent>
-
-        <AnimatedTabsContent value="code" className="">
-          <div className="">
-            <CodeBlockComponent data={data} />
-          </div>
-        </AnimatedTabsContent>
+        <div
+          className={cn(
+            ' bg-[var(--muted2)] dark:bg-[var(--muted2)]  overflow-hidden min-h-[500px] h-full',
+            className,
+          )}
+        >
+          <div className={cn('', positionClasses, secondClassName)}>{component}</div>
+        </div>
       </AnimatedTabs>
     </>
   );

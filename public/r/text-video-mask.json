@@ -4,9 +4,7 @@
   "type": "registry:block",
   "title": "Text Video Mask",
   "description": "A reusable and fully customizable Text-Video Mask component that blends video backgrounds inside bold, animated text. Perfect for creating high-impact hero sections, branding visuals, and dynamic landing pages.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "components/text-video-mask.tsx",

@@ -1,5 +1,5 @@
 import { cn } from '@/lib/cn';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, Variants } from 'motion/react';
 import React, { useEffect, useRef, useState } from 'react';
 
 interface RevealButtonProps {
@@ -36,7 +36,9 @@ function RevealButton({ title, children, onClick, className }: RevealButtonProps
         }}
       >
         {children}
-        <AnimatePresence>{isActive && <RevealButtonTitle title={title} />}</AnimatePresence>
+        <AnimatePresence mode="sync">
+          {isActive && <RevealButtonTitle title={title} />}
+        </AnimatePresence>
       </motion.div>
     </motion.div>
   );
@@ -63,10 +65,21 @@ interface RadialTitleProps {
   className?: string;
 }
 
+const LABEL_VARIANTS: Variants = {
+  rest: { opacity: 0, x: 4 },
+  hover: {
+    opacity: 1,
+    x: 0,
+    visibility: 'visible',
+    width: 'auto',
+  },
+  tap: { opacity: 1, x: 0, visibility: 'visible', width: 'auto' },
+};
+
 function RevealButtonTitle({ title, className }: RadialTitleProps) {
   return (
     <motion.div
-      layout
+      layout="size"
       initial={{ width: 0, opacity: 0, filter: 'blur(2px)' }}
       animate={{ width: 'auto', opacity: 1, filter: 'blur(0px)' }}
       exit={{ width: 0, opacity: 0, filter: 'blur(2px)' }}

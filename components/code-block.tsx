@@ -250,13 +250,8 @@ function CodeBlockContent({ className, themes, rippleEffect, ...props }: CodeBlo
   const [isExpanded, setIsExpanded] = useState(false);
   const compressTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  // 🔹 Cursor States
-  const [showBall, setShowBall] = useState(false);
-  const [hovered, setHovered] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 200, damping: 25 });
-  const springY = useSpring(y, { stiffness: 200, damping: 25 });
 
   const playDrop = () => {
     const drop = new Audio('/sounds/click.mp3');
@@ -342,23 +337,6 @@ function CodeBlockContent({ className, themes, rippleEffect, ...props }: CodeBlo
             {...props}
           />
 
-          {/* 💧 Custom cursor ball */}
-          {showBall && (
-            <motion.div
-              className="absolute  z-[9999]  w-4 h-4 rounded-full bg-gradient-to-r from-teal-400 to-teal-600 shadow-lg  blur-[1px]"
-              style={{
-                x: springX,
-                y: springY,
-                scale: hovered ? 1 : 0,
-                opacity: hovered ? 1 : 0,
-              }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-            />
-          )}
-
           {/* Smooth custom SVG scrollbar (existing) */}
           <svg className="absolute top-0 right-0 h-full w-2 z-20" style={{ pointerEvents: 'none' }}>
             <motion.rect
@@ -411,20 +389,6 @@ function CodeBlockContent({ className, themes, rippleEffect, ...props }: CodeBlo
               {...props}
             />
           </RippleEffect>
-
-          {/* 💧 Ball cursor works with ripple too */}
-          {showBall && (
-            <motion.div
-              className="absolute  z-50  w-6 h-6 rounded-full bg-gradient-to-r from-teal-400 to-teal-600 shadow-lg pointer-events-none blur-[1px]"
-              style={{
-                x: springX,
-                y: springY,
-                scale: hovered ? 1 : 0,
-                opacity: hovered ? 1 : 0,
-              }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-            />
-          )}
 
           <svg className="absolute top-0 right-0 h-full w-2 z-20" style={{ pointerEvents: 'none' }}>
             <motion.rect

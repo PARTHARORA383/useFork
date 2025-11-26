@@ -14,8 +14,8 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
 
   return (
     <DocsPage full={page.data.full}>
-      <DocsTitle className="">{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
+      {/* <DocsTitle className="font-sans">{page.data.title}</DocsTitle>
+      <DocsDescription>{page.data.description}</DocsDescription> */}
       <DocsBody>
         <MDX
           components={getMDXComponents({

@@ -61,6 +61,7 @@ function HeroHeader() {
 import { FiArrowRight } from 'react-icons/fi'; // Using react-icons for the arrow
 import Link from 'next/link';
 import { WaveInText } from '@/components/wave-in-text';
+import { StairsLoader } from '../test/page';
 
 function HeroButton() {
   return (

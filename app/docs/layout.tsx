@@ -4,19 +4,27 @@ import { source } from '@/lib/source';
 import { CustomSidebar } from '@/components/custom-sidebar';
 import { CustomNavbar } from '@/components/navbar';
 import { DynamicIsland } from '@/components/dynamic-island';
+import { OpenCodeContextfunc } from '@/hooks/use-opencode';
+import { CodePopup } from '@/components/preview/code-popup';
+import { NavigationMenu } from '@/components/navigation-menu';
+import { CustomToolbar } from '@/components/custom-toolbar';
+
 export default function Layout({ children }: LayoutProps<'/docs'>) {
   return (
-    <DocsLayout
-      tree={source.pageTree}
-      {...baseOptions()}
-      sidebar={{ enabled: true, component: <CustomSidebar /> }}
-      nav={{ enabled: true, component: <CustomNavbar /> }}
-      searchToggle={{ enabled: false }}
-    >
-      <div className="pt-8 dark:bg-muted lg:pl-8 lg:pr-16 ">
-        <DynamicIsland />
-        {children}
-      </div>
-    </DocsLayout>
+    <OpenCodeContextfunc>
+      <DocsLayout
+        tree={source.pageTree}
+        {...baseOptions()}
+        sidebar={{ enabled: false }}
+        nav={{ enabled: false }}
+        searchToggle={{ enabled: false }}
+      >
+        <div className="pt-8 dark:bg-muted ">
+          <CustomSidebar />
+          <CustomToolbar />
+          {children}
+        </div>
+      </DocsLayout>
+    </OpenCodeContextfunc>
   );
 }

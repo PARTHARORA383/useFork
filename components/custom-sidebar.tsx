@@ -3,7 +3,7 @@
 import { useSidebar } from 'fumadocs-ui/contexts/sidebar';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowLeftToLine, ArrowRightToLine } from 'lucide-react';
 
 interface ItemProps {
@@ -19,6 +19,7 @@ interface DataProps {
 export function CustomSidebar() {
   const sidebar = useSidebar();
   const [isMobile, setIsMobile] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   const docsData: DataProps[] = [
     {
@@ -40,7 +41,6 @@ export function CustomSidebar() {
         { title: 'Flip Card', href: '/docs/flip-card-hover' },
         { title: 'Side Navigation', href: '/docs/side-navigation' },
         { title: 'Text Video Mask', href: '/docs/text-video-mask' },
-
       ],
     },
     {
@@ -64,12 +64,8 @@ export function CustomSidebar() {
   }, []);
 
   useEffect(() => {
-    if (isMobile) {
-      sidebar.setOpen(false);
-    } else {
-      sidebar.setOpen(true);
-    }
-  }, [isMobile]);
+    sidebar.setOpen(false);
+  }, []);
 
   const playDrop = () => {
     const drop = new Audio('/sounds/click.mp3');
@@ -81,10 +77,24 @@ export function CustomSidebar() {
     playDrop();
   };
 
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        sidebar.setOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [sidebar, ref]);
+
   return (
     <>
       <button
-        className="fixed top-15 lg:top-17 left-4 md:left-10 p-1 text-muted-foreground hover:text-[var(--color-purple-500)] dark:hover:text-[var(--color-purple-300)] z-15 hover:bg-muted3 transition-colors duration-200 rounded-md"
+        className="fixed top-15 lg:top-7 left-4 md:left-6 p-1 text-muted-foreground hover:text-[var(--color-purple-500)] dark:hover:text-[var(--color-purple-300)] z-25 bg-background transition-colors duration-200 rounded-md"
         onClick={() => {
           handleOnClick();
           sidebar.setOpen(!sidebar.open);
@@ -99,11 +109,12 @@ export function CustomSidebar() {
       <AnimatePresence>
         {sidebar.open && (
           <motion.div
+            ref={ref}
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className="p-4 space-y-2 fixed  top-0 left-0 z-10 md:bg-background bg-muted dark:bg-muted ml-2 md:pl-8 pt-32 md:pt-32 pb-16 mt-13 border md:border-0  pr-12 rounded-xl max-h-[calc(100vh-1rem)] min-h-[calc(100vh-4rem)] overflow-scroll no-scrollbar"
+            className="p-4 space-y-2 fixed  top-0 left-0 z-20 md:bg-muted3 bg-muted dark:bg-muted/40 backdrop-blur-2xl ml-2 mb-2 mr-2  md:pl-8 pt-32 md:pt-32 pb-16  mt-4 border pr-12 rounded-l-lg h-[calc(100vh-2rem)] overflow-scroll no-scrollbar"
           >
             <div className="flex items-center justify-start gap-3 mb-4 ">
               <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[var(--color-purple-400)] to-amber-50"></div>
@@ -126,11 +137,7 @@ export function CustomSidebar() {
                   >
                     <Link
                       onClick={() => {
-                        if (isMobile) {
-                          sidebar.setOpen(false);
-                        } else {
-                          sidebar.setOpen(true);
-                        }
+                        sidebar.setOpen(false);
                       }}
                       href={item.href}
                     >
@@ -158,18 +165,14 @@ export function CustomSidebar() {
                   <motion.div
                     key={item.href}
                     onClick={() => {
-                      if (isMobile) sidebar.setOpen(false);
+                      sidebar.setOpen(false);
                     }}
                     className=" transform text-muted-foreground hover:scale-101 transition-transform  duration-200 hover:translate-x-3 hover:text-[var(--color-purple-500)]   hover:dark:text-[var(--color-purple-300)] pl-20 "
                   >
                     <Link
                       className="text-[15px]"
                       onClick={() => {
-                        if (isMobile) {
-                          sidebar.setOpen(false);
-                        } else {
-                          sidebar.setOpen(true);
-                        }
+                        sidebar.setOpen(false);
                       }}
                       href={item.href}
                     >
@@ -179,7 +182,6 @@ export function CustomSidebar() {
                 ))}
               </div>
             ))}
-
           </motion.div>
         )}
       </AnimatePresence>

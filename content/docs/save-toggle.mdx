@@ -1,14 +1,60 @@
 ---
 title: 'Save Toggle'
-description: 'A fully reusable and customizable text wrapper with a smooth roll-in animation effect. Simply wrap your string with the component and watch the text come to life with motion magic'
+description: 'A visually engaging Save Toggle button with animated loader effects. Built with Motion, it smoothly transitions between idle, saving, and saved states, providing clear feedback and delightful interactivity.'
 ---
 
-<PreviewCode className = 'relative' component={<SaveToggleDemo />} codePath="/r/save-toggle.json" />
+<PreviewCode className="relative" component={<SaveToggleDemo />} codePath="/r/save-toggle.json" />
+
+<CodePopup>
+
+<HeadingDescription
+  title="Save Toggle"
+  description="A visually engaging Save Toggle button with animated loader effects. Built with Motion, it smoothly transitions between idle, saving, and saved states, providing clear feedback and delightful interactivity."
+/>
 
 ---
 
-## Installation
+### Installation
 
-<Installation command={'https://use-fork.vercel.app/r/save-toggle.json'} />
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/save-toggle.json'}
+  codePath="/r/save-toggle.json"
+/>
 
+---
 
+### How to use
+
+<CodeBlockComponent codePath="/r/save-toggle.json" />
+
+---
+
+### Props
+
+<Table
+  data={{
+    onClick: {
+      description:
+        'Callback function triggered when the toggle button is clicked. Can return a Promise for async operations.',
+      type: '() => void | Promise<void>',
+      default: 'undefined',
+    },
+    title: {
+      description: 'Text displayed on the button when it is in the idle state.',
+      type: 'string',
+      default: "'Save Changes'",
+    },
+    completedTitle: {
+      description: 'Text displayed on the button when the action is completed.',
+      type: 'string',
+      default: "'Saved'",
+    },
+    className: {
+      description: 'Optional custom CSS classes for styling the button.',
+      type: 'string',
+      default: 'undefined',
+    },
+  }}
+/>
+
+</CodePopup>

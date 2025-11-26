@@ -4,10 +4,7 @@
   "type": "registry:block",
   "title": "Reveal Button",
   "description": "A reusable animated button that reveals its title with a smooth expanding motion when clicked, adding a subtle interactive touch to the UI.",
-  "dependencies": [
-    "motion",
-    "animate-ui/icons-icon"
-  ],
+  "dependencies": ["motion", "animate-ui/icons-icon"],
   "files": [
     {
       "path": "components/reveal-button.tsx",

@@ -1,12 +1,45 @@
 ---
 title: 'Code Block '
-description: 'A reusable and customizable tabs component built with Radix UI and Motion. Supports smooth sliding highlight animations on tab triggers and fade-in/out transitions for tab content, making tab interactions visually engaging and accessible'
+description: 'A reusable CodeBlock component that supports syntax highlighting using Shiki, features a custom SVG scrollbar, and includes a ripple effect on click for enhanced interactivity.'
 ---
 
-<PreviewCode  className = 'relative' component={<CodeBlockDemo />} codePath="/r/code-block.json" />
+<PreviewCode className="relative" component={<CodeBlockDemo />} codePath="/r/code-block.json" />
+
+<CodePopup>
+
+<HeadingDescription
+title = 'Code Block '
+description = 'A reusable CodeBlock component that supports syntax highlighting using Shiki, features a custom SVG scrollbar, and includes a ripple effect on click for enhanced interactivity.'
+
+/>
 
 ---
 
-# Installation
+### Installation
 
-<Installation command={'https://use-fork.vercel.app/r/code-block.json'} />
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/code-block.json'}
+  codePath="/r/code-block.json"
+/>
+---
+
+### How to use
+
+<CodeBlockComponent codePath="/r/code-block.json" />
+
+---
+
+### Props
+
+<Table
+  data={{
+    data: {
+      description:
+        '`CodeBlockData` object containing the code to display. Fields include: `code` - string, the actual code; `language` - string, optional syntax highlighting language; `fileName` - string, optional filename to show in the header.',
+      type: 'CodeBlockData',
+      default: 'undefined',
+    },
+  }}
+/>
+
+</CodePopup>

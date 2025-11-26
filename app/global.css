@@ -39,6 +39,12 @@
   /* Firefox */
 }
 
+.fd-prose hr {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+  border-top-width: 1px !important;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

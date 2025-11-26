@@ -89,8 +89,8 @@ export function AnimatedTabsTrigger({
       {activeTab === value && (
         <motion.div
           layoutId="tab-highlight"
-          className="absolute inset-0 -z-10 bg-muted2 dark:bg-muted3 rounded-md shadow-md "
-          transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+          className="absolute inset-0 -z-10 bg-muted2 dark:bg-muted3 rounded-sm shadow-md"
+          transition={{ type: 'spring', stiffness: 400, damping: 30, delay: 0.05 }}
         />
       )}
     </TabsPrimitive.Trigger>
@@ -107,14 +107,7 @@ export function AnimatedTabsContent({
   return (
     <TabsPrimitive.Content value={value} asChild {...props}>
       <AnimatePresence mode="wait">
-        <motion.div
-          key={value}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          className={cn('flex-1', className)}
-        >
+        <motion.div key={value} className={cn('flex-1', className)}>
           {children}
         </motion.div>
       </AnimatePresence>

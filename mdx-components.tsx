@@ -4,8 +4,11 @@ import { AnimatedInputBar } from './components/animated-inputbar';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 import { PreviewCode } from '@/components/preview/preview-code';
+import { CodePopup } from '@/components/preview/code-popup';
+import { CodeBlockComponent } from '@/components/code-block-component';
+import { CLIManualBlock } from '@/components/preview/cli-manual';
 import { Table } from '@/components/table';
-
+import { HeadingDescription } from '@/components/preview/heading-description';
 import { AnimatedTabsDemo } from '@/components/demo/animated-tabs-demo';
 import { CodeBlockDemo } from '@/components/demo/code-block-demo';
 import { ToolbarDemo } from '@/components/demo/toolbar-demo';
@@ -22,6 +25,7 @@ import { SaveToggleDemo } from '@/components/demo/save-toggle-demo';
 import { FlipCardOnHoverDemo } from '@/components/demo/flip-card-hover-demo';
 import { SideNavigationDemo } from '@/components/demo/side-navigation-demo';
 import { TextVideoMaskDemo } from '@/components/demo/text-video-mask-demo';
+import { NotificationDemo } from '@/components/demo/notification-demo';
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -34,6 +38,10 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     PreviewCode,
     Installation,
     Table,
+    CodePopup,
+    HeadingDescription,
+    CLIManualBlock,
+    CodeBlockComponent,
     AnimatedInputBar,
     AnimatedTabsDemo,
     CodeBlockDemo,
@@ -49,6 +57,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     SaveToggleDemo,
     FlipCardOnHoverDemo,
     SideNavigationDemo,
-    TextVideoMaskDemo
+    TextVideoMaskDemo,
+    NotificationDemo,
   };
 }

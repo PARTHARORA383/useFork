@@ -4,8 +4,8 @@ import { Command } from 'lucide-react';
 export function CommandK() {
   return (
     <div>
-      <PopoverTrigger icon={<Command className="w-4 h-4" />}>
-        <PopoverContent />
+      <PopoverTrigger className="p-2" icon={<Command className="w-4 h-4" />}>
+        <PopoverContent position="center" />
       </PopoverTrigger>
     </div>
   );

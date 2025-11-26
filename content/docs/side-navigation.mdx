@@ -1,55 +1,71 @@
 ---
 title: 'Side Navigation '
-description: 'A reusable and customizable tabs component built with Radix UI and Motion. Supports smooth sliding highlight animations on tab triggers and fade-in/out transitions for tab content, making tab interactions visually engaging and accessible'
+description: 'A side navigation component with smooth layout transitions built using Motion. Supports animated expansion on hover, automatic item numbering, and a responsive, interactive navigation experience.'
 ---
 
+<PreviewCode
+  position="left"
+  className="relative"
+  component={<SideNavigationDemo />}
+  codePath="/r/side-navigation.json"
+/>
 
+<CodePopup>
 
-<PreviewCode position='left' 
- className = 'relative'
-component={<SideNavigationDemo />} codePath="/r/side-navigation.json" />
+<HeadingDescription
+  title="Side Navigation "
+  description="A side navigation component with smooth layout transitions built using Motion. Supports animated expansion on hover, automatic item numbering, and a responsive, interactive navigation experience."
+/>
+---
+
+### Installation
+
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/side-navigation.json'}
+  codePath="/r/side-navigation.json"
+/>
 
 ---
 
-## Installation
+### How to use
 
-<Installation command={'https://use-fork.vercel.app/r/side-navigation.json'}/>
+## <CodeBlockComponent codePath="/r/side-navigation.json"/>
 
+### Props
 
-## Props
-
-
-### SideNavigation
+#### SideNavigation
 
 <Table
   data={{
     children: {
-      description: "SideNavigationItems passed as children to render inside the vertical navigation.",
-      type: "ReactNode",
-      default: "undefined",
+      description:
+        'One or more `SideNavigationItem` components to render inside the navigation panel.',
+      type: 'ReactNode',
+      default: 'undefined',
     },
   }}
 />
 
-
-### SideNavigationItem
+#### SideNavigationItem
 
 <Table
   data={{
     title: {
-      description: "The text label shown for the navigation link.",
-      type: "string",
-      default: '""',
+      description: 'The text label displayed for the navigation item.',
+      type: 'string',
+      default: 'undefined',
     },
     href: {
-      description: "The URL the navigation item should navigate to.",
-      type: "string",
-      default: '""',
+      description: 'The URL or path the navigation item links to.',
+      type: 'string',
+      default: 'undefined',
     },
     className: {
-      description: "Optional custom CSS classes for styling the link.",
-      type: "string",
-      default: "undefined",
+      description: 'Optional additional CSS classes for custom styling.',
+      type: 'string',
+      default: 'undefined',
     },
   }}
 />
+
+</CodePopup>

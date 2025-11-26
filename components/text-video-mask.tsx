@@ -1,11 +1,10 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { Bebas_Neue } from "next/font/google";
-import { cn } from "@/lib/cn";
+import { useEffect, useState } from 'react';
+import { Bebas_Neue } from 'next/font/google';
+import { cn } from '@/lib/cn';
 
-const bebas = Bebas_Neue({ subsets: ["latin"], weight: ["400"] });
-
+const bebas = Bebas_Neue({ subsets: ['latin'], weight: ['400'] });
 
 export function TextVideoMaskContainer({ children }: { children: React.ReactNode }) {
   return (
@@ -15,23 +14,12 @@ export function TextVideoMaskContainer({ children }: { children: React.ReactNode
   );
 }
 
-
 export function VideoBackground({ src }: { src: string }) {
-  return (
-    <video
-      src={src}
-      autoPlay
-      muted
-      loop
-      playsInline
-      className="w-full h-full object-cover"
-    />
-  );
+  return <video src={src} autoPlay muted loop playsInline className="w-full h-full object-cover" />;
 }
 
-
 export function MaskedText({
-  texts = ["DRIVE", "DESIGN", "PASSION"],
+  texts = ['DRIVE', 'DESIGN', 'PASSION'],
   className,
   opacity = 0.8,
 }: {
@@ -51,18 +39,21 @@ export function MaskedText({
 
   return (
     <div
-      className={cn("font-bold text-white select-none bg-black flex items-center leading-tight tracking-tighter justify-center", bebas.className, className)}
+      className={cn(
+        'font-bold text-white select-none bg-black flex items-center leading-tight tracking-tighter justify-center',
+        bebas.className,
+        className,
+      )}
       style={{
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         left: 0,
         right: 0,
-        height: "100%",
-        mixBlendMode: "multiply",
+        height: '100%',
+        mixBlendMode: 'multiply',
       }}
     >
       {texts[activeId]}
     </div>
   );
 }
-
