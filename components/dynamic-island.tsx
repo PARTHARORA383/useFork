@@ -135,6 +135,20 @@ function GithubButton() {
   );
 }
 
+export function DynamicIsland() {
+  return (
+    <div className="fixed right-6 bottom-7 z-10">
+      <div className="relative bg-muted2/50 backdrop-blur-2xl border  rounded-2xl flex items-center justify-between gap-3 px-4 py-2 shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)]">
+        {/* <ThemeButton />
+        <GithubButton />
+        <CodePopupButton />
+        <CommandButton /> */}
+      </div>
+    </div>
+  );
+}
+
+
 function CommandButton() {
   const [hovered, setHovered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -172,51 +186,4 @@ function CommandButton() {
   );
 }
 
-export function DynamicIsland() {
-  return (
-    <div className="fixed right-6 bottom-7 z-10">
-      <div className="relative bg-muted2/50 backdrop-blur-2xl border  rounded-2xl flex items-center justify-between gap-3 px-4 py-2 shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)]">
-        <ThemeButton />
-        <GithubButton />
-        <CodePopupButton />
-        <CommandButton />
-      </div>
-    </div>
-  );
-}
 
-export function CodePopupButton({}) {
-  const { isOpen, setIsOpen } = useOpenCodeContext();
-  const [hovered, setHovered] = useState(false);
-
-  const handleOnClick = () => {
-    setIsOpen(isOpen == true ? false : true);
-  };
-
-  return (
-    <motion.div
-      className="rounded-full border bg-muted3 p-2 flex items-center justify-center cursor-pointer shadow-[inset_2px_2px_5px_rgba(0,0,0,0.1),inset_-2px_-2px_5px_rgba(255,255,255,0.7)] dark:shadow-[inset_4px_4px_6px_rgba(0,0,0,0.7),inset_-2px_-2px_3px_rgba(255,255,255,0.1)] transition-transform active:scale-95"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={handleOnClick}
-      initial={{ scale: 0.9, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.3 }}
-    >
-      <CodeXml className="w-5 h-5" />
-
-      {hovered && (
-        <motion.span
-          className="absolute bottom-full mb-1 whitespace-nowrap bg-muted2 text-xs border rounded-md px-2 py-1 text-foreground shadow-md dark:bg-muted2"
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 5 }}
-          transition={{ duration: 0.2 }}
-          onClick={handleOnClick}
-        >
-          Code
-        </motion.span>
-      )}
-    </motion.div>
-  );
-}
