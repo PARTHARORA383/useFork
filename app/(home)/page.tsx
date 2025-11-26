@@ -1,14 +1,6 @@
 'use client';
 
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { TextureLoader } from 'three';
-import { shaderMaterial } from '@react-three/drei';
-import { extend } from '@react-three/fiber';
-import { useEffect, useRef, useState } from 'react';
-import { RollInText } from '@/components/roll-in-text';
-import { InfiniteScroll } from '@/components/infinite-number-scroll';
-import { WheelPickerDemo } from '@/components/wheel-picker-demo';
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'motion/react';
+
 import { gsap } from 'gsap';
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -61,7 +53,6 @@ function HeroHeader() {
 import { FiArrowRight } from 'react-icons/fi'; // Using react-icons for the arrow
 import Link from 'next/link';
 import { WaveInText } from '@/components/wave-in-text';
-import { StairsLoader } from '../test/page';
 
 function HeroButton() {
   return (
