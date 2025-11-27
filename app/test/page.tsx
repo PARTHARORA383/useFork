@@ -1,13 +1,17 @@
 'use client';
 
-
+import { TextHoverMarquee, TextMarquee } from '@/components/text-hover-marquee';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function TestPage() {
   return (
     <>
-      <div className="flex items-center justify-center h-screen">
+      <div className="mt-8">
         {/* <CookingBeacon /> */}
+
+        <TextHoverMarquee heading="ATLANTA" />
+        <TextHoverMarquee heading="TORONTO" />
+        <TextHoverMarquee heading="CHICAGO" />
       </div>
     </>
   );
@@ -85,7 +89,7 @@ function AnimatedText({ text, image }: AnimatedTextProps) {
 //               className="relative  bg-muted2 flex-1 h-full"
 //             />
 //           ))}
-//           {/*        
+//           {/*
 //             <div className="absolute  inset-0 w-full h-full flex items-center justify-center">
 //             <AnimatedText text={texts[activeId]} image={imageUrl} />
 //           </div> */}

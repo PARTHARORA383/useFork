@@ -2,7 +2,6 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { Menu } from '@/components/animate-ui/icons/menu';
 import { createContext, useContext, useState } from 'react';
-import { X } from './animate-ui/icons/x';
 import Link from 'next/link';
 
 interface AnimatedMenuContextProps {
@@ -24,24 +23,28 @@ export function AnimatedMenu() {
     <animatedMenuContext.Provider value={{ isActive, setIsActive }}>
       <motion.div
         style={{ justifyContent: 'flex-end' }}
-        className="flex items-center gap-4 bg-background/40 backdrop-blur-2xl rounded-full p-2 origin-right"
+        className="flex items-center gap-4 bg-background backdrop-blur-2xl border rounded-full p-2 origin-right h-9"
       >
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {isActive && (
             <motion.div
               layout
+              layoutId="item"
               initial={{ width: 0, opacity: 0, filter: 'blur(2px)' }}
               animate={{ width: 'auto', opacity: 1, filter: 'blur(0px)' }}
               exit={{ width: 0, opacity: 0, filter: 'blur(2px)' }}
               transition={{
                 duration: 0.3,
                 ease: 'easeInOut',
+                delayChildren: 0.1,
               }}
               style={{ transformOrigin: 'right' }}
-              className="overflow-hidden flex items-center gap-4 px-1 "
+              className="overflow-hidden relative"
             >
-              <NavigationItem text="Home" href="/" />
-              <NavigationItem text="Documentation" href="/docs" />
+              <div className="flex items-center ">
+                <NavigationItem text="Home" href="/" />
+                <NavigationItem text="Documentation" href="/docs" />
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -71,6 +74,7 @@ function NavigationItem({ text, href }: { text: string; href: string }) {
           >
             <motion.div
               key={isActive.toString()}
+              layoutId={`nav-${text}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -81,6 +85,8 @@ function NavigationItem({ text, href }: { text: string; href: string }) {
               className={`
             relative 
             inline-block 
+            hover:text-orange-300
+            mx-2
             after:content-[''] 
             after:absolute 
             after:left-0 

@@ -31,6 +31,12 @@
   display: none;
 }
 
+/* Global selection color */
+::selection {
+  background-color: #c27aff; /* Tailwind orange-400 */
+  color: white;
+}
+
 /* Hide scrollbar for Firefox */
 .no-scrollbar {
   -ms-overflow-style: none;
@@ -129,7 +135,7 @@
   --color-blue-500: oklch(62.3% 0.214 259.815);
   --color-blue-600: oklch(54.6% 0.245 262.881);
   --color-purple-300: oklch(82.7% 0.119 306.383);
-  --color-purple-400: oklch(71.003% 0.1962 307.099);
+  --color-purple-400: #c27aff;
   --color-purple-600: oklch(55.8% 0.288 302.321);
   --color-pink-500: oklch(65.6% 0.241 354.308);
   --muted: #f5f4f3;

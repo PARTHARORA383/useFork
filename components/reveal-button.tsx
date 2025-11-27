@@ -36,7 +36,7 @@ function RevealButton({ title, children, onClick, className }: RevealButtonProps
         }}
       >
         {children}
-        <AnimatePresence mode="sync">
+        <AnimatePresence mode="wait">
           {isActive && <RevealButtonTitle title={title} />}
         </AnimatePresence>
       </motion.div>

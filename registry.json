@@ -287,6 +287,25 @@
         }
       ],
       "dependencies": ["motion"]
+    },
+    {
+      "name": "text-hover-marquee",
+      "type": "registry:block",
+      "title": "Text Hover Marquee",
+      "description": "A reusable and fully customizable Text-Video Mask component that blends video backgrounds inside bold, animated text. Perfect for creating high-impact hero sections, branding visuals, and dynamic landing pages.",
+      "files": [
+        {
+          "path": "components/text-hover-marquee.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/text-hover-marquee-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
     }
   ]
 }

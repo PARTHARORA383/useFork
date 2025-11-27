@@ -249,7 +249,6 @@ function CodeBlockContent({ className, themes, rippleEffect, ...props }: CodeBlo
   const [isExpanded, setIsExpanded] = useState(false);
   const compressTimeout = useRef<NodeJS.Timeout | null>(null);
 
- 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 

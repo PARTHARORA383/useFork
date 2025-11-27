@@ -41,6 +41,7 @@ export function CustomSidebar() {
         { title: 'Flip Card', href: '/docs/flip-card-hover' },
         { title: 'Side Navigation', href: '/docs/side-navigation' },
         { title: 'Text Video Mask', href: '/docs/text-video-mask' },
+        { title: 'Text Hover Marquee', href: '/docs/text-hover-marquee' },
       ],
     },
     {

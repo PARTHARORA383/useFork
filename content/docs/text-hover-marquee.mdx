@@ -1,0 +1,61 @@
+---
+title: 'Text Hover Marquee'
+description: 'A smooth, hover-activated text marquee that reveals itself with a fluid height animation and scrolls seamlessly across the screen.'
+---
+
+<PreviewCode
+  className="relative"
+  secondClassName=" h-full w-full overflow-x-hidden overflow-y-scroll no-scrollbar"
+  component={<TextHoverMarqueeDemo />}
+  codePath="/r/text-hover-marquee.json"
+/>
+
+<CodePopup>
+
+<HeadingDescription
+  title="Text Hover Marquee"
+  description="A smooth, hover-activated text marquee that reveals itself with a fluid height animation and scrolls seamlessly across the screen."
+/>
+--- ### Installation
+
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/text-hover-marquee.json'}
+  codePath="/r/text-hover-marquee.json"
+/>
+
+---
+
+### How to use
+
+<CodeBlockComponent codePath="/r/text-hover-marquee.json" />
+
+---
+
+### Props
+
+<Table
+  data={{
+    heading: {
+      description: 'The main text or title that triggers the marquee on hover.',
+      type: 'string',
+      default: 'undefined',
+    },
+    texts: {
+      description: 'An array of strings to scroll inside the marquee when hovered.',
+      type: 'string[]',
+      default: '["Texas", "California", "States"]',
+    },
+    textHeight: {
+      description: 'The font size (and height) of both the heading and the marquee text.',
+      type: 'number',
+      default: 250,
+    },
+    marqueeDuration: {
+      description: 'The duration in seconds for one complete horizontal scroll of the marquee.',
+      type: 'number',
+      default: 24,
+    },
+  }}
+/>
+
+</CodePopup>

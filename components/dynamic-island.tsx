@@ -148,7 +148,6 @@ export function DynamicIsland() {
   );
 }
 
-
 function CommandButton() {
   const [hovered, setHovered] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -185,5 +184,3 @@ function CommandButton() {
     </motion.div>
   );
 }
-
-

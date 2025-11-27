@@ -1,9 +1,6 @@
 'use client';
 
-
-import {
-  AnimatedTabs,
-} from '@/components/animated-tabs';
+import { AnimatedTabs } from '@/components/animated-tabs';
 import { cn } from '@/lib/cn';
 
 import { AnimatedMenu } from '../animated-menu';
@@ -27,12 +24,6 @@ interface PreviewCodeProps {
   position?: position;
 }
 
-interface CodeBlockDataType {
-  code: string;
-  language?: string;
-  fileName?: string;
-}
-
 export function PreviewCode({
   className,
   secondClassName,
@@ -40,7 +31,6 @@ export function PreviewCode({
   component,
   position = 'center',
 }: PreviewCodeProps) {
-
   const positionClasses = {
     center: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
     top: 'absolute top-5 left-1/2 -translate-x-1/2',
@@ -53,24 +43,19 @@ export function PreviewCode({
     'bottom-left': 'absolute bottom-5 left-5',
   }[position];
 
-
   return (
     <>
-      <AnimatedTabs defaultValue="preview" className="fixed inset-0 overflow-y-scroll no-scrollbar h-[calc(100vh-2rem)] w-[calc(100vw-1rem)] rounded-lg flex gap-4 ml-2 mt-4 border overflow-x-scroll">
-        <div className='fixed right-6 bottom-7 z-20'>
-          <AnimatedMenu/>
+      <AnimatedTabs
+        defaultValue="preview"
+        className="fixed inset-0   no-scrollbar h-[calc(100vh-2rem)] w-[calc(100vw-1rem)] rounded-lg flex gap-4 ml-2 mt-4 border overflow-x-scroll"
+      >
+        <div className="fixed right-6 bottom-7 z-20">
+          <AnimatedMenu />
         </div>
 
-          <div
-            className={cn(
-              ' bg-[var(--muted2)] dark:bg-[var(--muted2)]  overflow-hidden min-h-[500px] h-full',
-              className,
-            )}
-          >
-            <div className={cn('', positionClasses , secondClassName )}>{component}</div>
-          </div>
-  
-
+        <div className={cn('  bg-muted2 h-full w-full overflow-scroll no-scrollbar ', className)}>
+          <div className={cn('', positionClasses, secondClassName)}>{component}</div>
+        </div>
       </AnimatedTabs>
     </>
   );
