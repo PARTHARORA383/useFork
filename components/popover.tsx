@@ -49,17 +49,41 @@ export const data = [
     items: [
       { title: 'Reveal Button', href: '/docs/reveal-button', icon: <Ghost className="w-5 h-5" /> },
       { title: 'StopWatch', href: '/docs/stopwatch', icon: <Ghost className="w-5 h-5" /> },
-      { title: 'Parallax Image', href: '/docs/parallax-images', icon: <Ghost className="w-5 h-5" /> },
-      { title: 'Banner Carousal', href: '/docs/banner-carousal', icon: <Ghost className="w-5 h-5" /> },
+      {
+        title: 'Parallax Image',
+        href: '/docs/parallax-images',
+        icon: <Ghost className="w-5 h-5" />,
+      },
+      {
+        title: 'Banner Carousal',
+        href: '/docs/banner-carousal',
+        icon: <Ghost className="w-5 h-5" />,
+      },
       { title: 'Code Block', href: '/docs/code-block', icon: <Ghost className="w-5 h-5" /> },
       { title: 'Save Toggle', href: '/docs/save-toggle', icon: <Ghost className="w-5 h-5" /> },
       { title: 'Flip Card', href: '/docs/flip-card-hover', icon: <Ghost className="w-5 h-5" /> },
-      { title: 'Side Navigation', href: '/docs/side-navigation', icon: <Ghost className="w-5 h-5" /> },
-      { title: 'Text Video Mask', href: '/docs/text-video-mask', icon: <Ghost className="w-5 h-5" /> },
-      { title: 'Text Hover Marquee', href: '/docs/text-hover-marquee', icon: <Ghost className="w-5 h-5" /> },
+      {
+        title: 'Side Navigation',
+        href: '/docs/side-navigation',
+        icon: <Ghost className="w-5 h-5" />,
+      },
+      {
+        title: 'Text Video Mask',
+        href: '/docs/text-video-mask',
+        icon: <Ghost className="w-5 h-5" />,
+      },
+      {
+        title: 'Text Hover Marquee',
+        href: '/docs/text-hover-marquee',
+        icon: <Ghost className="w-5 h-5" />,
+      },
       { title: 'Wave Effect', href: '/docs/wave-in-text', icon: <Ghost className="w-5 h-5" /> },
       { title: 'Rollin Effect ', href: '/docs/roll-in-text', icon: <Ghost className="w-5 h-5" /> },
-      { title: 'RollOver Effect ', href: '/docs/roll-over-text', icon: <Ghost className="w-5 h-5" /> },
+      {
+        title: 'RollOver Effect ',
+        href: '/docs/roll-over-text',
+        icon: <Ghost className="w-5 h-5" />,
+      },
     ],
   },
 ];
@@ -118,7 +142,7 @@ export function PopoverTrigger({ className, children, icon, ...props }: PopoverT
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.2, ease: 'easeInOut' }}
             >
               {children}
@@ -179,20 +203,13 @@ export function PopoverContent({ position = 'top' }: PopoverContentProps) {
   return createPortal(
     <>
       <motion.div className="fixed inset-0 z-60 bg-black/30 w-[100vw] h-[100vh]" />
-
       <motion.div
         ref={popoverRef}
-
         layout="preserve-aspect"
         transition={{ layout: { duration: 0.3, ease: 'easeInOut' } }}
-        className={cn(
-          'relative border rounded-xl overflow-hidden ',
-          positionClass,
-        )}
+        className={cn('relative border rounded-xl overflow-hidden ', positionClass)}
       >
-
-        <div className='overflow-y-scroll  no-scrollbar bg-muted2 rounded-xl z-[999] w-sm max-w-md md:min-w-lg md:max-w-xl overflow-scroll no-scrollbar lg:min-w-2xl min-h-[460px] max-h-[460px] lg:max-w-3xl shadow-[inset_1.5px_1.5px_4px_rgba(0,0,0,0.1),inset_-1.5px_-1.5px_5px_rgba(0,0,0,0.1)] dark:shadow-[inset_1px_1px_2px_rgba(255,255,255,0.08),inset_-1px_-1px_2px_rgba(255,255,255,0.08)] pb-10'>
-
+        <div className="overflow-y-scroll  no-scrollbar bg-muted2 rounded-xl z-[999] w-sm max-w-md md:min-w-lg md:max-w-xl overflow-scroll no-scrollbar lg:min-w-2xl min-h-[460px] max-h-[460px] lg:max-w-3xl shadow-[inset_1.5px_1.5px_4px_rgba(0,0,0,0.1),inset_-1.5px_-1.5px_5px_rgba(0,0,0,0.1)] dark:shadow-[inset_1px_1px_2px_rgba(255,255,255,0.08),inset_-1px_-1px_2px_rgba(255,255,255,0.08)] pb-10">
           {/* Search bar */}
           <div
             className="sticky top-0 backdrop-blur-3xl mb-6 bg-muted3/40 p-2 z-50 shadow-[inset_1.5px_1.5px_4px_rgba(0,0,0,0.1),inset_-1.5px_-1.5px_5px_rgba(0,0,0,0.1)] dark:shadow-[inset_1px_1px_2px_rgba(255,255,255,0.08),inset_-1px_-1px_2px_rgba(255,255,255,0.08)]"
@@ -214,11 +231,11 @@ export function PopoverContent({ position = 'top' }: PopoverContentProps) {
           {
             //if empty
           }
-          {filterData?.length == 0 &&
+          {filterData?.length == 0 && (
             <div className="text-[15px] text-muted-foreground flex items-center gap-2 pl-2 cursor-default ">
               <h1 className="whitespace-nowrap">Not Found</h1>
             </div>
-          }
+          )}
 
           {/* Section list */}
           {filterData &&
@@ -256,10 +273,10 @@ export function PopoverContent({ position = 'top' }: PopoverContentProps) {
               </div>
             ))}
 
-
-
           <div className="absolute w-full bottom-0  h-10 bg-muted3 p-2 pr-3 text-muted-foreground z-50 shadow-[inset_1.5px_1.5px_4px_rgba(0,0,0,0.1),inset_-1.5px_-1.5px_5px_rgba(0,0,0,0.1)] dark:shadow-[inset_1px_1px_2px_rgba(255,255,255,0.08),inset_-1px_-1px_2px_rgba(255,255,255,0.08)] text-end ">
-            <Link href={'/'} className={cn(` relative 
+            <Link
+              href={'/'}
+              className={cn(` relative 
             inline-block 
             after:content-[''] 
             after:absolute 
@@ -272,12 +289,15 @@ export function PopoverContent({ position = 'top' }: PopoverContentProps) {
             after:origin-left 
             after:transition-transform 
             after:duration-300
-            hover:after:scale-x-100`)}>useFork </Link>
+            hover:after:scale-x-100`)}
+            >
+              useFork{' '}
+            </Link>
           </div>
-
         </div>
-      </motion.div>,
+      </motion.div>
+      ,
     </>,
-    document.body
+    document.body,
   );
 }

@@ -4,9 +4,7 @@
   "type": "registry:block",
   "title": "Side Navigation",
   "description": "A sleek side navigation bar that smoothly expands on hover using Motion animations. It provides an interactive, minimal UI with auto-indexing items for quick navigation.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "components/side-navigation.tsx",

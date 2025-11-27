@@ -1,10 +1,14 @@
 'use client';
 
-import { motion, AnimatePresence, Variant, Variants } from 'motion/react';
+import { motion, AnimatePresence, Variant, Variants, number } from 'motion/react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { CodePopupButton } from './preview/code-popup';
 import { CommandK } from './command-k';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { getAllPages } from './previous-next';
+import { CurrentIndexItemProps, useCurrentIndex } from '@/hooks/use-prev-next';
+import Link from 'next/link';
 
 interface ToolbarItem {
   title: string;
@@ -33,6 +37,8 @@ export function CustomToolbar({ items }: { items?: ToolbarItem[] }) {
             <ToolbarButton title={item.title} component={item.component} />
           </div>
         ))}
+        <Previous />
+        <Next />
       </div>
     </>
   );
@@ -117,5 +123,151 @@ function ToolbarButton({ title, component }: ToolbarItem) {
         )}
       </AnimatePresence>
     </motion.div>
+  );
+}
+
+function Previous() {
+  const [hovered, setHovered] = useState(false);
+  const [direction, setDirection] = useState<Direction>('top');
+  const ref = useRef<HTMLDivElement>(null);
+  const pages = getAllPages();
+  const { currentIndex, setCurrentIndex } = useCurrentIndex();
+
+  useEffect(() => {
+    if (!hovered || !ref.current) return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    if (rect.top < 60) setDirection('bottom');
+    else if (vh - rect.bottom < 60) setDirection('top');
+    else if (vw - rect.right < 120) setDirection('left');
+    else setDirection('right');
+  }, [hovered]);
+  // Find current page index
+  const currentId = pages.findIndex((p) => p.id === currentIndex.id);
+
+  const prevIndex = currentId <= 0 ? pages.length - 1 : currentId - 1;
+  const prevPage = pages[prevIndex];
+
+  if (!prevPage) return null;
+
+  const handlePrev = () => {
+    setCurrentIndex(prevPage);
+  };
+
+  return (
+    <Link href={prevPage.href}>
+      <motion.div
+        ref={ref}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => {
+          setHovered(false);
+          handlePrev();
+        }}
+        className={cn(
+          'relative rounded-full border bg-muted3  flex items-center justify-center cursor-pointer p-2',
+        )}
+      >
+        <ChevronLeft className="w-4 h-4" />
+
+        {/* Tooltip */}
+        <AnimatePresence>
+          {hovered && (
+            <motion.span
+              variants={tooltipVariants[direction]}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ duration: 0.18 }}
+              className={cn(
+                'absolute pointer-events-none whitespace-nowrap bg-muted2 text-xs border rounded-md px-2 py-1 shadow-md dark:bg-muted3',
+                direction === 'top' && 'bottom-full mb-2 left-1/2 -translate-x-1/2',
+                direction === 'bottom' && 'top-full mt-4 left-1/2 -translate-x-1/2',
+                direction === 'left' && 'right-full mr-4 top-1/2 -translate-y-1/2',
+                direction === 'right' && 'left-full ml-4 top-1/2 -translate-y-1/2',
+              )}
+            >
+              {prevPage.title}
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </Link>
+  );
+}
+
+function Next() {
+  const pages = getAllPages();
+  const { currentIndex, setCurrentIndex } = useCurrentIndex();
+  const [hovered, setHovered] = useState(false);
+  const [direction, setDirection] = useState<Direction>('top');
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Find current page index
+  const currentId = pages.findIndex((p) => p.id === currentIndex.id);
+
+  useEffect(() => {
+    if (!hovered || !ref.current) return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    if (rect.top < 60) setDirection('bottom');
+    else if (vh - rect.bottom < 60) setDirection('top');
+    else if (vw - rect.right < 120) setDirection('left');
+    else setDirection('right');
+  }, [hovered]);
+  const nextIndex = currentId >= pages.length ? 0 : currentId + 1;
+  const nextPage = pages[nextIndex];
+
+  if (!nextIndex) return null;
+
+  const handlePrev = () => {
+    setCurrentIndex(nextPage);
+  };
+
+  return (
+    <Link href={nextPage.href}>
+      <motion.div
+        ref={ref}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => {
+          setHovered(false);
+          handlePrev();
+        }}
+        className={cn(
+          'relative rounded-full border bg-muted3  flex items-center justify-center cursor-pointer p-2',
+        )}
+      >
+        <ChevronRight className="w-4 h-4" />
+
+        {/* Tooltip */}
+        <AnimatePresence>
+          {hovered && (
+            <motion.span
+              variants={tooltipVariants[direction]}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ duration: 0.18 }}
+              className={cn(
+                'absolute pointer-events-none whitespace-nowrap bg-muted2 text-xs border rounded-md px-2 py-1 shadow-md dark:bg-muted3',
+                direction === 'top' && 'bottom-full mb-2 left-1/2 -translate-x-1/2',
+                direction === 'bottom' && 'top-full mt-4 left-1/2 -translate-x-1/2',
+                direction === 'left' && 'right-full mr-4 top-1/2 -translate-y-1/2',
+                direction === 'right' && 'left-full ml-4 top-1/2 -translate-y-1/2',
+              )}
+            >
+              {nextPage.title}
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </Link>
   );
 }

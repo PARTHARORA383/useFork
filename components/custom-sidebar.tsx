@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowLeftToLine, ArrowRightToLine } from 'lucide-react';
+import { NavigationLinkData, NavItem, NavSubheading } from '@/lib/navigation-link';
 
 interface ItemProps {
   title: string;
@@ -107,6 +108,7 @@ export function CustomSidebar() {
           <ArrowRightToLine className="w-6 h-6" />
         )}
       </button>
+
       <AnimatePresence>
         {sidebar.open && (
           <motion.div
@@ -117,70 +119,51 @@ export function CustomSidebar() {
             transition={{ duration: 0.2, ease: 'easeInOut' }}
             className="p-4 space-y-2 fixed  top-0 left-0 z-20 md:bg-muted3 bg-muted dark:bg-muted/40 backdrop-blur-2xl ml-2 mb-2 mr-2  md:pl-8 pt-32 md:pt-32 pb-16  mt-4 border pr-12 rounded-l-lg h-[calc(100vh-2rem)] overflow-scroll no-scrollbar"
           >
-            <div className="flex items-center justify-start gap-3 mb-4 ">
-              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[var(--color-purple-400)] to-amber-50"></div>
-              <h1 className="cursor-default text-[17px]  font-medium text-accent-foreground">
-                Documentation
-              </h1>
-            </div>
-
-            {docsData.map((section) => (
+            {NavigationLinkData.map((section) => (
               <div key={section.heading}>
-                <div className="delius-swash-caps-regular text-[17px] text-foreground flex items-center justify-center gap-2">
-                  <span className="h-[1px] bg-foreground w-full border flex-1"></span>
-                  <h1 className="whitespace-nowrap">{section.heading}</h1>
+                <div className="flex items-center justify-start gap-3 mb-4 ">
+                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[var(--color-purple-400)] to-amber-50"></div>
+                  <h1 className="cursor-default text-[17px]  font-medium text-accent-foreground">
+                    {section.heading}
+                  </h1>
                 </div>
-                {section.items.map((item: ItemProps) => (
-                  <motion.div
-                    key={item.href}
-                    onClick={() => {}}
-                    className=" transform text-muted-foreground hover:scale-101 transition-transform  duration-200 hover:translate-x-3 hover:text-[var(--color-purple-500)]  hover:dark:text-[var(--color-purple-300)] pl-20 "
-                  >
-                    <Link
-                      onClick={() => {
-                        sidebar.setOpen(false);
-                      }}
-                      href={item.href}
-                    >
-                      {item.title}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            ))}
 
-            <div className="flex items-center justify-start gap-3 mb-4 ">
-              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[var(--color-purple-400)] to-amber-50"></div>
-              <h1 className="cursor-default text-[17px]  font-medium text-accent-foreground">
-                Components
-              </h1>
-            </div>
+                <div>
+                  {section.subheadings.map((items: NavSubheading) => (
+                    <div key={items.subheading}>
+                      <div className="delius-swash-caps-regular text-[17px] text-foreground flex items-center justify-center gap-2">
+                        <span className="h-[1px] bg-foreground w-full border flex-1"></span>
+                        <h1 className="whitespace-nowrap">{items.subheading}</h1>
+                      </div>
 
-            {data.map((section) => (
-              <div key={section.heading}>
-                <div className="delius-swash-caps-regular text-[17px] text-foreground flex items-center justify-center gap-2">
-                  <span className="h-[1px] bg-foreground w-full border flex-1"></span>
-                  <h1 className="whitespace-nowrap">{section.heading}</h1>
+                      {
+                        //links-start
+                      }
+                      {items.items.map((link: NavItem) => (
+                        <motion.div
+                          key={link.href}
+                          onClick={() => {
+                            sidebar.setOpen(false);
+                          }}
+                          className=" transform text-muted-foreground hover:scale-101 transition-transform  duration-200 hover:translate-x-3 hover:text-[var(--color-purple-500)]   hover:dark:text-[var(--color-purple-300)] pl-20 "
+                        >
+                          <Link
+                            className="text-[15px]"
+                            onClick={() => {
+                              sidebar.setOpen(false);
+                            }}
+                            href={link.href}
+                          >
+                            {link.title}
+                          </Link>
+                        </motion.div>
+                      ))}
+                      {
+                        //link--end
+                      }
+                    </div>
+                  ))}
                 </div>
-                {section.items.map((item: ItemProps) => (
-                  <motion.div
-                    key={item.href}
-                    onClick={() => {
-                      sidebar.setOpen(false);
-                    }}
-                    className=" transform text-muted-foreground hover:scale-101 transition-transform  duration-200 hover:translate-x-3 hover:text-[var(--color-purple-500)]   hover:dark:text-[var(--color-purple-300)] pl-20 "
-                  >
-                    <Link
-                      className="text-[15px]"
-                      onClick={() => {
-                        sidebar.setOpen(false);
-                      }}
-                      href={item.href}
-                    >
-                      {item.title}
-                    </Link>
-                  </motion.div>
-                ))}
               </div>
             ))}
           </motion.div>

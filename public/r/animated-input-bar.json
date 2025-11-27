@@ -4,10 +4,7 @@
   "type": "registry:block",
   "title": "Animated Input Bar",
   "description": "A simple hello world component.",
-  "dependencies": [
-    "motion",
-    "lucide-react"
-  ],
+  "dependencies": ["motion", "lucide-react"],
   "files": [
     {
       "path": "components/animated-inputbar.tsx",
