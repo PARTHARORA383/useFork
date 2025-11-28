@@ -1,17 +1,14 @@
 'use client';
 
+import { Introduction } from '@/components/introduction';
 import { TextHoverMarquee, TextMarquee } from '@/components/text-hover-marquee';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function TestPage() {
   return (
     <>
-      <div className="mt-8">
-        {/* <CookingBeacon /> */}
-
-        <TextHoverMarquee heading="ATLANTA" />
-        <TextHoverMarquee heading="TORONTO" />
-        <TextHoverMarquee heading="CHICAGO" />
+      <div className="mt-8 flex items-center justify-center">
+        <Introduction />
       </div>
     </>
   );

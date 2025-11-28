@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowLeftToLine, ArrowRightToLine } from 'lucide-react';
 import { NavigationLinkData, NavItem, NavSubheading } from '@/lib/navigation-link';
+import { useCurrentIndex } from '@/hooks/use-prev-next';
+import { getAllPages } from './previous-next';
 
 interface ItemProps {
   title: string;
@@ -22,38 +24,9 @@ export function CustomSidebar() {
   const [isMobile, setIsMobile] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const docsData: DataProps[] = [
-    {
-      heading: 'overview',
-      items: [{ title: 'Introduction', href: '/docs' }],
-    },
-  ];
+  const { currentIndex, setCurrentIndex } = useCurrentIndex();
 
-  const data = [
-    {
-      heading: 'interactive',
-      items: [
-        { title: 'Reveal Button', href: '/docs/reveal-button' },
-        { title: 'StopWatch', href: '/docs/stopwatch' },
-        { title: 'Parallax Image', href: '/docs/parallax-images' },
-        { title: 'Banner Carousal', href: '/docs/banner-carousal' },
-        { title: 'Code Block', href: '/docs/code-block' },
-        { title: 'Save Toggle', href: '/docs/save-toggle' },
-        { title: 'Flip Card', href: '/docs/flip-card-hover' },
-        { title: 'Side Navigation', href: '/docs/side-navigation' },
-        { title: 'Text Video Mask', href: '/docs/text-video-mask' },
-        { title: 'Text Hover Marquee', href: '/docs/text-hover-marquee' },
-      ],
-    },
-    {
-      heading: 'text-wrappers',
-      items: [
-        { title: 'Wave Effect', href: '/docs/wave-in-text' },
-        { title: 'Rollin Effect ', href: '/docs/roll-in-text' },
-        { title: 'RollOver Effect ', href: '/docs/roll-over-text' },
-      ],
-    },
-  ];
+  const pages = getAllPages();
 
   useEffect(() => {
     const handleResize = () => {
@@ -151,6 +124,7 @@ export function CustomSidebar() {
                             className="text-[15px]"
                             onClick={() => {
                               sidebar.setOpen(false);
+                              setCurrentIndex(link.id);
                             }}
                             href={link.href}
                           >

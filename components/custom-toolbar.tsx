@@ -130,8 +130,9 @@ function Previous() {
   const [hovered, setHovered] = useState(false);
   const [direction, setDirection] = useState<Direction>('top');
   const ref = useRef<HTMLDivElement>(null);
+
   const pages = getAllPages();
-  const { currentIndex, setCurrentIndex } = useCurrentIndex();
+  const { currentIndex, setCurrentIndex, prevIndex, setPrevIndex } = useCurrentIndex();
 
   useEffect(() => {
     if (!hovered || !ref.current) return;
@@ -145,16 +146,19 @@ function Previous() {
     else if (vw - rect.right < 120) setDirection('left');
     else setDirection('right');
   }, [hovered]);
-  // Find current page index
-  const currentId = pages.findIndex((p) => p.id === currentIndex.id);
 
-  const prevIndex = currentId <= 0 ? pages.length - 1 : currentId - 1;
+  // Find current page index
+  const currentPage = pages.findIndex((p) => p.id === currentIndex);
+
+  useEffect(() => {
+    const nextPrev = currentIndex <= 0 ? pages.length - 1 : currentIndex - 1;
+    setPrevIndex(nextPrev);
+  }, [currentIndex, pages.length, setPrevIndex]);
+
   const prevPage = pages[prevIndex];
 
-  if (!prevPage) return null;
-
   const handlePrev = () => {
-    setCurrentIndex(prevPage);
+    setCurrentIndex((curr) => (curr === 0 ? pages.length - 1 : currentIndex - 1));
   };
 
   return (
@@ -201,13 +205,13 @@ function Previous() {
 
 function Next() {
   const pages = getAllPages();
-  const { currentIndex, setCurrentIndex } = useCurrentIndex();
+  const { currentIndex, setCurrentIndex, nextIndex, setNextIndex } = useCurrentIndex();
   const [hovered, setHovered] = useState(false);
   const [direction, setDirection] = useState<Direction>('top');
   const ref = useRef<HTMLDivElement>(null);
 
   // Find current page index
-  const currentId = pages.findIndex((p) => p.id === currentIndex.id);
+  const currentId = pages.findIndex((p) => p.id === currentIndex);
 
   useEffect(() => {
     if (!hovered || !ref.current) return;
@@ -221,13 +225,16 @@ function Next() {
     else if (vw - rect.right < 120) setDirection('left');
     else setDirection('right');
   }, [hovered]);
-  const nextIndex = currentId >= pages.length ? 0 : currentId + 1;
+
+  useEffect(() => {
+    const nextPrev = currentIndex === pages.length - 1 ? 0 : currentIndex + 1;
+    setNextIndex(nextPrev);
+  }, [currentIndex, pages.length, setNextIndex]);
+
   const nextPage = pages[nextIndex];
 
-  if (!nextIndex) return null;
-
-  const handlePrev = () => {
-    setCurrentIndex(nextPage);
+  const handleNext = () => {
+    setCurrentIndex(currentIndex === pages.length - 1 ? 0 : currentIndex + 1);
   };
 
   return (
@@ -238,7 +245,7 @@ function Next() {
         onMouseLeave={() => setHovered(false)}
         onClick={() => {
           setHovered(false);
-          handlePrev();
+          handleNext();
         }}
         className={cn(
           'relative rounded-full border bg-muted3  flex items-center justify-center cursor-pointer p-2',
