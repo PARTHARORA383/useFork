@@ -28,6 +28,8 @@ import { SideNavigationDemo } from '@/components/demo/side-navigation-demo';
 import { TextVideoMaskDemo } from '@/components/demo/text-video-mask-demo';
 import { NotificationDemo } from '@/components/demo/notification-demo';
 import { TextHoverMarqueeDemo } from '@/components/demo/text-hover-marquee-demo';
+import { Introduction } from '@/components/introduction';
+
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -37,6 +39,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Tab: (props) => <Tab {...props} className=" rounded-md mt-8" />,
     DynamicCodeBlock,
     PreviewCode,
+    Introduction,
     Installation,
     Table,
     CodePopup,
