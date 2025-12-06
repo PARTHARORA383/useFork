@@ -29,7 +29,7 @@ import { TextVideoMaskDemo } from '@/components/demo/text-video-mask-demo';
 import { NotificationDemo } from '@/components/demo/notification-demo';
 import { TextHoverMarqueeDemo } from '@/components/demo/text-hover-marquee-demo';
 import { Introduction } from '@/components/introduction';
-import { TestimonialSwiperDemo } from '@/components/demo/center-focus-perspective-carousal-demo';
+import { Carousal01Demo } from '@/components/demo/carousal-01-demo';
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -64,6 +64,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     TextVideoMaskDemo,
     NotificationDemo,
     TextHoverMarqueeDemo,
-    TestimonialSwiperDemo
+    Carousal01Demo,
   };
 }

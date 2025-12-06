@@ -1,23 +1,15 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Navigation,
-  Pagination,
-  Autoplay,
-  EffectCoverflow,
-  Virtual,
-  EffectCreative,
-  EffectCards,
-} from "swiper/modules";
+import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay, EffectCreative } from 'swiper/modules';
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css/effect-coverflow";
-import { useState } from "react";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-coverflow';
+
+import { useState } from 'react';
 
 interface ImageProps {
   src: string;
@@ -26,11 +18,19 @@ interface ImageProps {
 interface CenterFocusSwiperProps {
   images: ImageProps[];
   className?: string;
+  loop?: boolean;
+  pagination?: boolean;
+  autoplay?: boolean;
 }
 
-export function CenterFocusSwiper({ images, className }: CenterFocusSwiperProps) {
-
-  const [activeIndex, setActiveIndex] = useState(2)
+export function Carousal01({
+  images,
+  className,
+  loop = true,
+  pagination = true,
+  autoplay = false,
+}: CenterFocusSwiperProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <motion.div
@@ -39,7 +39,6 @@ export function CenterFocusSwiper({ images, className }: CenterFocusSwiperProps)
       transition={{ duration: 0.3 }}
       className={`relative w-full max-w-[400px] px-5 py-4 h-[400px] ${className}`}
     >
-
       <style>{`
         .CenterFocusSwiper {
           width: 100%;
@@ -54,7 +53,7 @@ export function CenterFocusSwiper({ images, className }: CenterFocusSwiperProps)
       `}</style>
 
       <Swiper
-        modules={[EffectCreative, Pagination]}
+        modules={[EffectCreative, Pagination, Autoplay]}
         effect="creative"
         creativeEffect={{
           prev: {
@@ -68,18 +67,26 @@ export function CenterFocusSwiper({ images, className }: CenterFocusSwiperProps)
             opacity: 1,
           },
         }}
+        autoplay={
+          autoplay
+            ? {
+                delay: 1500,
+                disableOnInteraction: false,
+              }
+            : false
+        }
         centeredSlides={true}
-        loop={true}
-
+        loop={loop}
         grabCursor={true}
         spaceBetween={0}
-
-        pagination={{
-          el: ".custom-pagination",
-          clickable: true,
-        }}
-
-
+        pagination={
+          pagination
+            ? {
+                el: '.custom-pagination',
+                clickable: true,
+              }
+            : false
+        }
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         className="CenterFocusSwiper"
       >
@@ -96,29 +103,29 @@ export function CenterFocusSwiper({ images, className }: CenterFocusSwiperProps)
 
 interface ImageCardProps {
   src: string;
-  index: number,
-  activeIndex: number
+  index: number;
+  activeIndex: number;
 }
 
 export function ImageCard({ src, index, activeIndex }: ImageCardProps) {
-
-  const isActive = index === activeIndex
+  const isActive = index === activeIndex;
 
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, filter: index == activeIndex ? 'blur(0px)' : 'blur(4px)', rotateX: isActive ? 0 : index * -0.5 }}
+      animate={{
+        opacity: 1,
+        filter: index == activeIndex ? 'blur(0px)' : 'blur(4px)',
+        rotateX: isActive ? 0 : index * -0.5,
+      }}
       transition={{ duration: 0.3 }}
       className=" relative shadow-lg  overflow-hidden transform-gpu w-full h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={src} alt="" className=" absolute w-full h-full object-cover"
-
-      />
-
+      <img src={src} alt="" className=" absolute w-full h-full object-cover" />
 
       <motion.div
         initial={{ y: 0 }}
@@ -128,7 +135,6 @@ export function ImageCard({ src, index, activeIndex }: ImageCardProps) {
         transition={{ duration: 0.8, ease: 'easeInOut' }}
         className="absolute inset-0 dark:bg-[#161616] bg-[#fcfcfc] mix-blend-saturation"
       />
-
     </motion.div>
   );
 }

@@ -2,7 +2,7 @@ import '@/app/global.css';
 import { CustomNavbar } from '@/components/navbar';
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import { Inter } from 'next/font/google';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,7 +17,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
             enabled: false,
           }}
         >
-          <Analytics/>
+          <Analytics />
           {children}
         </RootProvider>
       </body>

@@ -4,20 +4,6 @@
   "homepage": "https://acme.com",
   "items": [
     {
-      "name": "animated-input-bar",
-      "type": "registry:block",
-      "title": "Animated Input Bar",
-      "description": "A simple hello world component.",
-      "files": [
-        {
-          "path": "components/animated-inputbar.tsx",
-          "type": "registry:component",
-          "language": "tsx"
-        }
-      ],
-      "dependencies": ["motion", "lucide-react"]
-    },
-    {
       "name": "animated-tabs",
       "type": "registry:block",
       "title": "Animated Tabs",
@@ -306,6 +292,25 @@
         }
       ],
       "dependencies": ["motion"]
+    },
+    {
+      "name": "carousal-01",
+      "type": "registry:block",
+      "title": "carousal-01",
+      "description": "An interactive card carousal component built with swiper and motion.",
+      "files": [
+        {
+          "path": "components/carousals/carousal-01.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/carousal-01-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "swiper"]
     }
   ]
 }

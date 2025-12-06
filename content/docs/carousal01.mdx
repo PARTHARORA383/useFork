@@ -1,0 +1,70 @@
+---
+title: 'Carousal 01'
+description: 'A modern creative carousel with rotating transitions and soft blur animations that enhance slide movement.The component delivers a smooth, dynamic viewing experience with customizable autoplay, pagination, and seamless looping.'
+---
+
+<PreviewCode
+  position="center"
+  className="relative"
+  component={<Carousal01Demo />}
+  codePath="/r/carousal-01.json"
+/>
+
+<CodePopup>
+
+<HeadingDescription
+title = 'Carousal 01 '
+description = 'A modern creative carousel with rotating transitions and soft blur animations that enhance slide movement.The component delivers a smooth, dynamic viewing experience with customizable autoplay, pagination, and seamless looping.'
+
+/>
+
+---
+
+### Installation
+
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/carousal-01.json'}
+  codePath="/r/carousal-01.json"
+/>
+---
+
+### How to use
+
+<CodeBlockComponent codePath="/r/carousal-01.json" />
+
+---
+
+### Props
+
+<Table
+  data={{
+    images: {
+      description:
+        'Array of image objects to display in the carousel. Each item must include a `src` field containing the image URL.',
+      type: 'ImageProps[]',
+      default: 'Required',
+    },
+    className: {
+      description: 'Optional custom class names for styling the carousel container.',
+      type: 'string',
+      default: '`""`',
+    },
+    loop: {
+      description: 'Enables continuous looping of slides.',
+      type: 'boolean',
+      default: '`true`',
+    },
+    pagination: {
+      description: 'Displays clickable pagination dots below the carousel.',
+      type: 'boolean',
+      default: '`true`',
+    },
+    autoplay: {
+      description: 'Enables automatic slide transitions with a built-in delay.',
+      type: 'boolean',
+      default: '`true`',
+    },
+  }}
+/>
+
+</CodePopup>
