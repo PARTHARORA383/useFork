@@ -25,8 +25,7 @@ export default function HoverCursor({ children, className , color , text }: { ch
 
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
-
+    
 
     const move = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -35,7 +34,7 @@ export default function HoverCursor({ children, className , color , text }: { ch
 
     setIsMoving(true);
 
-    timeout = setTimeout(() => setIsMoving(false), 100); // 0.1s after stop
+   const timeout = setTimeout(() => setIsMoving(false), 100); // 0.1s after stop
     clearTimeout(timeout);
 
 
