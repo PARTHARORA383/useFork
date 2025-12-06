@@ -1,6 +1,7 @@
 'use client';
 
 import { MouseParallaxImages } from '@/components/parallax-images';
+import HoverCursor from '../hover-cursor';
 
 export function MouseParallaxImagesDemo() {
   const left = [
@@ -15,7 +16,9 @@ export function MouseParallaxImagesDemo() {
 
   return (
     <div className="w-full h-full">
+    
       <MouseParallaxImages leftLane={left} rightLane={right} />
+
     </div>
   );
 }

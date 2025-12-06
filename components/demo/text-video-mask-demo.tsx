@@ -4,9 +4,12 @@ import { TextVideoMaskContainer, VideoBackground, MaskedText } from '@/component
 
 export function TextVideoMaskDemo() {
   return (
+
+
     <TextVideoMaskContainer>
       <VideoBackground src="https://usefork.dev/videos/usefork1.mp4" />
       <MaskedText texts={['DRIVE', 'LEAD', 'CREATE']} className="text-[700px]" opacity={0.85} />
     </TextVideoMaskContainer>
+
   );
 }
