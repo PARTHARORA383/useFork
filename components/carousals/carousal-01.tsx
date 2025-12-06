@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
 
-import { useState } from 'react';
+import React, {SetStateAction, useState } from 'react';
 
 interface ImageProps {
   src: string;
@@ -30,8 +30,8 @@ export function Carousal01({
   pagination = true,
   autoplay = false,
 }: CenterFocusSwiperProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
-
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [ showLoader , setShowLoader ] = useState(true)
   return (
     <motion.div
       initial={{ opacity: 0, translateY: 20 }}
@@ -50,8 +50,14 @@ export function Carousal01({
           background-size: cover;
           width: 300px;
         }
-      `}</style>
+        `}</style>
 
+        {showLoader &&
+          <div className="fixed inset-0 flex items-center justify-center z-10 bg-muted2">
+            <div className="border border-t-transparent w-6 h-6 rounded-full animate-spin" />
+          </div>
+        }
+        
       <Swiper
         modules={[EffectCreative, Pagination, Autoplay]}
         effect="creative"
@@ -70,9 +76,9 @@ export function Carousal01({
         autoplay={
           autoplay
             ? {
-                delay: 1500,
-                disableOnInteraction: false,
-              }
+              delay: 1500,
+              disableOnInteraction: false,
+            }
             : false
         }
         centeredSlides={true}
@@ -82,17 +88,19 @@ export function Carousal01({
         pagination={
           pagination
             ? {
-                el: '.custom-pagination',
-                clickable: true,
-              }
+              el: '.custom-pagination',
+              clickable: true,
+            }
             : false
         }
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         className="CenterFocusSwiper"
       >
+        
+
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <ImageCard src={image.src} index={index} activeIndex={activeIndex} />
+            <ImageCard src={image.src} index={index} activeIndex={activeIndex} showLoader = {showLoader} setShowLoader = {setShowLoader} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -105,12 +113,16 @@ interface ImageCardProps {
   src: string;
   index: number;
   activeIndex: number;
+  showLoader : boolean,
+  setShowLoader : React.Dispatch<SetStateAction<boolean>>
 }
 
-export function ImageCard({ src, index, activeIndex }: ImageCardProps) {
+export function ImageCard({ src, index, activeIndex , showLoader , setShowLoader }: ImageCardProps) {
   const isActive = index === activeIndex;
 
   const [isHovered, setIsHovered] = useState(false);
+
+
 
   return (
     <motion.div
@@ -125,8 +137,8 @@ export function ImageCard({ src, index, activeIndex }: ImageCardProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={src} alt="" className=" absolute w-full h-full object-cover" />
 
+      <img src={src} alt="" onLoad = {()=>setShowLoader(false)} className=" absolute w-full h-full object-cover" />
       <motion.div
         initial={{ y: 0 }}
         animate={{
