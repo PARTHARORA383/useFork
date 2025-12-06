@@ -39,6 +39,7 @@ export const NavigationLinkData: NavigationSection[] = [
           { id: 8, title: 'Side Navigation', href: '/docs/side-navigation' },
           { id: 9, title: 'Text Video Mask', href: '/docs/text-video-mask' },
           { id: 10, title: 'Text Hover Marquee', href: '/docs/text-hover-marquee' },
+          { id: 11, title: 'Carousal-01', href: '/docs/carousal-01' },
         ],
       },
       {
