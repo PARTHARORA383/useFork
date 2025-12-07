@@ -30,6 +30,8 @@ import { NotificationDemo } from '@/components/demo/notification-demo';
 import { TextHoverMarqueeDemo } from '@/components/demo/text-hover-marquee-demo';
 import { Introduction } from '@/components/introduction';
 import { Carousal01Demo } from '@/components/demo/carousal-01-demo';
+import { ParallaxSliderDemo } from '@/components/demo/parallax-slider-demo';
+
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -65,5 +67,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     NotificationDemo,
     TextHoverMarqueeDemo,
     Carousal01Demo,
+    ParallaxSliderDemo,
   };
 }

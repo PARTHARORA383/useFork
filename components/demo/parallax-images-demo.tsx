@@ -16,9 +16,7 @@ export function MouseParallaxImagesDemo() {
 
   return (
     <div className="w-full h-full">
-    
       <MouseParallaxImages leftLane={left} rightLane={right} />
-
     </div>
   );
 }

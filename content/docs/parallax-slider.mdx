@@ -1,0 +1,56 @@
+---
+title: 'Parallax Slider '
+description: 'A smooth, continuous slider where each image drifts at a slower speed than the slide, creating a clean parallax depth effect.'
+---
+
+<PreviewCode
+  className=" relative"
+  secondClassName="w-full"
+  position="left"
+  component={<ParallaxSliderDemo />}
+  codePath="/r/parallax-slider.json"
+/>
+
+<CodePopup>
+
+<HeadingDescription
+title = 'Parallax Slider '
+description = 'A smooth, continuous slider where each image drifts at a slower speed than the slide, creating a clean parallax depth effect.'
+
+/>
+
+---
+
+### Installation
+
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/parallax-slider.json'}
+  codePath="/r/parallax-slider.json"
+/>
+---
+
+### How to use
+
+<CodeBlockComponent codePath="/r/parallax-slider.json" />
+
+---
+
+### Props
+
+<Table
+  data={{
+    images: {
+      description:
+        'Array of image objects to display in the carousel. Each item must include a `src` field containing the image URL.',
+      type: 'ImageProps[]',
+      default: 'Required',
+    },
+    className: {
+      description: 'Optional custom class names for styling the carousel container.',
+      type: 'string',
+      default: '`""`',
+    },
+  }}
+/>
+
+</CodePopup>

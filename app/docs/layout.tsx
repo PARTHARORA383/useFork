@@ -17,13 +17,10 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
           nav={{ enabled: false }}
           searchToggle={{ enabled: false }}
         >
-          
           <div className="pt-8 dark:bg-muted ">
             <CustomSidebar />
             <CustomToolbar />
-            <PageLoader>
-            {children}
-            </PageLoader>
+            <PageLoader>{children}</PageLoader>
           </div>
         </DocsLayout>
       </OpenCodeContextfunc>

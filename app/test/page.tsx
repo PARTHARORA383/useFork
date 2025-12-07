@@ -3,15 +3,14 @@
 import { Carousal01 } from '@/components/carousals/carousal-01';
 
 import { motion, AnimatePresence } from 'motion/react';
+import { ParallaxSlider } from '@/components/carousals/parallax-slider';
 
 const images = [
-  { src: '/images/usefork3.jpeg' },
-  { src: '/images/usefork2.jpeg' },
-  { src: '/images/usefork3.jpeg' },
-  { src: '/images/usefork2.jpeg' },
-  { src: '/images/usefork3.jpeg' },
-  { src: '/images/usefork2.jpeg' },
-  { src: '/images/usefork3.jpeg' },
+  { src: '/images/usefork20.jpg' },
+  { src: '/images/usefork12.jpg' },
+  { src: '/images/usefork11.jpg' },
+  { src: '/images/usefork9.jpg' },
+  { src: '/images/usefork8.jpg' },
 ];
 
 export default function TestPage() {
@@ -19,7 +18,7 @@ export default function TestPage() {
     <>
       <div className="flex items-center justify-center mt-8">
         {/* <CardCarousal testimonials={testimonials} /> */}
-        <Carousal01 images={images} />
+        <ParallaxSlider images={images} />
       </div>
     </>
   );
@@ -44,6 +43,34 @@ function AnimatedText({ text, image }: AnimatedTextProps) {
     </motion.h1>
   );
 }
+
+// import { useRef } from "react";
+
+// export  function ParallaxCard({ image }) {
+//   const bgRef = useRef(null);
+
+//   const handleMove = (e) => {
+//     const movement = e.movementX;
+//     if (bgRef.current) {
+//       bgRef.current.style.transform = `translateX(${movement * 0.3}px)`; // slower drift
+//     }
+//   };
+
+//   return (
+//     <motion.div
+//       transition={{type : 'spring', stiffness: 300, damping: 30}}
+//       className="relative overflow-hidden w-[500px] h-[450px] "
+//       onMouseMove={handleMove}
+//     >
+//       <motion.img
+//       transition={{type : 'spring' , damping : 200, duration : 0.3 , delay : 0.3}}
+//         ref={bgRef}
+//         src={'/Images/usefork7.jpeg'}
+//         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300"
+//       />
+//     </motion.div>
+//   );
+// }
 
 // export function StairsLoader() {
 //   const [activeId, setActiveId] = useState(0);

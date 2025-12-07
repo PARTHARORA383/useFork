@@ -1,14 +1,24 @@
-"use client";
+'use client';
 
-import { useState, useEffect, ReactNode } from "react";
-import { motion, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
-import { Portal } from "./portal-component";
-import { cn } from "@/lib/cn";
+import { useState, useEffect, ReactNode } from 'react';
+import { motion, useSpring, useMotionValue, AnimatePresence } from 'framer-motion';
+import { Portal } from './portal-component';
+import { cn } from '@/lib/cn';
 
-export default function HoverCursor({ children, className , color , text }: { children: ReactNode, className?: string , color? : string  , text ?: string}) {
+export default function HoverCursor({
+  children,
+  className,
+  color,
+  text,
+}: {
+  children: ReactNode;
+  className?: string;
+  color?: string;
+  text?: string;
+}) {
   const [active, setActive] = useState(false);
   const [isMoving, setIsMoving] = useState(false);
-  const CIRCLE_SIZE = 60
+  const CIRCLE_SIZE = 60;
   // Position tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -23,10 +33,7 @@ export default function HoverCursor({ children, className , color , text }: { ch
     damping: isMoving ? 20 : 40,
   });
 
-
   useEffect(() => {
-    
-
     const move = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
@@ -34,28 +41,24 @@ export default function HoverCursor({ children, className , color , text }: { ch
 
     setIsMoving(true);
 
-   const timeout = setTimeout(() => setIsMoving(false), 100); // 0.1s after stop
+    const timeout = setTimeout(() => setIsMoving(false), 100); // 0.1s after stop
     clearTimeout(timeout);
 
-
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    window.addEventListener('mousemove', move);
+    return () => window.removeEventListener('mousemove', move);
   }, [active]);
 
   const handleMouseOut = () => {
-    setActive(false)
-  }
+    setActive(false);
+  };
 
   const handleMouseOver = () => {
-    setActive(true)
-  }
+    setActive(true);
+  };
 
   return (
     <div>
-      <div
-        onMouseOut={handleMouseOut}
-        onMouseOver={handleMouseOver}
-      >
+      <div onMouseOut={handleMouseOut} onMouseOver={handleMouseOver}>
         {children}
       </div>
 
@@ -67,22 +70,22 @@ export default function HoverCursor({ children, className , color , text }: { ch
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
               className={cn(
                 `fixed z-[999] flex items-center justify-center text-sm  rounded-full pointer-events-none`,
-                className
+                className,
               )}
               style={{
                 x: smoothX,
                 y: smoothY,
                 width: CIRCLE_SIZE,
                 height: CIRCLE_SIZE,
-        
-                backgroundColor : color ?? "#6366f1"
+
+                backgroundColor: color ?? '#6366f1',
               }}
             >
               {/* MAIN TEXT */}
-              {text ?? "Drag"}
+              {text ?? 'Drag'}
 
               {/* LEFT SMALL CIRCLE */}
               <div
@@ -91,9 +94,9 @@ export default function HoverCursor({ children, className , color , text }: { ch
                   width: CIRCLE_SIZE * 0.15,
                   height: CIRCLE_SIZE * 0.15,
                   left: -CIRCLE_SIZE * 0.25,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                   backgroundColor : color ?? "#6366f1"
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  backgroundColor: color ?? '#6366f1',
                 }}
               />
 
@@ -104,18 +107,15 @@ export default function HoverCursor({ children, className , color , text }: { ch
                   width: CIRCLE_SIZE * 0.15,
                   height: CIRCLE_SIZE * 0.15,
                   right: -CIRCLE_SIZE * 0.25,
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                   backgroundColor : color ?? "#6366f1"
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  backgroundColor: color ?? '#6366f1',
                 }}
               />
             </motion.div>
-
           </Portal>
         )}
       </AnimatePresence>
-
     </div>
-
   );
 }

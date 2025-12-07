@@ -311,6 +311,25 @@
         }
       ],
       "dependencies": ["motion", "swiper"]
+    },
+    {
+      "name": "parallax-slider",
+      "type": "registry:block",
+      "title": "parallax-slider",
+      "description": "Smooth parallax image slider built with swiper and motion.",
+      "files": [
+        {
+          "path": "components/carousals/parallax-slider.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/parallax-slider-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "swiper"]
     }
   ]
 }

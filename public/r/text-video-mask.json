@@ -13,7 +13,7 @@
     },
     {
       "path": "components/demo/text-video-mask-demo.tsx",
-      "content": "'use client';\n\nimport { TextVideoMaskContainer, VideoBackground, MaskedText } from '@/components/text-video-mask';\n\nexport function TextVideoMaskDemo() {\n  return (\n    <TextVideoMaskContainer>\n      <VideoBackground src=\"https://usefork.dev/videos/usefork1.mp4\" />\n      <MaskedText texts={['DRIVE', 'LEAD', 'CREATE']} className=\"text-[700px]\" opacity={0.85} />\n    </TextVideoMaskContainer>\n  );\n}\n",
+      "content": "'use client';\n\nimport { TextVideoMaskContainer, VideoBackground, MaskedText } from '@/components/text-video-mask';\n\nexport function TextVideoMaskDemo() {\n  return (\n\n\n    <TextVideoMaskContainer>\n      <VideoBackground src=\"https://usefork.dev/videos/usefork1.mp4\" />\n      <MaskedText texts={['DRIVE', 'LEAD', 'CREATE']} className=\"text-[700px]\" opacity={0.85} />\n    </TextVideoMaskContainer>\n\n  );\n}\n",
       "type": "registry:component"
     }
   ]

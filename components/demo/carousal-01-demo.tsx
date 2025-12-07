@@ -1,7 +1,6 @@
 import { Carousal01 } from '@/components/carousals/carousal-01';
 import HoverCursor from '@/components/hover-cursor';
 
-
 export function Carousal01Demo() {
   const images = [
     { src: '/images/usefork7.jpeg' },
@@ -11,7 +10,7 @@ export function Carousal01Demo() {
   ];
 
   return (
-    <HoverCursor className='bg-muted3 font-medium' color='#232323'>
+    <HoverCursor className="bg-muted3 font-medium" color="#232323">
       <Carousal01 images={images} />
     </HoverCursor>
   );

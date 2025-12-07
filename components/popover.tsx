@@ -77,6 +77,16 @@ export const data = [
         href: '/docs/text-hover-marquee',
         icon: <Ghost className="w-5 h-5" />,
       },
+      {
+        title: 'Carousal-01',
+        href: '/docs/carousal01',
+        icon: <Ghost className="w-5 h-5" />,
+      },
+      {
+        title: 'Parallax Slider',
+        href: '/docs/parallax-slider',
+        icon: <Ghost className="w-5 h-5" />,
+      },
       { title: 'Wave Effect', href: '/docs/wave-in-text', icon: <Ghost className="w-5 h-5" /> },
       { title: 'Rollin Effect ', href: '/docs/roll-in-text', icon: <Ghost className="w-5 h-5" /> },
       {

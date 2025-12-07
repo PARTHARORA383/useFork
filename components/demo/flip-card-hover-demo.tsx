@@ -3,9 +3,7 @@
 import { FlipCardOnHover } from '@/components/flip-card-hover';
 
 export function FlipCardOnHoverDemo() {
-  return (
-  <FlipCardOnHover front={<Front />} back={<Back />} />
-  );
+  return <FlipCardOnHover front={<Front />} back={<Back />} />;
 }
 
 function Front() {

@@ -10,7 +10,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
 
 import React, { SetStateAction, useState } from 'react';
-import HoverCursor from '../hover-cursor';
 
 interface ImageProps {
   src: string;
@@ -32,7 +31,7 @@ export function Carousal01({
   autoplay = false,
 }: CenterFocusSwiperProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [showLoader, setShowLoader] = useState(true)
+  const [showLoader, setShowLoader] = useState(true);
   return (
     <motion.div
       initial={{ opacity: 0, translateY: 20 }}
@@ -40,11 +39,6 @@ export function Carousal01({
       transition={{ duration: 0.3 }}
       className={`relative w-full max-w-[400px] px-5 py-4 h-[400px] ${className}`}
     >
-      {/* {showLoader &&
-        <div className="fixed inset-0 flex items-center justify-center z-10 bg-muted2">
-          <div className="border border-t-transparent w-6 h-6 rounded-full animate-spin" />
-        </div>
-      } */}
       <style>{`
         .CenterFocusSwiper {
           width: 100%;
@@ -57,8 +51,6 @@ export function Carousal01({
           width: 300px;
         }
         `}</style>
-
-
 
       <Swiper
         modules={[EffectCreative, Pagination, Autoplay]}
@@ -78,9 +70,9 @@ export function Carousal01({
         autoplay={
           autoplay
             ? {
-              delay: 1500,
-              disableOnInteraction: false,
-            }
+                delay: 1500,
+                disableOnInteraction: false,
+              }
             : false
         }
         centeredSlides={true}
@@ -90,26 +82,28 @@ export function Carousal01({
         pagination={
           pagination
             ? {
-              el: '.custom-pagination',
-              clickable: true,
-            }
+                el: '.custom-pagination',
+                clickable: true,
+              }
             : false
         }
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         className="CenterFocusSwiper"
       >
-
-
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <ImageCard src={image.src} index={index} activeIndex={activeIndex} showLoader={showLoader} setShowLoader={setShowLoader} />
+            <ImageCard
+              src={image.src}
+              index={index}
+              activeIndex={activeIndex}
+              showLoader={showLoader}
+              setShowLoader={setShowLoader}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
 
-
       <div className="custom-pagination mt-8 flex justify-center"></div>
-
     </motion.div>
   );
 }
@@ -118,16 +112,14 @@ interface ImageCardProps {
   src: string;
   index: number;
   activeIndex: number;
-  showLoader: boolean,
-  setShowLoader: React.Dispatch<SetStateAction<boolean>>
+  showLoader: boolean;
+  setShowLoader: React.Dispatch<SetStateAction<boolean>>;
 }
 
 export function ImageCard({ src, index, activeIndex, showLoader, setShowLoader }: ImageCardProps) {
   const isActive = index === activeIndex;
 
   const [isHovered, setIsHovered] = useState(false);
-
-
 
   return (
     <motion.div
@@ -142,8 +134,12 @@ export function ImageCard({ src, index, activeIndex, showLoader, setShowLoader }
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-
-      <img src={src} alt="" onLoad={() => setShowLoader(false)} className=" absolute w-full h-full object-cover" />
+      <img
+        src={src}
+        alt=""
+        onLoad={() => setShowLoader(false)}
+        className=" absolute w-full h-full object-cover"
+      />
       <motion.div
         initial={{ y: 0 }}
         animate={{
