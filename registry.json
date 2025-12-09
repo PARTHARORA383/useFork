@@ -330,6 +330,63 @@
         }
       ],
       "dependencies": ["motion", "swiper"]
+    },
+    {
+      "name": "roll-reveal-button",
+      "type": "registry:block",
+      "title": "roll-reveal-button",
+      "description": "Smooth button with a roll in reveal effect.",
+      "files": [
+        {
+          "path": "components/buttons/roll-reveal-button.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/cool-button-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "hold-reveal-button",
+      "type": "registry:block",
+      "title": "hold-reveal-button",
+      "description": "Smooth hold to reveal button best used for delete animations.",
+      "files": [
+        {
+          "path": "components/buttons/hold-reveal-button.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/cool-button-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion" , "lucide-react"]
+    },
+    {
+      "name": "origin-button",
+      "type": "registry:block",
+      "title": "origin-button",
+      "description": "A cursor-aware hover effect that expands from where you enter and collapses where you leave..",
+      "files": [
+        {
+          "path": "components/buttons/origin-button.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/cool-button-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion ","lucide-react"]
     }
   ]
 }

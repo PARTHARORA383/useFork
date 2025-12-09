@@ -1,0 +1,83 @@
+---
+title: 'Cool Buttons'
+description: 'A collection of modern, animated buttons inspired by great interfaces across the web. Each button is designed with smooth motion, simple interactions, and reusable code—perfect for improving the feel of any UI.'
+---
+
+<PreviewCode className="relative" component={<CoolButtonsDemo />} codePath="/r/code-block.json" />
+
+
+<CodePopup>
+
+<HeadingDescription
+  title="Cool Buttons"
+  description="A collection of modern, animated buttons inspired by great interfaces across the web. Each button is designed with smooth motion, simple interactions, and reusable code—perfect for improving the feel of any UI."
+/>
+---
+
+### Roll Reveal Button
+
+An interactive reveal button with a rolling icon animation.
+
+### Installation
+
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/roll-reveal-button.json'}
+  codePath="/r/roll-reveal-button.json"
+/>
+### Props
+
+### RollRevealButton Props
+<Table data={{ className: { description: 'Optional custom class names for styling the button container.', type: 'string', default: '`""`', }, children: { description: 'Content displayed inside the button (typically includes RollRevealButtonText).', type: 'React.ReactNode', default: '`undefined`', }, icon: { description: 'Icon displayed inside the animated circle. Defaults to an upward-right Chevron icon if not provided.', type: 'React.ReactNode', default: '`<ChevronUpRightIcon />`', }, onClick: { description: 'Callback fired when the button is clicked.', type: '() => void', default: '`undefined`', }, }} />
+
+### RollRevealButtonText Props
+<Table data={{ className: { description: 'Optional custom class names for styling the rolling text bubble.', type: 'string', default: '`""`', }, text: { description: 'Main text displayed in the roll-reveal bubble.', type: 'string', default: '`"Booking a Call"`', }, icon: { description: 'Optional icon displayed next to the text inside the bubble.', type: 'React.ReactNode', default: '`null`', } }} />
+
+---
+
+###  Origin Button
+
+A cursor-aware hover effect that expands from where you enter and collapses where you leave.
+
+### Installation
+
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/origin-button.json'}
+  codePath="/r/origin-button.json"
+/>
+
+### Props
+
+### OriginButton Props
+<Table data={{ children: { description: "Content rendered inside the button (can include text, icons, or additional UI).", type: "React.ReactNode", default: "`undefined`", }, className: { description: "Optional custom class names for styling the button container.", type: "string", default: "`\"\"`", }, text: { description: "Text label displayed beside the icon inside the button.", type: "string", default: "`\"Hover Me\"`", }, icon: { description: "Icon element displayed inside the button. Can be any React.ReactNode.", type: "React.ReactNode", default: "`undefined`", }, onComplete: { description: "Function executed when the button is clicked.", type: "`() => void`", default: "`undefined`", }, }} />
+### OriginButtonOverlay Props
+<Table data={{ className: { description: "Optional custom class names applied to the overlay layer.", type: "string", default: "`\"\"`", }, text: { description: "Text displayed inside the animated reveal overlay.", type: "string", default: "`\"Hover Me\"`", }, icon: { description: "Icon displayed inside the animated reveal overlay.", type: "React.ReactNode", default: "`undefined`", }, }} />
+
+
+---
+
+###  Hold To Reveal
+
+Smooth hold to reveal button best used for delete animations.
+
+### Installation
+
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/hold-reveal-button.json'}
+  codePath="/r/hold-reve-button.json"
+/>
+
+### Props
+
+### HoldRevealButton Props
+<Table data={{ children: { description: "Optional content rendered inside the button (can include text, icons, or nested components).", type: "React.ReactNode", default: "`undefined`", }, className: { description: "Custom class names applied to the main button container.", type: "string", default: "`\"\"`", }, text: { description: "Text displayed inside the button next to the icon.", type: "string", default: "`\"Hold to delete\"`", }, icon: { description: "Icon displayed inside the button. Defaults to a trash icon.", type: "React.ReactNode", default: "`<TrashedIcon />`", }, onComplete: { description: "Function executed when the button is clicked. Usually used to perform the final action after the hold animation.", type: "`() => void`", default: "`undefined`", }, }} />
+### HoldRevealButtonOverlay Props
+<Table data={{ className: { description: "Custom class names applied to the reveal overlay container.", type: "string", default: "`\"\"`", }, text: { description: "Text displayed inside the animated overlay when the user holds the button.", type: "string", default: "`\"Hold to delete\"`", }, icon: { description: "Icon displayed inside the overlay, usually matching the button icon.", type: "React.ReactNode", default: "`<TrashedIcon />`", } }} />
+
+---
+
+
+### How to use
+
+<CodeBlockComponent codePath="/r/roll-reveal-button.json" />
+
+</CodePopup>

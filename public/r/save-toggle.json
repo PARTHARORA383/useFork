@@ -4,7 +4,10 @@
   "type": "registry:block",
   "title": "Save Toggle",
   "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
-  "dependencies": ["motion", "lucide-react"],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
   "files": [
     {
       "path": "components/save-toggle.tsx",

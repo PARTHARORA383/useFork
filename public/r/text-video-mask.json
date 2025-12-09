@@ -4,7 +4,9 @@
   "type": "registry:block",
   "title": "Text Video Mask",
   "description": "A reusable and fully customizable Text-Video Mask component that blends video backgrounds inside bold, animated text. Perfect for creating high-impact hero sections, branding visuals, and dynamic landing pages.",
-  "dependencies": ["motion"],
+  "dependencies": [
+    "motion"
+  ],
   "files": [
     {
       "path": "components/text-video-mask.tsx",
@@ -13,7 +15,7 @@
     },
     {
       "path": "components/demo/text-video-mask-demo.tsx",
-      "content": "'use client';\n\nimport { TextVideoMaskContainer, VideoBackground, MaskedText } from '@/components/text-video-mask';\n\nexport function TextVideoMaskDemo() {\n  return (\n\n\n    <TextVideoMaskContainer>\n      <VideoBackground src=\"https://usefork.dev/videos/usefork1.mp4\" />\n      <MaskedText texts={['DRIVE', 'LEAD', 'CREATE']} className=\"text-[700px]\" opacity={0.85} />\n    </TextVideoMaskContainer>\n\n  );\n}\n",
+      "content": "'use client';\n\nimport { TextVideoMaskContainer, VideoBackground, MaskedText } from '@/components/text-video-mask';\n\nexport function TextVideoMaskDemo() {\n  return (\n    <TextVideoMaskContainer>\n      <VideoBackground src=\"https://usefork.dev/videos/usefork1.mp4\" />\n      <MaskedText texts={['DRIVE', 'LEAD', 'CREATE']} className=\"text-[700px]\" opacity={0.85} />\n    </TextVideoMaskContainer>\n  );\n}\n",
       "type": "registry:component"
     }
   ]

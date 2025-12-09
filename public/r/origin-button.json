@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "origin-button",
+  "type": "registry:block",
+  "title": "origin-button",
+  "description": "A cursor-aware hover effect that expands from where you enter and collapses where you leave..",
+  "dependencies": [
+    "motion ",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "components/buttons/origin-button.tsx",
+      "content": "\r\n\"use client\"\r\nimport React, { useEffect, useRef, useState } from \"react\"\r\nimport { cn } from \"@/lib/cn\";\r\n\r\ninterface OriginContextProps {\r\n  isHolding: boolean;\r\n  setIsHolding: React.Dispatch<React.SetStateAction<boolean>>;\r\n  direction: '0' | '100';\r\n  setdirection: React.Dispatch<React.SetStateAction<'0' | '100'>>;\r\n}\r\n\r\nconst OriginContext = React.createContext<OriginContextProps | undefined>(undefined);\r\n\r\nconst useOriginContext = () => {\r\n\r\n  const context = React.useContext(OriginContext);\r\n  if (!context) {\r\n    throw new Error(\"useOriginContext must be used within a OriginProvider\");\r\n  }\r\n  return context;\r\n}\r\n\r\ninterface OriginButtonProps {\r\n  children?: React.ReactNode;\r\n  className?: string;\r\n  text?: string;\r\n  icon?: React.ReactNode;\r\n  onComplete?: () => void;\r\n}\r\n\r\nexport function OriginButton({ children, className, text = 'Hover Me', icon , onComplete }: OriginButtonProps) {\r\n\r\n  const [isHolding, setIsHolding] = useState(false);\r\n  const [direction , setdirection] = useState<'0' | '100'>('0');\r\n\r\n  const ref = useRef<HTMLButtonElement>(null);\r\n\r\n  const handleMouseMove = (e:React.MouseEvent) => { \r\n\r\n    if(!ref.current) return;\r\n\r\n    const rect = ref.current.getBoundingClientRect();\r\n    const x = e.clientX - rect.left; \r\n    const y = e.clientY - rect.top;\r\n\r\n    if(x < rect.width / 2){\r\n      setdirection('0');\r\n    }else{\r\n      setdirection('100');\r\n    }\r\n    setIsHolding(true);\r\n  }\r\n\r\n  \r\n\r\n  return (\r\n    <OriginContext.Provider value={{ isHolding, setIsHolding , direction, setdirection }}>\r\n      <button\r\n        ref={ref}\r\n        onMouseMove={(e) => {\r\n          handleMouseMove(e)}}\r\n        onMouseLeave={() => setIsHolding(false)}\r\n        onClick={onComplete}\r\n        className={cn('relative rounded-full p-2 px-5 overflow-hidden bg-background cursor-pointer active:scale-95 transition-transform duration-200 flex items-center gap-2', className)}>\r\n\r\n        {children}\r\n        {icon}\r\n        {text}\r\n\r\n      </button>\r\n    </OriginContext.Provider>\r\n  )\r\n}\r\n\r\n\r\ninterface OriginButtonProps {\r\n  className?: string;\r\n  text?: string;\r\n  icon?: React.ReactNode;\r\n}\r\n\r\n\r\nexport function OriginButtonOverlay({ className, text = 'Hover Me', icon }: OriginButtonProps) {\r\n\r\n  const { isHolding ,direction } = useOriginContext();\r\n\r\n  return (\r\n    <div className={cn('absolute inset-0 p-2 px-5 text-white bg-red-400 transition-[clip-path] duration-800 linear flex items-center gap-2 justify-center', className)}\r\n      style={{\r\n        clipPath: isHolding ? 'ellipse(150px 150px at 10% 20%)' : `ellipse(0px 0px at ${direction}% 100%)`\r\n      }}\r\n    >\r\n      {icon}\r\n      {text}\r\n    </div>\r\n\r\n  )\r\n}\r\n\r\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "components/demo/cool-button-demo.tsx",
+      "content": "import { GhostIcon } from \"lucide-react\";\r\nimport { HoldRevealButton, HoldRevealButtonOverlay } from \"@/components/buttons/hold-reveal-button\";\r\nimport { OriginButton, OriginButtonOverlay } from \"@/components/buttons/origin-button\";\r\nimport { RollRevealButton, RollRevealButtonText } from \"@/components/buttons/roll-reveal-button\";\r\n\r\nexport function CoolButtonsDemo() {\r\n  return (\r\n\r\n    <div className=\"flex flex-col gap-8 items-center\">\r\n\r\n      <div className=\"flex items-center justify-center gap-6\">\r\n\r\n        {/* Roll Reveal Button Example */}\r\n        <RollRevealButton>\r\n          <RollRevealButtonText />\r\n        </RollRevealButton>\r\n        \r\n        {/* Origin Button Example */}\r\n        <OriginButton icon={<GhostIcon className=\"w-5 h-5\" />}>\r\n          <OriginButtonOverlay icon={<GhostIcon className=\"w-5 h-5\" />} />\r\n        </OriginButton>\r\n\r\n      </div>\r\n\r\n      {/* Hold Reveal Button Example */}\r\n      <HoldRevealButton>\r\n        <HoldRevealButtonOverlay />\r\n      </HoldRevealButton>\r\n\r\n    </div>\r\n  )\r\n}",
+      "type": "registry:component"
+    }
+  ]
+}

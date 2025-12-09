@@ -87,6 +87,11 @@ export const data = [
         href: '/docs/parallax-slider',
         icon: <Ghost className="w-5 h-5" />,
       },
+      {
+        title: 'Cool Buttons',
+        href: '/docs/cool-buttons',
+        icon: <Ghost className="w-5 h-5" />,
+      },
       { title: 'Wave Effect', href: '/docs/wave-in-text', icon: <Ghost className="w-5 h-5" /> },
       { title: 'Rollin Effect ', href: '/docs/roll-in-text', icon: <Ghost className="w-5 h-5" /> },
       {

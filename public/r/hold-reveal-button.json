@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hold-reveal-button",
+  "type": "registry:block",
+  "title": "hold-reveal-button",
+  "description": "Smooth hold to reveal button best used for delete animations.",
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "components/buttons/hold-reveal-button.tsx",
+      "content": "\r\n\"use client\"\r\nimport React, { useState } from \"react\"\r\nimport { cn } from \"@/lib/cn\";\r\n\r\ninterface HoldRevealContextProps {\r\n  isHolding: boolean;\r\n  setIsHolding: React.Dispatch<React.SetStateAction<boolean>>;\r\n}\r\n\r\nconst HoldRevealContext = React.createContext<HoldRevealContextProps | undefined>(undefined);\r\n\r\nconst useHoldRevealContext = () => {\r\n\r\n  const context = React.useContext(HoldRevealContext);\r\n  if (!context) {\r\n    throw new Error(\"useHoldRevealContext must be used within a HoldRevealProvider\");\r\n  }\r\n  return context;\r\n}\r\n\r\ninterface HoldRevealButtonProps {\r\n  children?: React.ReactNode;\r\n  className?: string;\r\n  text?: string;\r\n  icon?: React.ReactNode;\r\n  onComplete?: () => void;\r\n}\r\n\r\nexport function HoldRevealButton({ children, className, text = 'Hold to delete', icon = <TrashedIcon />, onComplete }: HoldRevealButtonProps) {\r\n\r\n  const [isHolding, setIsHolding] = useState(false);\r\n\r\n  return (\r\n    <HoldRevealContext.Provider value={{ isHolding, setIsHolding }}>\r\n      <button\r\n        onMouseDown={() => setIsHolding(true)}\r\n        onMouseUp={() => setIsHolding(false)}\r\n        onMouseLeave={() => setIsHolding(false)}\r\n        className={cn('relative rounded-full p-2 px-5 overflow-hidden bg-background cursor-pointer active:scale-95 transition-transform duration-200 flex items-center gap-2', className)}>\r\n\r\n        {children}\r\n        {icon}\r\n        {text}\r\n\r\n      </button>\r\n    </HoldRevealContext.Provider>\r\n  )\r\n}\r\n\r\n\r\ninterface HoldRevealButtonProps {\r\n  className?: string;\r\n  text?: string;\r\n  icon?: React.ReactNode;\r\n}\r\n\r\n\r\nexport function HoldRevealButtonOverlay({ className, text = 'Hold to delete', icon = <TrashedIcon /> }: HoldRevealButtonProps) {\r\n\r\n  const { isHolding } = useHoldRevealContext();\r\n\r\n  return (\r\n    <div className={cn('absolute inset-0 p-2 px-5 text-white bg-red-400 transition-[clip-path] duration-1000 linear flex items-center gap-2 justify-center', className)}\r\n      style={{\r\n        clipPath: isHolding ? 'inset(0% 0% 0% 0%)' : 'inset(0% 100% 0% 0%)'\r\n      }}\r\n    >\r\n      {icon}\r\n      {text}\r\n    </div>\r\n\r\n  )\r\n}\r\n\r\nfunction TrashedIcon() {\r\n  return (\r\n    <svg height=\"16\" strokeLinejoin=\"round\" viewBox=\"0 0 16 16\" width=\"16\">\r\n      <path\r\n        fillRule=\"evenodd\"\r\n        clipRule=\"evenodd\"\r\n        d=\"M6.75 2.75C6.75 2.05964 7.30964 1.5 8 1.5C8.69036 1.5 9.25 2.05964 9.25 2.75V3H6.75V2.75ZM5.25 3V2.75C5.25 1.23122 6.48122 0 8 0C9.51878 0 10.75 1.23122 10.75 2.75V3H12.9201H14.25H15V4.5H14.25H13.8846L13.1776 13.6917C13.0774 14.9942 11.9913 16 10.6849 16H5.31508C4.00874 16 2.92263 14.9942 2.82244 13.6917L2.11538 4.5H1.75H1V3H1.75H3.07988H5.25ZM4.31802 13.5767L3.61982 4.5H12.3802L11.682 13.5767C11.6419 14.0977 11.2075 14.5 10.6849 14.5H5.31508C4.79254 14.5 4.3581 14.0977 4.31802 13.5767Z\"\r\n        fill=\"currentColor\"\r\n      />\r\n    </svg>\r\n  );\r\n}",
+      "type": "registry:component"
+    },
+    {
+      "path": "components/demo/cool-button-demo.tsx",
+      "content": "import { GhostIcon } from \"lucide-react\";\r\nimport { HoldRevealButton, HoldRevealButtonOverlay } from \"@/components/buttons/hold-reveal-button\";\r\nimport { OriginButton, OriginButtonOverlay } from \"@/components/buttons/origin-button\";\r\nimport { RollRevealButton, RollRevealButtonText } from \"@/components/buttons/roll-reveal-button\";\r\n\r\nexport function CoolButtonsDemo() {\r\n  return (\r\n\r\n    <div className=\"flex flex-col gap-8 items-center\">\r\n\r\n      <div className=\"flex items-center justify-center gap-6\">\r\n\r\n        {/* Roll Reveal Button Example */}\r\n        <RollRevealButton>\r\n          <RollRevealButtonText />\r\n        </RollRevealButton>\r\n        \r\n        {/* Origin Button Example */}\r\n        <OriginButton icon={<GhostIcon className=\"w-5 h-5\" />}>\r\n          <OriginButtonOverlay icon={<GhostIcon className=\"w-5 h-5\" />} />\r\n        </OriginButton>\r\n\r\n      </div>\r\n\r\n      {/* Hold Reveal Button Example */}\r\n      <HoldRevealButton>\r\n        <HoldRevealButtonOverlay />\r\n      </HoldRevealButton>\r\n\r\n    </div>\r\n  )\r\n}",
+      "type": "registry:component"
+    }
+  ]
+}

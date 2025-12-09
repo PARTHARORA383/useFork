@@ -4,7 +4,9 @@
   "type": "registry:block",
   "title": "Text Roll Wrapper",
   "description": "A fully reusable and customizable text wrapper with a smooth roll-in animation effect. Simply wrap your string with the component and watch the text come to life with motion magic.",
-  "dependencies": ["motion"],
+  "dependencies": [
+    "motion"
+  ],
   "files": [
     {
       "path": "components/roll-in-text.tsx",
