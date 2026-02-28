@@ -55,7 +55,7 @@ export function NavigationMenu() {
                 staggerChildren: 0.12,
                 delayChildren: 0.3,
               }}
-              className=" min-h-[100vh] min-w-[100wh] max-h-[100vh] max-w-[100wh] bg-amber-50 fixed inset-0 z-50 flex flex-col items-start gap-4 px-6 justify-center"
+              className="h-screen w-screen bg-amber-50 fixed inset-0 z-50 flex flex-col items-start gap-4 px-6 justify-center"
             >
               <NavigationItem text="home" href="/" />
               <NavigationItem text="components" href="/components" />
@@ -126,21 +126,21 @@ function NavigationItem({ text, href }: { text: string; href: string }) {
                 ease: 'easeInOut',
               }}
               className={`
-            text-2xl 
-            relative 
-            inline-block 
-            text-black 
-            delius-swash-caps-regular 
-            after:content-[''] 
-            after:absolute 
-            after:left-0 
-            after:bottom-0 
-            after:h-[3px] 
-            after:w-full 
-            after:bg-black 
-            after:scale-x-0 
-            after:origin-left 
-            after:transition-transform 
+            text-2xl
+            relative
+            inline-block
+            text-black
+            delius-swash-caps-regular
+            after:content-['']
+            after:absolute
+            after:left-0
+            after:bottom-0
+            after:h-[3px]
+            after:w-full
+            after:bg-black
+            after:scale-x-0
+            after:origin-left
+            after:transition-transform
             after:duration-300
             hover:after:scale-x-100
             hover:text-sky-500

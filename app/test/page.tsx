@@ -18,11 +18,7 @@ const images = [
 export default function TestPage() {
   return (
     <>
-      <div className="flex items-center justify-center mt-8">
-        <HoldRevealButton >
-          <HoldRevealButtonOverlay />
-        </HoldRevealButton>
-      </div>
+      <div className="flex items-center justify-center mt-8"></div>
     </>
   );
 }
@@ -47,35 +43,32 @@ function AnimatedText({ text, image }: AnimatedTextProps) {
   );
 }
 
-
 function ClipPathButton() {
-
   const [isHolding, setIsHolding] = useState(false);
 
   return (
     <div>
-
       <button
         onMouseDown={() => setIsHolding(true)}
         onMouseUp={() => setIsHolding(false)}
         onMouseLeave={() => setIsHolding(false)}
-        className='relative   rounded-full p-2 px-5 overflow-hidden cursor-pointer active:scale-95 transition-transform duration-200 shadow-[0_8px_20px_rgba(255,255,255,0.15)_inset,0_4px_30px_rgba(0,0,0,0.3)]
-backdrop-blur-md flex items-center gap-2'>
-
-        <div className='absolute inset-0 p-2 px-5 text-white bg-red-400 transition-[clip-path] duration-1000 linear flex items-center gap-2 justify-center'
+        className="relative   rounded-full p-2 px-5 overflow-hidden cursor-pointer active:scale-95 transition-transform duration-200 shadow-[0_8px_20px_rgba(255,255,255,0.15)_inset,0_4px_30px_rgba(0,0,0,0.3)]
+backdrop-blur-md flex items-center gap-2"
+      >
+        <div
+          className="absolute inset-0 p-2 px-5 text-white bg-red-400 transition-[clip-path] duration-1000 linear flex items-center gap-2 justify-center"
           style={{
-            clipPath: isHolding ? 'inset(0% 0% 0% 0%)' : 'inset(0% 100% 0% 0%)'
+            clipPath: isHolding ? 'inset(0% 0% 0% 0%)' : 'inset(0% 100% 0% 0%)',
           }}
         >
           <TrashedButton />
           Hold the button
-
         </div>
         <TrashedButton />
         Hold the button
       </button>
     </div>
-  )
+  );
 }
 
 function TrashedButton() {
@@ -118,7 +111,6 @@ function TrashedButton() {
 //     </motion.div>
 //   );
 // }
-
 
 // export function StairsLoader() {
 //   const [activeId, setActiveId] = useState(0);
