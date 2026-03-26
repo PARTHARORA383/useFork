@@ -311,7 +311,6 @@ export function PopoverContent({ position = 'top' }: PopoverContentProps) {
           </div>
         </div>
       </motion.div>
-      ,
     </>,
     document.body,
   );
