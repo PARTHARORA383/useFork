@@ -1,10 +1,10 @@
 import { cn } from '@/lib/cn';
-import { AnimatePresence, motion, Variants } from 'motion/react';
+import { motion } from 'motion/react';
 import React, { useEffect, useRef, useState } from 'react';
 
 interface RevealButtonProps {
   title?: string;
-  children: React.ReactNode; // expects RadialIcon and RadialTitle
+  children: React.ReactNode;
   onClick?: () => void;
   className?: string;
 }
@@ -13,32 +13,24 @@ function RevealButton({ title, children, onClick, className }: RevealButtonProps
   const [isActive, setIsActive] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (isActive && containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        console.log('outside');
-        setIsActive(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isActive]);
-
   return (
     <motion.div className="flex items-center justify-center gap-2">
       <motion.div
         ref={containerRef}
-        className={`flex items-center justify-center gap-2 border rounded-full p-1.5 border-muted-foreground origin-left overflow-hidden  ${isActive ? 'hover:bg-muted3 cursor-pointer' : 'hover:bg-muted2 cursor-default'}`}
+        className={cn(
+          'flex items-center justify-center border p-2 rounded-xl origin-left overflow-hidden cursor-pointer text-white',
+          isActive
+            ? `gap-2 bg-sky-400/40 border-sky-200 dark:bg-purple-400/40 dark:border-purple-200`
+            : 'hover:bg-muted2 border-muted-foreground',
+          className
+        )}
         onClick={() => {
-          isActive ? onClick?.() : setIsActive(true);
+          setIsActive((prev)=>!prev)
+          onClick?.();
         }}
       >
         {children}
-        <AnimatePresence mode="wait">
-          {isActive && <RevealButtonTitle title={title} />}
-        </AnimatePresence>
+        <RevealButtonTitle title={title} isActive={isActive} />
       </motion.div>
     </motion.div>
   );
@@ -49,45 +41,42 @@ interface RevealButtonIconProps {
   className?: string;
 }
 
-function RevealButtonIcon({ icon, className, ...props }: RevealButtonIconProps) {
+function RevealButtonIcon({ icon, className }: RevealButtonIconProps) {
   return (
-    <motion.div className={cn('', className)} {...props}>
+    <motion.div className={cn('', className)}>
       {icon}
     </motion.div>
   );
 }
-
 RevealButtonIcon.displayName = 'RevealButtonIcon';
 
-interface RadialTitleProps {
+interface RevealButtonTitleProps {
   title?: string;
-
   className?: string;
+  isActive: boolean;
 }
-
-const LABEL_VARIANTS: Variants = {
-  rest: { opacity: 0, x: 4 },
-  hover: {
-    opacity: 1,
-    x: 0,
-    visibility: 'visible',
-    width: 'auto',
-  },
-  tap: { opacity: 1, x: 0, visibility: 'visible', width: 'auto' },
-};
-
-function RevealButtonTitle({ title, className }: RadialTitleProps) {
+function RevealButtonTitle({ isActive, title, className }: RevealButtonTitleProps) {
   return (
-    <motion.div
-      layout="size"
-      initial={{ width: 0, opacity: 0, filter: 'blur(2px)' }}
-      animate={{ width: 'auto', opacity: 1, filter: 'blur(0px)' }}
-      exit={{ width: 0, opacity: 0, filter: 'blur(2px)' }}
-      transition={{ duration: 0.4, ease: 'easeInOut' }}
-      className={cn('', className)}
+    <motion.span
+      animate={{
+        maxWidth: isActive ? 200 : 0,
+        opacity: isActive ? 1 : 0,
+        filter: isActive ? 'blur(0px)' : 'blur(4px)',
+      }}
+      transition={{
+        opacity: { duration: 0.25, ease: 'easeInOut' },
+        filter: { duration: 0.25, ease: 'easeInOut' },
+        maxWidth: {
+          duration: 0.3,
+          ease: 'easeInOut',
+          delay: isActive ? 0 : 0.2, // wait for fade to finish before collapsing
+        },
+      }}
+      initial={false}
+      className={cn('flex-shrink-0 overflow-hidden whitespace-nowrap', className)}
     >
       {title}
-    </motion.div>
+    </motion.span>
   );
 }
 
