@@ -88,7 +88,9 @@ type IconWrapperProps<T> = IconProps<T> & {
   icon: React.ComponentType<IconProps<T>>;
 };
 
-const AnimateIconContext = React.createContext<AnimateIconContextValue | null>(null);
+const AnimateIconContext = React.createContext<AnimateIconContextValue | null>(
+  null,
+);
 
 function useAnimateIconContext() {
   const context = React.useContext(AnimateIconContext);
@@ -145,9 +147,9 @@ function AnimateIcon({
     if (animate === undefined || animate === false) return false;
     return delay <= 0;
   });
-  const [currentAnimation, setCurrentAnimation] = React.useState<string | StaticAnimations>(
-    typeof animate === 'string' ? animate : animation,
-  );
+  const [currentAnimation, setCurrentAnimation] = React.useState<
+    string | StaticAnimations
+  >(typeof animate === 'string' ? animate : animation);
   const [status, setStatus] = React.useState<'initial' | 'animate'>('initial');
 
   const delayRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -253,7 +255,11 @@ function AnimateIcon({
       }
 
       if (!localAnimate) {
-        if (completeOnStop && isAnimateInProgressRef.current && animateEndPromiseRef.current) {
+        if (
+          completeOnStop &&
+          isAnimateInProgressRef.current &&
+          animateEndPromiseRef.current
+        ) {
           try {
             await animateEndPromiseRef.current;
           } catch {
@@ -330,12 +336,14 @@ function AnimateIcon({
             return;
           }
           if (!activeRef.current) {
-            if (status !== 'initial' && !persistOnAnimateEnd) await startAnim('initial');
+            if (status !== 'initial' && !persistOnAnimateEnd)
+              await startAnim('initial');
             return;
           }
         } else {
           if (!activeRef.current) {
-            if (status !== 'initial' && !persistOnAnimateEnd) await startAnim('initial');
+            if (status !== 'initial' && !persistOnAnimateEnd)
+              await startAnim('initial');
             return;
           }
         }
@@ -381,12 +389,11 @@ function AnimateIcon({
     },
   );
 
-  const handlePointerDown = composeEventHandlers<React.PointerEvent<HTMLElement>>(
-    childProps.onPointerDown,
-    () => {
-      if (animateOnTap) startAnimation(animateOnTap);
-    },
-  );
+  const handlePointerDown = composeEventHandlers<
+    React.PointerEvent<HTMLElement>
+  >(childProps.onPointerDown, () => {
+    if (animateOnTap) startAnimation(animateOnTap);
+  });
 
   const handlePointerUp = composeEventHandlers<React.PointerEvent<HTMLElement>>(
     childProps.onPointerUp,
@@ -438,7 +445,8 @@ function AnimateIcon({
   );
 }
 
-const pathClassName = "[&_[stroke-dasharray='1px_1px']]:![stroke-dasharray:1px_0px]";
+const pathClassName =
+  "[&_[stroke-dasharray='1px_1px']]:![stroke-dasharray:1px_0px]";
 
 function IconWrapper<T extends string>({
   size = 28,
@@ -492,7 +500,9 @@ function IconWrapper<T extends string>({
         ? (animationProp ?? parentAnimation ?? 'default')
         : false;
 
-      const finalAnimate: Trigger = (animate ?? parentAnimate ?? inheritedAnimate) as Trigger;
+      const finalAnimate: Trigger = (animate ??
+        parentAnimate ??
+        inheritedAnimate) as Trigger;
 
       return (
         <AnimateIcon
@@ -547,7 +557,8 @@ function IconWrapper<T extends string>({
           size={size}
           className={cn(
             className,
-            (animationToUse === 'path' || animationToUse === 'path-loop') && pathClassName,
+            (animationToUse === 'path' || animationToUse === 'path-loop') &&
+              pathClassName,
           )}
           {...props}
         />
@@ -581,7 +592,8 @@ function IconWrapper<T extends string>({
           size={size}
           className={cn(
             className,
-            (animationProp === 'path' || animationProp === 'path-loop') && pathClassName,
+            (animationProp === 'path' || animationProp === 'path-loop') &&
+              pathClassName,
           )}
           {...props}
         />
@@ -594,7 +606,8 @@ function IconWrapper<T extends string>({
       size={size}
       className={cn(
         className,
-        (animationProp === 'path' || animationProp === 'path-loop') && pathClassName,
+        (animationProp === 'path' || animationProp === 'path-loop') &&
+          pathClassName,
       )}
       {...props}
     />
@@ -614,7 +627,10 @@ function getVariants<
     const variant = staticAnimations[animationType as StaticAnimations];
     result = {} as T;
     for (const key in animations.default) {
-      if ((animationType === 'path' || animationType === 'path-loop') && key.includes('group'))
+      if (
+        (animationType === 'path' || animationType === 'path-loop') &&
+        key.includes('group')
+      )
         continue;
       result[key] = variant as T[Extract<keyof T, string>];
     }

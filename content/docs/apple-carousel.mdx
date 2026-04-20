@@ -1,0 +1,50 @@
+---
+title: 'Apple Carousel'
+description: "An interactive carousel inspired by Apple’s product showcases, recreated with smooth expanding panels, soft blur transitions, and fluid motion. It highlights content through focus-based interactions, delivering a clean, premium browsing experience ideal for product storytelling and modern UI layouts."
+---
+
+<PreviewCode
+  position="center"
+  className="relative"
+  component={<AppleCarouselDemo />}
+  codePath="/r/apple-carousel.json"
+/>
+
+<CodePopup>
+
+<HeadingDescription
+  title="Apple Carousel"
+  description="An interactive carousel inspired by Apple’s product showcases, recreated with smooth expanding panels, soft blur transitions, and fluid motion. It highlights content through focus-based interactions, delivering a clean, premium browsing experience ideal for product storytelling and modern UI layouts."
+/>
+---
+
+### Installation
+
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/apple-carousel.json'}
+  codePath="/r/apple-carousel.json"
+/>
+---
+
+### How to use
+
+<CodeBlockComponent codePath="/r/apple-carousel.json" />
+
+---
+
+### Props
+CarouselBody
+<Table data={{ children: { description: 'All carousel elements including triggers and content.', type: 'ReactNode', default: 'Required', }, className: { description: 'Optional custom classes for the main container.', type: 'string', default: '`""`', }, defaultValue: { description: 'The initial active slide value.', type: 'string', default: 'Required', }, }} />
+
+CarousalList
+<Table data={{ children: { description: 'CarouselTrigger components to be displayed in the list.', type: 'ReactNode', default: 'Required', }, className: { description: 'Optional styling for the list container.', type: 'string', default: '`""`', }, }} />
+
+
+CarouselTrigger
+<Table data={{ title: { description: 'Short label shown when the trigger is inactive.', type: 'string', default: 'Required', }, children: { description: 'Expanded content shown when the trigger is active.', type: 'ReactNode', default: 'Required', }, className: { description: 'Optional custom classes for styling the trigger.', type: 'string', default: '`""`', }, value: { description: 'Unique identifier used to control active state.', type: 'string', default: 'Required', }, }} />
+
+
+CarouselContent
+<Table data={{ children: { description: 'Content displayed when the matching trigger is active.', type: 'ReactNode', default: 'Required', }, className: { description: 'Optional styling for the content container.', type: 'string', default: '`""`', }, value: { description: 'Must match the corresponding CarouselTrigger value.', type: 'string', default: 'Required', }, }} />
+
+</CodePopup>

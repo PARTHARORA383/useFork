@@ -41,7 +41,8 @@ export const NavigationLinkData: NavigationSection[] = [
           { id: 10, title: 'Text Hover Marquee', href: '/docs/text-hover-marquee' },
           { id: 11, title: 'Carousal-01', href: '/docs/carousal01' },
           { id: 12, title: 'Parallax Slider', href: '/docs/parallax-slider' },
-          {id : 16, title: 'Cool Buttons', href: '/docs/cool-buttons' }
+          {id : 16, title: 'Cool Buttons', href: '/docs/cool-buttons' },
+          {id : 17, title: 'Apple Carousel', href: '/docs/apple-carousel' }
         ],
       },
       {

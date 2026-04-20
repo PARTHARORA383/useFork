@@ -6,6 +6,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ParallaxSlider } from '@/components/carousals/parallax-slider';
 import { useState } from 'react';
 import { HoldRevealButton, HoldRevealButtonOverlay } from '@/components/buttons/hold-reveal-button';
+import { AiChatFooter, AiChatHeader, AiChatInput, AiChatInputBody, AiChatReadyToSubmit } from '@/components/ai/ai-chat-input';
+import { AiChatProvider, useAiChat } from '@/components/ai/ai-chat-context';
+import { AiUpload } from '@/components/ai/ai-upload';
+import { RevealButton, RevealButtonIcon } from '@/components/reveal-button';
+import { Bookmark, Globe } from 'lucide-react';
+import {  AppleCarouselDemo } from '@/components/demo/apple-carousel-demo';
+
 
 const images = [
   { src: '/images/usefork20.jpg' },
@@ -16,9 +23,42 @@ const images = [
 ];
 
 export default function TestPage() {
+
+
+  const handleOnSubmit = async () => {
+    await new Promise((resolve, reject) => {
+      const math = Math.random() > 0.5;
+      if (math) setTimeout(resolve, 2000);
+      else {
+        setTimeout(() => reject(new Error("Mock failure")), 2000);
+      }
+    })
+  }
+
   return (
     <>
-      <div className="flex items-center justify-center mt-8"></div>
+      <div className="flex items-center justify-center bg-gradient-to-r from-purple-200 to-purple-100 h-screen w-screen rounded-lg">
+        {/* <AiChatProvider>
+          <AiChatInputBody>
+            <AiChatHeader className=' flex items-center gap-2' />
+            <AiChatInput onSubmit={handleOnSubmit} />
+            <AiChatFooter className='w-full justify-between '>
+              <div className='flex items-center gap-2'>
+                <AiUpload />
+                <RevealButton title="Bookmark" className='py-2 text-foreground bg-muted border-0 hover:bg-muted'>
+                  <RevealButtonIcon icon={<Globe className="w-5 h-5" />} />
+                </RevealButton>
+              </div>
+              <div>
+                <AiChatReadyToSubmit onClick={handleOnSubmit} />
+              </div>
+            </AiChatFooter>
+          </AiChatInputBody>
+        </AiChatProvider> */}
+
+        <AppleCarouselDemo/>
+        
+      </div>
     </>
   );
 }

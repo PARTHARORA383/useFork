@@ -387,6 +387,25 @@
         }
       ],
       "dependencies": ["motion ","lucide-react"]
+    },
+    {
+      "name": "apple-carousel",
+      "type": "registry:block",
+      "title": "apple-carousel",
+      "description": "An interactive carousel component recreated from the apple website.",
+      "files": [
+        {
+          "path": "components/carousals/apple-carousal.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/apple-carousel-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion "]
     }
   ]
 }
