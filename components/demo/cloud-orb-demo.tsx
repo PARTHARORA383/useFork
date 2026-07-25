@@ -44,7 +44,7 @@ export function CloudOrbDemo() {
 
   const [flowX, setFlowX] = useState(0.15);
   const [flowY, setFlowY] = useState(0);
-  const [speed, setSpeed] = useState(0.06);
+  const [speed, setSpeed] = useState(0.15);
   const [warpStrength, setWarpStrength] = useState(0.08);
   const [grainAmount, setGrainAmount] = useState(0.03);
   const [colors, setColors] = useState<string[]>([...DEFAULT_COLORS]);
@@ -52,7 +52,7 @@ export function CloudOrbDemo() {
   const resetAll = () => {
     setFlowX(0.15);
     setFlowY(0);
-    setSpeed(0.06);
+    setSpeed(0.15);
     setWarpStrength(0.08);
     setGrainAmount(0.03);
     setColors([...DEFAULT_COLORS]);

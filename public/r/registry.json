@@ -1,0 +1,445 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "acme",
+  "homepage": "https://acme.com",
+  "items": [
+    {
+      "name": "animated-tabs",
+      "type": "registry:block",
+      "title": "Animated Tabs",
+      "description": "A reusable and customizable tabs component built with Radix UI and Motion. Supports smooth sliding highlight animations on tab triggers and fade-in/out transitions for tab content.",
+      "files": [
+        {
+          "path": "components/animated-tabs.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/animated-tabs-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "@radix-ui/react-tabs", "lucide-react"]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:block",
+      "title": "Code Block",
+      "description": "A reusable and customizable code block component built with React and Motion.",
+      "files": [
+        {
+          "path": "components/code-block.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/code-block-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "shiki", "@shikijs/transformers", "lucide-react"]
+    },
+    {
+      "name": "music-player",
+      "type": "registry:block",
+      "title": "Music Player",
+      "description": "A customizable music player built with React and Framer Motion, supporting animated transitions and hover effects.",
+      "files": [
+        {
+          "path": "components/music-player.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/music-player-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "lucide-react"]
+    },
+    {
+      "name": "wave-in-text",
+      "type": "registry:block",
+      "title": "WaveInText",
+      "description": "A fully reusable and customizable text wrapper featuring a smooth, wave-like animation built with React and Framer Motion. Simply wrap your text with this component to bring it to life with fluid, elegant motion.",
+      "files": [
+        {
+          "path": "components/wave-in-text.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/wave-in-text-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "roll-in-text",
+      "type": "registry:block",
+      "title": "Text Roll Wrapper",
+      "description": "A fully reusable and customizable text wrapper with a smooth roll-in animation effect. Simply wrap your string with the component and watch the text come to life with motion magic.",
+      "files": [
+        {
+          "path": "components/roll-in-text.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/roll-in-text-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "roll-over-text",
+      "type": "registry:block",
+      "title": "Text RollOver Wrapper",
+      "description": "A fully reusable and customizable text wrapper with a smooth roll-in animation effect. Simply wrap your string with the component and watch the text come to life with motion magic.",
+      "files": [
+        {
+          "path": "components/roll-over-text.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/roll-over-text-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "parallax-images",
+      "type": "registry:block",
+      "title": "Parallax Images",
+      "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
+      "files": [
+        {
+          "path": "components/parallax-images.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/parallax-images-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "banner-carousal",
+      "type": "registry:block",
+      "title": "Banner Carousal",
+      "description": "A dynamic and reusable Banner Carousel built with React and Motion. It features smooth animated transitions, including overlay previews that expand into the main background, creating an engaging and visually appealing slideshow. Fully responsive and customizable for any set of images",
+      "files": [
+        {
+          "path": "components/carousals/banner-carousal.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/banner-carousal-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "stopwatch",
+      "type": "registry:block",
+      "title": "Stopwatch",
+      "description": "A responsive and animated stopwatch component built with Motion. Features smooth layout transitions, start/pause/reset functionality, and fluid time updates for an engaging and interactive user experience. Ideal for dashboards, timers, and productivity tools.",
+      "files": [
+        {
+          "path": "components/stopwatch.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/stopwatch-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "animate-ui/icons-icon"]
+    },
+    {
+      "name": "reveal-button",
+      "type": "registry:block",
+      "title": "Reveal Button",
+      "description": "A reusable animated button that reveals its title with a smooth expanding motion when clicked, adding a subtle interactive touch to the UI.",
+      "files": [
+        {
+          "path": "components/reveal-button.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/reveal-button-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "animate-ui/icons-icon"]
+    },
+    {
+      "name": "save-toggle",
+      "type": "registry:block",
+      "title": "Save Toggle",
+      "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
+      "files": [
+        {
+          "path": "components/save-toggle.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/save-toggle-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/loader-circle.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "lucide-react"]
+    },
+    {
+      "name": "flip-card-hover",
+      "type": "registry:block",
+      "title": "Flip Card On Hover",
+      "description": "A sleek, motion-powered FlipCard with directional flip animations. Fully customizable, fluid, and responsive—perfect for elevating product or brand storytelling. It was inspired by the merch of DodoPayments.",
+      "files": [
+        {
+          "path": "components/flip-card-hover.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/flip-card-hover-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "lucide-react"]
+    },
+    {
+      "name": "side-navigation",
+      "type": "registry:block",
+      "title": "Side Navigation",
+      "description": "A sleek side navigation bar that smoothly expands on hover using Motion animations. It provides an interactive, minimal UI with auto-indexing items for quick navigation.",
+      "files": [
+        {
+          "path": "components/side-navigation.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/side-navigation-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "text-video-mask",
+      "type": "registry:block",
+      "title": "Text Video Mask",
+      "description": "A reusable and fully customizable Text-Video Mask component that blends video backgrounds inside bold, animated text. Perfect for creating high-impact hero sections, branding visuals, and dynamic landing pages.",
+      "files": [
+        {
+          "path": "components/text-video-mask.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/text-video-mask-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "text-hover-marquee",
+      "type": "registry:block",
+      "title": "Text Hover Marquee",
+      "description": "A reusable and fully customizable Text-Video Mask component that blends video backgrounds inside bold, animated text. Perfect for creating high-impact hero sections, branding visuals, and dynamic landing pages.",
+      "files": [
+        {
+          "path": "components/text-hover-marquee.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/text-hover-marquee-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "carousal-01",
+      "type": "registry:block",
+      "title": "carousal-01",
+      "description": "An interactive card carousal component built with swiper and motion.",
+      "files": [
+        {
+          "path": "components/carousals/carousal-01.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/carousal-01-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "swiper"]
+    },
+    {
+      "name": "parallax-slider",
+      "type": "registry:block",
+      "title": "parallax-slider",
+      "description": "Smooth parallax image slider built with swiper and motion.",
+      "files": [
+        {
+          "path": "components/carousals/parallax-slider.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/parallax-slider-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion", "swiper"]
+    },
+    {
+      "name": "roll-reveal-button",
+      "type": "registry:block",
+      "title": "roll-reveal-button",
+      "description": "Smooth button with a roll in reveal effect.",
+      "files": [
+        {
+          "path": "components/buttons/roll-reveal-button.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/cool-button-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion"]
+    },
+    {
+      "name": "hold-reveal-button",
+      "type": "registry:block",
+      "title": "hold-reveal-button",
+      "description": "Smooth hold to reveal button best used for delete animations.",
+      "files": [
+        {
+          "path": "components/buttons/hold-reveal-button.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/cool-button-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion" , "lucide-react"]
+    },
+    {
+      "name": "origin-button",
+      "type": "registry:block",
+      "title": "origin-button",
+      "description": "A cursor-aware hover effect that expands from where you enter and collapses where you leave..",
+      "files": [
+        {
+          "path": "components/buttons/origin-button.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/cool-button-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion ","lucide-react"]
+    },
+    {
+      "name": "apple-carousel",
+      "type": "registry:block",
+      "title": "apple-carousel",
+      "description": "An interactive carousel component recreated from the apple website.",
+      "files": [
+        {
+          "path": "components/carousals/apple-carousal.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/apple-carousel-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["motion "]
+    },
+    {
+      "name": "cloud-orb",
+      "type": "registry:block",
+      "title": "Cloud Orb",
+      "description": "An animated, shader-driven 3D orb built with React Three Fiber, featuring flowing gradient clouds, ribbon layers, and reactive idle, listening, and speaking states.",
+      "files": [
+        {
+          "path": "components/orb/cloud-orb.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/cloud-orb-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/orb/orb-toolbar.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/orb/color-presets.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/cloud-orb-usage.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["three", "@react-three/fiber", "motion", "lucide-react"]
+    }
+  ]
+}

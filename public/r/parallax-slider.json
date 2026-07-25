@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "parallax-slider",
-  "type": "registry:block",
   "title": "parallax-slider",
   "description": "Smooth parallax image slider built with swiper and motion.",
   "dependencies": [
@@ -19,5 +18,6 @@
       "content": "import { ParallaxSlider } from '../carousals/parallax-slider';\r\n\r\nexport function ParallaxSliderDemo() {\r\n  const images = [\r\n    { src: '/images/usefork20.jpg' },\r\n    { src: '/images/usefork12.jpg' },\r\n    { src: '/images/usefork11.jpg' },\r\n    { src: '/images/usefork9.jpg' },\r\n    { src: '/images/usefork8.jpg' },\r\n  ];\r\n\r\n  return (\r\n    <div>\r\n      <ParallaxSlider images={images} />\r\n    </div>\r\n  );\r\n}\r\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

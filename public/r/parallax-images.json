@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "parallax-images",
-  "type": "registry:block",
   "title": "Parallax Images",
   "description": "An interactive parallax showcase where images drift in dual lanes, elegantly responding to cursor movement and adding a captivating sense of depth. A recreation from the landonorris website.",
   "dependencies": [
@@ -18,5 +17,6 @@
       "content": "'use client';\r\n\r\nimport { MouseParallaxImages } from '@/components/parallax-images';\r\nimport HoverCursor from '../hover-cursor';\r\n\r\nexport function MouseParallaxImagesDemo() {\r\n  const left = [\r\n    { src: 'https://i.pinimg.com/736x/fa/2e/b8/fa2eb8fe7012d991cfb06b9ff58ebf2b.jpg' },\r\n    { src: 'https://i.pinimg.com/1200x/28/ae/db/28aedb0c63b1cdf0739e90e08653af0b.jpg' },\r\n  ];\r\n\r\n  const right = [\r\n    { src: 'https://i.pinimg.com/736x/f7/38/ac/f738ace16139857c6bbb173120bc5b84.jpg' },\r\n    { src: 'https://i.pinimg.com/1200x/58/85/d1/5885d1f6220c22bd6018c3451a3cc23d.jpg' },\r\n  ];\r\n\r\n  return (\r\n    <div className=\"w-full h-full\">\r\n      <MouseParallaxImages leftLane={left} rightLane={right} />\r\n    </div>\r\n  );\r\n}\r\n\r\n//Creator - Parth Arora\r\n//X - https://x.com/partharora9128\r\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { motion, AnimatePresence, Variant, Variants, number } from 'motion/react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
-import '@/app/global.css';
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
@@ -52,6 +51,7 @@ export function CustomNavbar() {
 
   return (
     <motion.div
+      initial={false}
       layout
       onClick={() => setIsOpen(!isOpen)}
       animate={{
@@ -63,7 +63,7 @@ export function CustomNavbar() {
         ease: [0.22, 1, 0.36, 1],
       }}
       className="fixed top-7 left-1/2 -translate-x-1/2
-        rounded-3xl border bg-muted3 z-20
+        rounded-3xl border bg-muted3/50 backdrop-blur-xl z-20
         px-6 overflow-hidden cursor-pointer"
     >
       {/* Top Row */}

@@ -8,6 +8,7 @@ import { CommandK } from './command-k';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { getAllPages } from './previous-next';
 import { CurrentIndexItemProps, useCurrentIndex } from '@/hooks/use-prev-next';
+import { useSidebar } from 'fumadocs-ui/contexts/sidebar';
 import Link from 'next/link';
 
 interface ToolbarItem {
@@ -130,6 +131,7 @@ function Previous() {
   const [hovered, setHovered] = useState(false);
   const [direction, setDirection] = useState<Direction>('top');
   const ref = useRef<HTMLDivElement>(null);
+  const sidebar = useSidebar();
 
   const pages = getAllPages();
   const { currentIndex, setCurrentIndex, prevIndex, setPrevIndex } = useCurrentIndex();
@@ -147,19 +149,27 @@ function Previous() {
     else setDirection('right');
   }, [hovered]);
 
-  // Find current page index
+  // `currentIndex` stores the page's stable `id`, not its position in the
+  // flattened `pages` array — resolve the actual array index first.
   const currentPage = pages.findIndex((p) => p.id === currentIndex);
 
   useEffect(() => {
-    const nextPrev = currentIndex <= 0 ? pages.length - 1 : currentIndex - 1;
+    if (currentPage === -1) return;
+    const nextPrev = currentPage <= 0 ? pages.length - 1 : currentPage - 1;
     setPrevIndex(nextPrev);
-  }, [currentIndex, pages.length, setPrevIndex]);
+  }, [currentPage, pages.length, setPrevIndex]);
 
   const prevPage = pages[prevIndex];
 
   const handlePrev = () => {
-    setCurrentIndex((curr) => (curr === 0 ? pages.length - 1 : currentIndex - 1));
+    setCurrentIndex((curr) => {
+      const idx = pages.findIndex((p) => p.id === curr);
+      const newIdx = idx <= 0 ? pages.length - 1 : idx - 1;
+      return pages[newIdx].id;
+    });
   };
+
+  if (!prevPage) return null;
 
   return (
     <Link href={prevPage.href}>
@@ -168,6 +178,7 @@ function Previous() {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={() => {
+          sidebar.closeOnRedirect.current = false;
           setHovered(false);
           handlePrev();
         }}
@@ -209,8 +220,10 @@ function Next() {
   const [hovered, setHovered] = useState(false);
   const [direction, setDirection] = useState<Direction>('top');
   const ref = useRef<HTMLDivElement>(null);
+  const sidebar = useSidebar();
 
-  // Find current page index
+  // `currentIndex` stores the page's stable `id`, not its position in the
+  // flattened `pages` array — resolve the actual array index first.
   const currentId = pages.findIndex((p) => p.id === currentIndex);
 
   useEffect(() => {
@@ -227,15 +240,22 @@ function Next() {
   }, [hovered]);
 
   useEffect(() => {
-    const nextPrev = currentIndex === pages.length - 1 ? 0 : currentIndex + 1;
+    if (currentId === -1) return;
+    const nextPrev = currentId === pages.length - 1 ? 0 : currentId + 1;
     setNextIndex(nextPrev);
-  }, [currentIndex, pages.length, setNextIndex]);
+  }, [currentId, pages.length, setNextIndex]);
 
   const nextPage = pages[nextIndex];
 
   const handleNext = () => {
-    setCurrentIndex(currentIndex === pages.length - 1 ? 0 : currentIndex + 1);
+    setCurrentIndex((curr) => {
+      const idx = pages.findIndex((p) => p.id === curr);
+      const newIdx = idx === pages.length - 1 ? 0 : idx + 1;
+      return pages[newIdx].id;
+    });
   };
+
+  if (!nextPage) return null;
 
   return (
     <Link href={nextPage.href}>
@@ -244,6 +264,7 @@ function Next() {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onClick={() => {
+          sidebar.closeOnRedirect.current = false;
           setHovered(false);
           handleNext();
         }}

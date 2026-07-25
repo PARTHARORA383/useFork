@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "side-navigation",
-  "type": "registry:block",
   "title": "Side Navigation",
   "description": "A sleek side navigation bar that smoothly expands on hover using Motion animations. It provides an interactive, minimal UI with auto-indexing items for quick navigation.",
   "dependencies": [
@@ -18,5 +17,6 @@
       "content": "'use client';\r\n\r\nimport { SideNavigation, SideNavigationItem } from '@/components/side-navigation';\r\n\r\nexport function SideNavigationDemo() {\r\n  return (\r\n    <SideNavigation>\r\n      <SideNavigationItem href=\"/\" title=\"Home\" />\r\n      <SideNavigationItem href=\"/\" title=\"Projects\" />\r\n      <SideNavigationItem href=\"/\" title=\"Experience\" />\r\n      <SideNavigationItem href=\"/\" title=\"Contact\" />\r\n      <SideNavigationItem href=\"/\" title=\"Github\" />\r\n    </SideNavigation>\r\n  );\r\n}\r\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

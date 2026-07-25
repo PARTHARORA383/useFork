@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "carousal-01",
-  "type": "registry:block",
   "title": "carousal-01",
   "description": "An interactive card carousal component built with swiper and motion.",
   "dependencies": [
@@ -19,5 +18,6 @@
       "content": "import { Carousal01 } from '@/components/carousals/carousal-01';\r\nimport HoverCursor from '@/components/hover-cursor';\r\n\r\nexport function Carousal01Demo() {\r\n  const images = [\r\n    { src: '/images/usefork7.jpeg' },\r\n    { src: '/images/usefork6.jpeg' },\r\n    { src: '/images/usefork5.jpeg' },\r\n    { src: '/images/usefork4.jpeg' },\r\n  ];\r\n\r\n  return (\r\n    <HoverCursor className=\"bg-muted3 font-medium\" color=\"#232323\">\r\n      <Carousal01 images={images} />\r\n    </HoverCursor>\r\n  );\r\n}\r\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

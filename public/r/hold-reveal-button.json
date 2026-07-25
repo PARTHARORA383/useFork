@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "hold-reveal-button",
-  "type": "registry:block",
   "title": "hold-reveal-button",
   "description": "Smooth hold to reveal button best used for delete animations.",
   "dependencies": [
@@ -19,5 +18,6 @@
       "content": "import { GhostIcon } from \"lucide-react\";\r\nimport { HoldRevealButton, HoldRevealButtonOverlay } from \"@/components/buttons/hold-reveal-button\";\r\nimport { OriginButton, OriginButtonOverlay } from \"@/components/buttons/origin-button\";\r\nimport { RollRevealButton, RollRevealButtonText } from \"@/components/buttons/roll-reveal-button\";\r\n\r\nexport function CoolButtonsDemo() {\r\n  return (\r\n\r\n    <div className=\"flex flex-col gap-8 items-center\">\r\n\r\n      <div className=\"flex items-center justify-center gap-6\">\r\n\r\n        {/* Roll Reveal Button Example */}\r\n        <RollRevealButton>\r\n          <RollRevealButtonText />\r\n        </RollRevealButton>\r\n        \r\n        {/* Origin Button Example */}\r\n        <OriginButton icon={<GhostIcon className=\"w-5 h-5\" />}>\r\n          <OriginButtonOverlay icon={<GhostIcon className=\"w-5 h-5\" />} />\r\n        </OriginButton>\r\n\r\n      </div>\r\n\r\n      {/* Hold Reveal Button Example */}\r\n      <HoldRevealButton>\r\n        <HoldRevealButtonOverlay />\r\n      </HoldRevealButton>\r\n\r\n    </div>\r\n  )\r\n}",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

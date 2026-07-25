@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "code-block",
-  "type": "registry:block",
   "title": "Code Block",
   "description": "A reusable and customizable code block component built with React and Motion.",
   "dependencies": [
@@ -21,5 +20,6 @@
       "content": "'use client';\r\n\r\nimport {\r\n  CodeBlock,\r\n  CodeBlockContent,\r\n  CodeBlockCopyButton,\r\n  CodeBlockFilename,\r\n  CodeBlockHeader,\r\n} from '@/components/code-block';\r\n\r\nexport function CodeBlockDemo() {\r\n  const data = {\r\n    code: `import React from \"react\";\r\n\r\nexport default function CodeBlock() {\r\n  return (\r\n    <div>\r\n      <h1>Hello, beautifull code block here! </h1>\r\n    </div>\r\n  )\r\n}`,\r\n    language: 'tsx',\r\n    fileName: 'components/code-block.tsx',\r\n  };\r\n\r\n  return (\r\n    <CodeBlock data={data}>\r\n      <CodeBlockHeader>\r\n        <CodeBlockFilename />\r\n        <CodeBlockCopyButton />\r\n      </CodeBlockHeader>\r\n      <CodeBlockContent />\r\n    </CodeBlock>\r\n  );\r\n}\r\n\r\n//Creator - Parth Arora\r\n//X - https://x.com/partharora9128\r\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

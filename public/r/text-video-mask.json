@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "text-video-mask",
-  "type": "registry:block",
   "title": "Text Video Mask",
   "description": "A reusable and fully customizable Text-Video Mask component that blends video backgrounds inside bold, animated text. Perfect for creating high-impact hero sections, branding visuals, and dynamic landing pages.",
   "dependencies": [
@@ -18,5 +17,6 @@
       "content": "'use client';\r\n\r\nimport { TextVideoMaskContainer, VideoBackground, MaskedText } from '@/components/text-video-mask';\r\n\r\nexport function TextVideoMaskDemo() {\r\n  return (\r\n    <TextVideoMaskContainer>\r\n      <VideoBackground src=\"https://usefork.dev/videos/usefork1.mp4\" />\r\n      <MaskedText texts={['DRIVE', 'LEAD', 'CREATE']} className=\"text-[700px]\" opacity={0.85} />\r\n    </TextVideoMaskContainer>\r\n  );\r\n}\r\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

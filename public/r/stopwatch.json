@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "stopwatch",
-  "type": "registry:block",
   "title": "Stopwatch",
   "description": "A responsive and animated stopwatch component built with Motion. Features smooth layout transitions, start/pause/reset functionality, and fluid time updates for an engaging and interactive user experience. Ideal for dashboards, timers, and productivity tools.",
   "dependencies": [
@@ -19,5 +18,6 @@
       "content": "'use client';\r\n\r\nimport { Stopwatch } from '@/components/stopwatch';\r\n\r\nexport function StopwatchDemo() {\r\n  return (\r\n    <div>\r\n      <Stopwatch />\r\n    </div>\r\n  );\r\n}\r\n\r\n//Creator - Parth Arora\r\n//X - https://x.com/partharora9128\r\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

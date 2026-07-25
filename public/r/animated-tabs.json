@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-tabs",
-  "type": "registry:block",
   "title": "Animated Tabs",
   "description": "A reusable and customizable tabs component built with Radix UI and Motion. Supports smooth sliding highlight animations on tab triggers and fade-in/out transitions for tab content.",
   "dependencies": [
@@ -20,5 +19,6 @@
       "content": "import {\r\n  AnimatedTabs,\r\n  AnimatedTabsContent,\r\n  AnimatedTabsList,\r\n  AnimatedTabsTrigger,\r\n} from '@/components/animated-tabs';\r\n\r\nexport function AnimatedTabsDemo() {\r\n  return (\r\n    <>\r\n      <AnimatedTabs defaultValue=\"preview\">\r\n        <AnimatedTabsList>\r\n          <AnimatedTabsTrigger value=\"preview\">Preview</AnimatedTabsTrigger>\r\n          <AnimatedTabsTrigger value=\"code\">Code</AnimatedTabsTrigger>\r\n        </AnimatedTabsList>\r\n        <AnimatedTabsContent value=\"preview\">\r\n          <div className=\"p-4 rounded-lg border\">Preview Content</div>\r\n        </AnimatedTabsContent>\r\n        <AnimatedTabsContent value=\"code\">\r\n          <div className=\"p-4 rounded-lg border\">Code Content</div>\r\n        </AnimatedTabsContent>\r\n      </AnimatedTabs>\r\n    </>\r\n  );\r\n}\r\n\r\n//Creator - Partharora\r\n//X - https://x.com/partharora9128\r\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

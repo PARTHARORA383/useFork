@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "reveal-button",
-  "type": "registry:block",
   "title": "Reveal Button",
   "description": "A reusable animated button that reveals its title with a smooth expanding motion when clicked, adding a subtle interactive touch to the UI.",
   "dependencies": [
@@ -19,5 +18,6 @@
       "content": "'use client';\r\n\r\nimport { RevealButton, RevealButtonIcon } from '@/components/reveal-button';\r\nimport { Bookmark } from 'lucide-react';\r\n\r\nexport function RevealButtonDemo() {\r\n  return (\r\n    <RevealButton title=\"Bookmark\">\r\n      <RevealButtonIcon icon={<Bookmark className=\"w-5 h-5\" />} />\r\n    </RevealButton>\r\n  );\r\n}\r\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }

@@ -31,8 +31,8 @@ export function ColorPresets({ colors, onSelect }: ColorPresetsProps) {
             type="button"
             aria-label={preset.name}
             onClick={() => onSelect(preset.colors)}
-            className={`h-9 w-9 shrink-0 rounded-full border-2 shadow-sm transition-transform hover:scale-110 ${
-              active ? 'border-foreground' : 'border-transparent'
+            className={`h-7 w-7 shrink-0 rounded-full ring-2 ring-transparent shadow-sm transition-transform hover:scale-110 ${
+              active ? 'ring-foreground scale-105' : 'border-transparent'
             }`}
             style={{
               background: `linear-gradient(135deg, ${preset.colors[0]}, ${preset.colors[1]})`,

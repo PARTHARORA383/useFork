@@ -329,7 +329,7 @@ interface ResolvedConfig extends Required<Omit<OrbConfig, 'colors'>> {
 export function CloudOrb({
   flowX = 0.15,
   flowY = 0.07,
-  speed = 0.06,
+  speed = 0.15,
   warpStrength = 0.08,
   colors,
   grainAmount = 0.03,

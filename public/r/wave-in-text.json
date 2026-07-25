@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "wave-in-text",
-  "type": "registry:block",
   "title": "WaveInText",
   "description": "A fully reusable and customizable text wrapper featuring a smooth, wave-like animation built with React and Framer Motion. Simply wrap your text with this component to bring it to life with fluid, elegant motion.",
   "dependencies": [
@@ -18,5 +17,6 @@
       "content": "'use client';\r\n\r\nimport { WaveInText } from '@/components/wave-in-text';\r\n\r\nexport function WaveInTextDemo() {\r\n  return (\r\n    <WaveInText className=\"text-3xl font-medium\" duration={0.5}>\r\n      Dream beyond the ordinary\r\n    </WaveInText>\r\n  );\r\n}\r\n\r\n//Creator - Parth Arora\r\n//X - https://x.com/partharora9128\r\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "type": "registry:block"
 }
