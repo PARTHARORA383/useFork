@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { CloudOrb, DEFAULT_COLORS, type OrbConfig, type OrbState } from '@/components/orb/cloud-orb';
 import { OrbToolbar, OrbToolbarHeader, OrbToolbarBody } from '@/components/orb/orb-toolbar';
-import { ColorToolbar } from '@/components/orb/color-toolbar';
+import { ColorPresets } from '@/components/orb/color-presets';
 import { ElasticSlider } from '@/components/elastic-slider';
 import { Button } from '@/components/ui/button';
 import { RefreshCcw } from 'lucide-react';
@@ -44,54 +44,26 @@ export function CloudOrbDemo() {
 
   const [flowX, setFlowX] = useState(0.15);
   const [flowY, setFlowY] = useState(0);
-  const [flowXSpeed, setFlowXSpeed] = useState(0.8);
   const [speed, setSpeed] = useState(0.06);
-  const [warpStrength, setWarpStrength] = useState(0.28);
-  const [ribbonOpacityCap, setRibbonOpacityCap] = useState(0.52);
-  const [ribbonBreatheAmp, setRibbonBreatheAmp] = useState(0.25);
-  const [ribbonBreatheSpeed, setRibbonBreatheSpeed] = useState(0.31);
-  const [grainAmount, setGrainAmount] = useState(0.04);
+  const [warpStrength, setWarpStrength] = useState(0.08);
+  const [grainAmount, setGrainAmount] = useState(0.03);
   const [colors, setColors] = useState<string[]>([...DEFAULT_COLORS]);
-
-  const setColor = (index: number, hex: string) => {
-    setColors((prev) => {
-      const next = [...prev];
-      next[index] = hex;
-      return next;
-    });
-  };
-
-  const addColor = () => {
-    setColors((prev) => (prev.length < 16 ? [...prev, '#ffffff'] : prev));
-  };
-
-  const removeColor = (index: number) => {
-    setColors((prev) => (prev.length > 1 ? prev.filter((_, i) => i !== index) : prev));
-  };
 
   const resetAll = () => {
     setFlowX(0.15);
     setFlowY(0);
-    setFlowXSpeed(0.8);
     setSpeed(0.06);
-    setWarpStrength(0.28);
-    setRibbonOpacityCap(0.52);
-    setRibbonBreatheAmp(0.25);
-    setRibbonBreatheSpeed(0.31);
-    setGrainAmount(0.04);
+    setWarpStrength(0.08);
+    setGrainAmount(0.03);
     setColors([...DEFAULT_COLORS]);
   };
 
   const config: OrbConfig = {
     flowX,
     flowY,
-    flowXSpeed,
     speed,
     warpStrength,
     colors,
-    ribbonOpacityCap,
-    ribbonBreatheAmp,
-    ribbonBreatheSpeed,
     grainAmount,
     state: orbState,
   };
@@ -103,9 +75,10 @@ export function CloudOrbDemo() {
           <CloudOrb {...config} />
         </div>
         <OrbStateSelector orbState={orbState} setOrbState={setOrbState} />
+        <ColorPresets colors={colors} onSelect={setColors} />
       </div>
 
-      <OrbToolbar className="right-2">
+      <OrbToolbar className="right-4 ">
         <OrbToolbarHeader
           title="Controls"
           actions={
@@ -143,15 +116,6 @@ export function CloudOrbDemo() {
             />
 
             <ElasticSlider
-              label="Flow speed"
-              value={flowXSpeed}
-              min={0.1}
-              max={3}
-              step={0.05}
-              onValueChange={setFlowXSpeed}
-            />
-
-            <ElasticSlider
               label="Global speed"
               value={speed}
               min={0.005}
@@ -164,40 +128,9 @@ export function CloudOrbDemo() {
               label="Warp strength"
               value={warpStrength}
               min={0}
-              max={0.8}
-              step={0.01}
+              max={0.3}
+              step={0.005}
               onValueChange={setWarpStrength}
-            />
-          </div>
-
-          <div className="space-y-3">
-            <span className="text-xs font-medium text-muted-foreground">White Ribbon</span>
-
-            <ElasticSlider
-              label="Opacity cap"
-              value={ribbonOpacityCap}
-              min={0}
-              max={1}
-              step={0.01}
-              onValueChange={setRibbonOpacityCap}
-            />
-
-            <ElasticSlider
-              label="Breathe amplitude"
-              value={ribbonBreatheAmp}
-              min={0}
-              max={0.5}
-              step={0.01}
-              onValueChange={setRibbonBreatheAmp}
-            />
-
-            <ElasticSlider
-              label="Breathe speed"
-              value={ribbonBreatheSpeed}
-              min={0.05}
-              max={2}
-              step={0.05}
-              onValueChange={setRibbonBreatheSpeed}
             />
           </div>
 
@@ -215,13 +148,6 @@ export function CloudOrbDemo() {
           </div>
         </OrbToolbarBody>
       </OrbToolbar>
-
-      <ColorToolbar
-        colors={colors}
-        setColor={setColor}
-        addColor={addColor}
-        removeColor={removeColor}
-      />
     </div>
   );
 }

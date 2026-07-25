@@ -1,13 +1,11 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { createContext, useContext, useState, HTMLAttributes, ReactNode } from 'react';
+import { createContext, useContext, useRef, useState, HTMLAttributes, ReactNode } from 'react';
 import {
   motion,
-  animate,
   AnimatePresence,
   useDragControls,
-  useMotionValue,
   DragControls,
 } from 'motion/react';
 import { GripHorizontal, ChevronsUpDown } from 'lucide-react';
@@ -47,23 +45,23 @@ function useToolbar() {
 function OrbToolbar({ children, className, defaultOpen = true }: ToolbarProps) {
   const [open, setOpen] = useState(defaultOpen);
   const dragControls = useDragControls();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+  const boundsRef = useRef<HTMLDivElement>(null);
 
   return (
     <ToolbarContext.Provider value={{ open, setOpen, dragControls }}>
+      {/* Invisible full-page bounds — keeps the toolbar draggable anywhere
+          on the page without ever letting it drift off-screen. */}
+      <div ref={boundsRef} aria-hidden className="pointer-events-none fixed inset-4 z-0" />
+
       <motion.aside
         drag
         dragControls={dragControls}
         dragListener={false}
         dragMomentum
-        dragElastic={0.08}
-        style={{ x, y }}
-        whileDrag={{ scale: 1.02, rotate: 1, cursor: 'grabbing' }}
-        onDragEnd={() => {
-          animate(x, 0, { type: 'spring', stiffness: 450, damping: 35 });
-          animate(y, 0, { type: 'spring', stiffness: 450, damping: 35 });
-        }}
+        dragElastic={0.05}
+        dragConstraints={boundsRef}
+        dragTransition={{ power: 0.25, timeConstant: 250, bounceStiffness: 400, bounceDamping: 40 }}
+        whileDrag={{ scale: 1.02, cursor: 'grabbing' }}
         className={cn(
           'fixed top-1/2 z-20 -translate-y-1/2',
           'no-scrollbar xl:min-w-[300px] xl:max-w-[300px] 2xl:min-w-[340px] 2xl:max-w-[340px]',

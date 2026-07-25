@@ -4,12 +4,9 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useMemo, useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
-export const DEFAULT_COLORS: string[] = [
-  '#7B78E5', '#9D8FEF', '#B89BE8', '#D4A0C8',
-  '#E8A898', '#F2BC88', '#F5D07A',
-];
+export const DEFAULT_COLORS: string[] = ['#9333EA', '#f5eff2'];
 
-const MAX_COLORS = 16;
+const MAX_COLORS = 4;
 
 const simplexNoise = `
 vec3 mod289v3(vec3 x){ return x - floor(x*(1.0/289.0))*289.0; }
@@ -91,8 +88,10 @@ vec2 flowField(vec2 uv, float t){
 
 const vertexShader = `
 varying vec2 vUv;
+varying vec3 vNormalW;
 void main(){
   vUv = uv;
+  vNormalW = normalize(normalMatrix * normal);
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }
 `;
@@ -105,18 +104,17 @@ uniform float uFlowX;
 uniform float uFlowY;
 uniform float uWarp;
 uniform float uFlowDir;
-uniform float uRibbonOpacityCap;
-uniform float uRibbonBreatheAmp;
-uniform float uRibbonBreatheSpeed;
 uniform float uGrainAmount;
 uniform vec3  uColors[MAX_COLORS];
 uniform int   uColorCount;
-uniform float uSpeaking;
 
 varying vec2 vUv;
+varying vec3 vNormalW;
 
 ${fbmGlsl}
 
+// ── Smooth continuous gradient across all color stops, in order, with soft
+// blurred transitions (smoothstep) rather than discrete bands. ──
 vec3 gradientColor(float t){
   vec3 color = uColors[0];
   for(int i = 1; i < MAX_COLORS; i++){
@@ -132,101 +130,70 @@ float grain(vec2 uv, float time){
   return fract(sin(dot(uv * 200.0 + time * 0.3, vec2(127.1, 311.7))) * 43758.5453);
 }
 
-float ribbonLayer(vec2 centered, vec2 flowDisp, float t, float orbitSpeed, vec2 fbmOffset, float fbmScale, float timeScale){
-  float angle = t * orbitSpeed;
-  float ca = cos(angle), sa = sin(angle);
-  vec2 orbited = vec2(centered.x*ca - centered.y*sa, centered.x*sa + centered.y*ca);
-  vec2 distorted = orbited + flowDisp * 0.28;
-  float n = fbm(vec3((distorted + fbmOffset) * fbmScale, t * timeScale));
-  return smoothstep(0.30, 0.74, n * 0.5 + 0.5);
-}
-
-float sweepArc(vec2 c, float t, float speed, float phase, float width, float noiseAmt) {
-  float angle = atan(c.y, c.x);
-  float r = length(c);
-  float edgeFade = smoothstep(0.08, 0.42, r) * smoothstep(0.52, 0.38, r);
-  float arcCenter = mod(t * speed + phase, 6.28318);
-  float diff = abs(mod(angle - arcCenter + 9.42478, 6.28318) - 3.14159);
-  float n = fbm(vec3(c * 3.5, t * 0.8 + phase)) * noiseAmt;
-  float arc = smoothstep(width + n, width * 0.1 + n, diff);
-  return arc * edgeFade;
-}
-
-mat3 rotationY(float a){ float c = cos(a); float s = sin(a); return mat3(c,0.,s, 0.,1.,0., -s,0.,c); }
-mat3 rotationX(float a){ float c = cos(a); float s = sin(a); return mat3(1.,0.,0., 0.,c,-s, 0.,s,c); }
-
-float shellBand(vec3 p, float t){
-  p = rotationY(t*0.18) * rotationX(sin(t*0.3)*0.25) * p;
-  vec3 q = p;
-  q += vec3(fbm(vec3(p.xy*3.0,t*0.25)), fbm(vec3(p.yz*3.0,t*0.23)), fbm(vec3(p.zx*3.0,t*0.27)))*0.18;
-  float d = abs(q.y + q.x*0.35);
-  float outer = exp(-d*2.5);
-  float middle = exp(-d*6.0);
-  float core = exp(-d*18.0);
-  float mask = outer*0.18 + middle*0.42 + core*0.75;
-  mask *= smoothstep(-0.95,-0.2,q.z);
-  mask *= 1.0-smoothstep(0.35,0.95,q.z);
-  return clamp(mask,0.0,1.0);
+float cloudLayer(vec2 uv, float t){
+  vec2 p = uv * 1.5;
+  vec2 drift = vec2(t * 0.05, t * 0.025);
+  p += drift;
+  vec2 warp = vec2(fbm(vec3(p * 0.8, t * 0.04)), fbm(vec3(p * 0.8 + 11.3, t * 0.04))) * 0.7;
+  float n1 = fbm(vec3((p + warp) * 1.1, t * 0.07));
+  float n2 = fbm(vec3((p + warp) * 2.6 + 5.2, t * 0.11));
+  float n = n1 * 0.7 + n2 * 0.3;
+  return smoothstep(-0.15, 0.65, n * 0.5 + 0.5);
 }
 
 void main(){
-  // ── uFlowDir smoothly reverses the scroll direction: +1 normal, -1 reversed ──
-  vec2 uv = vec2(vUv.x + uFlowX * uFlowDir, vUv.y + uFlowY * uFlowDir);
-  vec2 centered = uv - 0.5;
+  // ── Use the sphere's real surface normal (not the equirectangular UV) as the
+  // coordinate space for everything below. Since normal.xy is always inside the
+  // unit disc on the visible (front-facing) hemisphere, every effect is
+  // guaranteed to stay wrapped on the globe — nothing can drift "outside" it —
+  // and the pattern naturally foreshortens near the rim like a real sphere. ──
+  vec3 n = normalize(vNormalW);
+  vec2 base = n.xy;
 
-  // ── Flow field evaluated in the (possibly reversed) direction ──
+  // ── uFlowDir smoothly reverses the scroll direction: +1 normal, -1 reversed ──
+  vec2 centered = base + vec2(uFlowX, uFlowY) * uFlowDir;
+
+  // ── Flow field, used to warp the gradient softly rather than leaving it
+  // perfectly straight — like currents stirring through liquid. ──
   vec2 flow = flowField(centered, uTime) * uFlowDir;
   vec2 uv2 = centered + flow * uWarp * 1.4;
   vec2 flow2 = flowField(uv2, uTime + 3.7) * uFlowDir;
   vec2 warped = centered + flow * uWarp + flow2 * (uWarp * 0.6);
 
-  float diag = (centered.x * 0.7071 + centered.y * 0.7071) * 0.9 + 0.5;
-  float warpedDiag = (warped.x * 0.7071 + warped.y * 0.7071) * 0.9 + 0.5;
-  float perp = (-centered.x * 0.7071 + centered.y * 0.7071);
-  float wave1 = sin(perp * 5.0 - uTime * 0.6 * uFlowDir) * 0.04;
-  float wave2 = sin(perp * 3.2 - uTime * 0.42 * uFlowDir + 1.3) * 0.02;
-  float noiseDisplace = fbm(vec3(uv * 2.2, uTime * 2.0)) * 0.10;
-  float rawGt = mix(diag, warpedDiag, 0.6) + wave1 + wave2 + noiseDisplace;
+  // ── Fixed vertical gradient axis so the color bands sit horizontally, with
+  // the ripple below moving along that horizontal line like waves on water. ──
+  vec2 axis = vec2(0.0, 1.0);
+  vec2 axisPerp = vec2(1.0, 0.0);
+
+  float pos = dot(warped, axis) * 1.05 + 0.5;
+  float perp = dot(centered, axisPerp);
+  float wave1 = sin(perp * 5.0 - uTime * 0.6 * uFlowDir) * 0.05;
+  float wave2 = sin(perp * 3.2 - uTime * 0.42 * uFlowDir + 1.3) * 0.03;
+  float noiseDisplace = fbm(vec3(centered * 2.2, uTime * 2.0)) * 0.09;
+  float rawGt = pos + wave1 + wave2 + noiseDisplace;
+
+  // ── Cloud puffs perturb the gradient position itself, so pockets of each
+  // color drift and billow into the other like clouds mixing, rather than
+  // just adding a white haze on top. ──
+  float clouds = cloudLayer(base, uTime);
+  rawGt += (clouds - 0.5) * 0.4;
+
   float gt = abs(fract(rawGt * 0.5) * 2.0 - 1.0);
   vec3 color = gradientColor(gt);
 
-  vec2 ribbonFlow = flow * 0.25;
-  float mA = ribbonLayer(centered, ribbonFlow, uTime, 0.09,  vec2(0.0, 0.0), 1.6, 0.12);
-  float mB = ribbonLayer(centered, ribbonFlow, uTime, -0.13, vec2(3.7, 1.9), 1.4, 0.09);
-  float mC = ribbonLayer(centered, ribbonFlow, uTime,  0.07, vec2(7.2,-2.4), 1.9, 0.16);
-  float ribbonMask = clamp(mA * 0.65 + mB * 0.55 + mC * 0.35, 0.0, 1.0);
-  float breathe = 0.50 + uRibbonBreatheAmp * sin(uTime * uRibbonBreatheSpeed) + 0.15 * sin(uTime * 0.57 + 1.4);
-  color = mix(color, vec3(1.0), clamp(ribbonMask * breathe, 0.0, uRibbonOpacityCap));
+  // ── Simple volumetric shading so the globe reads as a real lit sphere:
+  // a soft key light plus edge darkening, and a glassy fresnel rim glow. ──
+  vec3 lightDir = normalize(vec3(0.45, 0.55, 0.8));
+  float diffuse = clamp(dot(n, lightDir), 0.0, 1.0);
+  color *= mix(0.62, 1.12, diffuse);
 
-  if(uSpeaking > 0.001){
-    float s1 = sweepArc(centered, uTime, 2.8, 0.00, 0.55, 0.18);
-    float s2 = sweepArc(centered, uTime, 1.9, 2.09, 0.38, 0.22);
-    float s3 = sweepArc(centered, uTime, 3.5, 4.19, 0.28, 0.14);
-    float s4 = sweepArc(centered, uTime, 1.1, 1.05, 0.90, 0.30) * 0.4;
-    float sweep = clamp(s1 * 0.85 + s2 * 0.70 + s3 * 0.60 + s4, 0.0, 1.0);
-    vec3 sweepColor = vec3(1.0, 0.98, 0.96);
-    color = mix(color, sweepColor, sweep * uSpeaking * 0.82);
-  }
+  float fresnel = pow(1.0 - clamp(n.z, 0.0, 1.0), 2.5);
+  color += fresnel * 0.16;
 
   float g = grain(vUv, uTime) * uGrainAmount;
   color += g - uGrainAmount * 0.5;
 
   gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
-
-  vec2 sphereUV = vUv * 2.0 - 1.0;
-  float rr = dot(sphereUV, sphereUV);
-  if(rr <= 1.0){
-    float z = sqrt(1.0 - rr);
-    vec3 normal = normalize(vec3(sphereUV, z));
-    float shell = shellBand(normal, uTime);
-    float shellBreathe = 0.75 + 0.25 * sin(uTime * 0.55);
-    shell *= shellBreathe;
-    float fresnel = pow(1.0 - normal.z, 3.0);
-    shell += fresnel * 0.22;
-    shell = clamp(shell, 0.0, 1.0);
-    vec3 shellColor = vec3(1.0);
-    color = mix(color, shellColor, shell * 0.28);
-  }
 }
 `;
 
@@ -248,7 +215,6 @@ interface MaterialProps {
 }
 
 function GradientMaterial({ configRef }: MaterialProps) {
-  const speakingRef = useRef(0);
   // Smoothed flow direction: +1 idle/listening, -1 speaking
   const flowDirRef = useRef(1.0);
 
@@ -263,13 +229,9 @@ function GradientMaterial({ configRef }: MaterialProps) {
         uFlowY: { value: 0 },
         uWarp: { value: cfg.warpStrength },
         uFlowDir: { value: 1.0 },
-        uRibbonOpacityCap: { value: cfg.ribbonOpacityCap },
-        uRibbonBreatheAmp: { value: cfg.ribbonBreatheAmp },
-        uRibbonBreatheSpeed: { value: cfg.ribbonBreatheSpeed },
         uGrainAmount: { value: cfg.grainAmount },
         uColors: { value: colorsToFloat32(cfg.colors) },
         uColorCount: { value: Math.min(cfg.colors.length, MAX_COLORS) },
-        uSpeaking: { value: 0 },
       },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -280,38 +242,30 @@ function GradientMaterial({ configRef }: MaterialProps) {
     const dt = Math.min(delta, 0.1);
     const isSpeaking = cfg.state === 'speaking';
 
-    // Smooth speaking blend 0→1
-    const speakTarget = isSpeaking ? 1 : 0;
-    speakingRef.current += (speakTarget - speakingRef.current) * dt * 3.0;
-    const sp = speakingRef.current;
-
     // ── Smooth direction flip: target -1 when speaking, +1 otherwise ──
     const dirTarget = isSpeaking ? -1.0 : 1.0;
     flowDirRef.current += (dirTarget - flowDirRef.current) * dt * 1.5;
 
-    // ── Speed: faster when speaking (2.8×), slightly quicker when listening ──
+    // ── Speed: much faster when speaking so the color-merge is clearly felt,
+    // slightly quicker when listening ──
     const isListening = cfg.state === 'listening';
-    const speedMult = isSpeaking ? 2.8 : isListening ? 1.3 : 1.0;
+    const speedMult = isSpeaking ? 4.5 : isListening ? 1.3 : 1.0;
     material.uniforms.uTime.value += dt * cfg.speed * speedMult;
 
     const t = material.uniforms.uTime.value;
-    material.uniforms.uFlowX.value =
-      Math.sin(t * cfg.flowXSpeed) * cfg.flowX;
-    material.uniforms.uFlowY.value =
-      Math.sin(t * cfg.flowXSpeed * 0.7 + 1.2) * cfg.flowY;
+    // Fixed internal oscillation frequency (no longer exposed as a prop).
+    const flowFrequency = 0.8;
+    material.uniforms.uFlowX.value = Math.sin(t * flowFrequency) * cfg.flowX;
+    material.uniforms.uFlowY.value = Math.sin(t * flowFrequency * 0.7 + 1.2) * cfg.flowY;
 
     material.uniforms.uFlowDir.value = flowDirRef.current;
     material.uniforms.uWarp.value = cfg.warpStrength;
-    material.uniforms.uRibbonOpacityCap.value = cfg.ribbonOpacityCap;
-    material.uniforms.uRibbonBreatheAmp.value = cfg.ribbonBreatheAmp;
-    material.uniforms.uRibbonBreatheSpeed.value = cfg.ribbonBreatheSpeed;
     material.uniforms.uGrainAmount.value = cfg.grainAmount;
 
     colorsToFloat32(cfg.colors).forEach((v, i) => {
       (material.uniforms.uColors.value as Float32Array)[i] = v;
     });
     material.uniforms.uColorCount.value = Math.min(cfg.colors.length, MAX_COLORS);
-    material.uniforms.uSpeaking.value = sp;
   });
 
   return <primitive object={material} attach="material" />;
@@ -325,26 +279,26 @@ function AnimatedOrb({ configRef }: AnimatedOrbProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const scaleRef = useRef(1.0);
   const timeRef = useRef(0);
-  const listenBlendRef = useRef(0);
 
   useFrame((_, delta) => {
     if (!meshRef.current) return;
-    const { state, listeningBreathSpeed, listeningBreathAmp } = configRef.current;
+    const { state } = configRef.current;
     const dt = Math.min(delta, 0.1);
 
     timeRef.current += dt;
     const t = timeRef.current;
 
-    const listenTarget = state === 'listening' ? 1 : 0;
-    listenBlendRef.current += (listenTarget - listenBlendRef.current) * dt * 2.5;
-
-    const listenBreathe =
-      Math.sin(t * listeningBreathSpeed) * listeningBreathAmp * listenBlendRef.current;
-
+    // ── Listening shrinks the globe a touch — a single smooth resize (no
+    // pulsing) to read as "listening" — and eases back for idle/speaking. ──
     const snapTarget = state === 'listening' ? 0.85 : 1.0;
     scaleRef.current += (snapTarget - scaleRef.current) * dt * 8.0;
 
-    const s = scaleRef.current + listenBreathe;
+    // ── Intro reveal: grow from a tiny point up to full size once, on mount ──
+    const introDuration = 1.1;
+    const introT = Math.min(t / introDuration, 1);
+    const introEase = 1 - Math.pow(1 - introT, 3);
+
+    const s = scaleRef.current * introEase;
     meshRef.current.scale.set(s, s, s);
   });
 
@@ -361,17 +315,11 @@ export type OrbState = 'idle' | 'listening' | 'speaking';
 export interface OrbConfig {
   flowX?: number;
   flowY?: number;
-  flowXSpeed?: number;
   speed?: number;
   warpStrength?: number;
   colors?: string[];
-  ribbonOpacityCap?: number;
-  ribbonBreatheAmp?: number;
-  ribbonBreatheSpeed?: number;
   grainAmount?: number;
   state?: OrbState;
-  listeningBreathSpeed?: number; // cycles per second, default 1.4
-  listeningBreathAmp?: number;   // scale swing ±, default 0.038
 }
 
 interface ResolvedConfig extends Required<Omit<OrbConfig, 'colors'>> {
@@ -380,36 +328,26 @@ interface ResolvedConfig extends Required<Omit<OrbConfig, 'colors'>> {
 
 export function CloudOrb({
   flowX = 0.15,
-  flowY = 0,
-  flowXSpeed = 0.8,
+  flowY = 0.07,
   speed = 0.06,
-  warpStrength = 0.28,
+  warpStrength = 0.08,
   colors,
-  ribbonOpacityCap = 0.52,
-  ribbonBreatheAmp = 0.25,
-  ribbonBreatheSpeed = 0.31,
-  grainAmount = 0.04,
+  grainAmount = 0.03,
   state = 'idle',
-  listeningBreathSpeed = 1.4,
-  listeningBreathAmp = 0.038,
 }: OrbConfig) {
   const resolvedColors = colors && colors.length > 0 ? colors : DEFAULT_COLORS;
 
   const configRef = useRef<ResolvedConfig>({
-    flowX, flowY, flowXSpeed, speed, warpStrength,
+    flowX, flowY, speed, warpStrength,
     colors: resolvedColors,
-    ribbonOpacityCap, ribbonBreatheAmp, ribbonBreatheSpeed,
     grainAmount, state,
-    listeningBreathSpeed, listeningBreathAmp,
   });
 
   useEffect(() => {
     configRef.current = {
-      flowX, flowY, flowXSpeed, speed, warpStrength,
+      flowX, flowY, speed, warpStrength,
       colors: resolvedColors,
-      ribbonOpacityCap, ribbonBreatheAmp, ribbonBreatheSpeed,
       grainAmount, state,
-      listeningBreathSpeed, listeningBreathAmp,
     };
   });
 

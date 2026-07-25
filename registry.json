@@ -429,7 +429,7 @@
           "language": "tsx"
         },
         {
-          "path": "components/orb/color-toolbar.tsx",
+          "path": "components/orb/color-presets.tsx",
           "type": "registry:component",
           "language": "tsx"
         },
