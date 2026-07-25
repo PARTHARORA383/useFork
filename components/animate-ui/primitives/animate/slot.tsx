@@ -82,9 +82,18 @@ function Slot<T extends HTMLElement = HTMLElement>({
 
   const mergedProps = mergeProps(childProps, props);
 
-  return (
-    <Base {...mergedProps} ref={mergeRefs(childRef as React.Ref<T>, ref)} />
-  );
+  // `Base` is resolved from a generic `React.ElementType` union (a plain tag
+  // or an already-motion component), which JSX can't resolve to a concrete
+  // props/ref type — cast to `any` here so the merged props (including the
+  // combined ref callback) can be passed through without a spurious
+  // "not assignable to type 'never'" error.
+  const AnyBase = Base as any;
+  const finalProps: AnyProps = {
+    ...mergedProps,
+    ref: mergeRefs(childRef as React.Ref<T>, ref),
+  };
+
+  return <AnyBase {...finalProps} />;
 }
 
 export {
