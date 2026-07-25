@@ -87,6 +87,7 @@ function Slot<T extends HTMLElement = HTMLElement>({
   // props/ref type — cast to `any` here so the merged props (including the
   // combined ref callback) can be passed through without a spurious
   // "not assignable to type 'never'" error.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const AnyBase = Base as any;
   const finalProps: AnyProps = {
     ...mergedProps,
