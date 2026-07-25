@@ -47,6 +47,7 @@ export function CustomNavbar() {
   const links = [
     { label: 'Home', href: '/' },
     { label: 'Documentation', href: '/docs' },
+    { label: 'Components', href: '/components' },
   ];
 
   return (
@@ -55,8 +56,8 @@ export function CustomNavbar() {
       layout
       onClick={() => setIsOpen(!isOpen)}
       animate={{
-        width: isOpen ? 600 : 420,
-        height: isOpen ? 180 : 44,
+        width: isOpen ? 700 : 420,
+        height: isOpen ? 250 : 44,
       }}
       transition={{
         duration: 0.6,

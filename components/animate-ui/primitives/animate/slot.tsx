@@ -70,9 +70,11 @@ function Slot<T extends HTMLElement = HTMLElement>({
 
   const Base = React.useMemo(
     () =>
-      isAlreadyMotion
+      (isAlreadyMotion
         ? (children.type as React.ElementType)
-        : motion.create(children.type as React.ElementType),
+        : motion.create(children.type as React.ElementType)) as React.ComponentType<
+        AnyProps & { ref?: React.Ref<T> }
+      >,
     [isAlreadyMotion, children.type],
   );
 
@@ -82,19 +84,9 @@ function Slot<T extends HTMLElement = HTMLElement>({
 
   const mergedProps = mergeProps(childProps, props);
 
-  // `Base` is resolved from a generic `React.ElementType` union (a plain tag
-  // or an already-motion component), which JSX can't resolve to a concrete
-  // props/ref type — cast to `any` here so the merged props (including the
-  // combined ref callback) can be passed through without a spurious
-  // "not assignable to type 'never'" error.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const AnyBase = Base as any;
-  const finalProps: AnyProps = {
-    ...mergedProps,
-    ref: mergeRefs(childRef as React.Ref<T>, ref),
-  };
-
-  return <AnyBase {...finalProps} />;
+  return (
+    <Base {...mergedProps} ref={mergeRefs(childRef as React.Ref<T>, ref)} />
+  );
 }
 
 export {
