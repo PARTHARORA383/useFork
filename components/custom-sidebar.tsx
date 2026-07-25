@@ -93,7 +93,7 @@ export function CustomSidebar() {
         transition={{ duration: 0.2, ease: 'easeInOut' }}
         aria-hidden={!sidebar.open}
         style={{ pointerEvents: sidebar.open ? 'auto' : 'none' }}
-        className="p-4 space-y-2 fixed  top-0 left-0 z-20 md:bg-muted3 bg-muted dark:bg-muted/40 backdrop-blur-2xl ml-2 mb-2 mr-2  md:pl-8 pt-32 md:pt-32 pb-16  mt-4 border pr-12 rounded-l-lg h-[calc(100vh-2rem)] overflow-scroll no-scrollbar"
+        className="p-4 space-y-2 fixed  top-0 left-0 z-20 md:bg-muted3 bg-muted dark:bg-muted/40 backdrop-blur-2xl ml-4 mb-2 mr-2  md:pl-8 pt-24 md:pt-32 pb-16  mt-4 border pr-12 rounded-lg h-[calc(100vh-2rem)] overflow-scroll no-scrollbar"
       >
         {NavigationLinkData.map((section) => (
           <div key={section.heading}>

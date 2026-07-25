@@ -12,7 +12,7 @@ export function PageLoader({ children }: { children: React.ReactNode }) {
 
   if (!ready) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center ">
+      <div className="fixed inset-0 flex items-center justify-center bg-muted2">
         <div className="w-8 h-8 border-2 border-t-transparent rounded-full animate-spin" />
       </div>
     );

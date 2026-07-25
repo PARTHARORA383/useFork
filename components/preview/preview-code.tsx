@@ -47,11 +47,9 @@ export function PreviewCode({
     <>
       <AnimatedTabs
         defaultValue="preview"
-        className="fixed inset-0 no-scrollbar h-[calc(100vh-2rem)] w-[calc(100vw-1rem)] rounded-lg flex gap-4 ml-2 mt-4 border overflow-x-scroll"
+        className="fixed inset-0 no-scrollbar h-[calc(100vh-1rem)] w-[calc(100vw-1rem)] rounded-lg flex gap-4 ml-2 mt-2 border overflow-x-scroll"
       >
-        <div className="fixed right-6 bottom-7 z-20">
-          <AnimatedMenu />
-        </div>
+
 
         <div className={cn('bg-muted2 h-full w-full overflow-scroll no-scrollbar', className)}>
           <div className={cn('', positionClasses, secondClassName)}>{component}</div>
