@@ -53,7 +53,7 @@ export function PreviewCode({
           <AnimatedMenu />
         </div>
 
-        <div className={cn('  bg-muted2 h-full w-full overflow-scroll no-scrollbar', className)}>
+        <div className={cn('bg-muted2 h-full w-full overflow-scroll no-scrollbar', className)}>
           <div className={cn('', positionClasses, secondClassName)}>{component}</div>
         </div>
       </AnimatedTabs>

@@ -1,0 +1,41 @@
+---
+title: 'Cloud Orb'
+description: 'An animated, shader-driven 3D orb built with React Three Fiber, featuring flowing gradient clouds, ribbon layers, and reactive idle, listening, and speaking states.'
+---
+
+<PreviewCode
+  position="center"
+  className="h-full border-0 relative"
+  secondClassName="lg:w-full h-full flex items-center justify-center"
+  component={<CloudOrbDemo />}
+  codePath="/r/cloud-orb.json"
+/>
+
+<CodePopup>
+
+<HeadingDescription
+  title="Cloud Orb"
+  description="An animated, shader-driven 3D orb built with React Three Fiber, featuring flowing gradient clouds, ribbon layers, and reactive idle, listening, and speaking states."
+/>
+---
+
+### Installation
+
+<CLIManualBlock
+  command={'https://use-fork.vercel.app/r/cloud-orb.json'}
+  codePath="/r/cloud-orb.json"
+/>
+---
+
+### How to use
+
+<CodeBlockComponent codePath="/r/cloud-orb.json" id={4} />
+
+---
+
+### Props
+
+CloudOrb (OrbConfig)
+<Table data={{ flowX: { description: "Horizontal amplitude of the flow-field offset applied to the UV coordinates. Higher values push the gradient's pattern further side to side over time.", type: 'number', default: '`0.15`', }, flowY: { description: 'Vertical amplitude of the flow-field offset. Works the same as flowX but on the Y axis; kept at 0 by default for a mostly horizontal drift.', type: 'number', default: '`0`', }, flowXSpeed: { description: 'Oscillation speed (radians/sec multiplier) for both the X and Y flow offsets. Larger values make the drifting motion cycle faster.', type: 'number', default: '`0.8`', }, speed: { description: "Global time multiplier for the shader's internal clock (uTime). Controls how fast the whole animation — noise, ribbons, warp — advances per frame.", type: 'number', default: '`0.06`', }, warpStrength: { description: 'Strength of the domain-warping effect applied to the gradient. Higher values distort the diagonal gradient bands more heavily using the fbm noise field.', type: 'number', default: '`0.28`', }, colors: { description: "Array of hex color strings used as gradient stops (max 16). Colors are interpolated with smoothstep across the shader's gradient function.", type: 'string[]', default: 'DEFAULT_COLORS', }, ribbonOpacityCap: { description: 'Maximum opacity the white ribbon overlay can reach, clamping how strongly it blends over the base gradient color.', type: 'number', default: '`0.52`', }, ribbonBreatheAmp: { description: "Amplitude of the ribbon's breathing effect — how much its visibility pulses up and down over time.", type: 'number', default: '`0.25`', }, ribbonBreatheSpeed: { description: "Speed of the ribbon's breathing oscillation. Higher values make the pulsing faster.", type: 'number', default: '`0.31`', }, grainAmount: { description: 'Intensity of the film-grain noise added to the final color output, for a subtle textured look.', type: 'number', default: '`0.04`', }, state: { description: 'Current orb state. Drives several behaviors at once: flow direction reverses and speed multiplies ~2.8× when speaking, the orb scales down slightly and breathes when listening, and a sweeping highlight animates in only while speaking.', type: "'idle' | 'listening' | 'speaking'", default: "'idle'", }, listeningBreathSpeed: { description: "Cycles per second for the orb's subtle scale-breathing animation while in the listening state.", type: 'number', default: '`1.4`', }, listeningBreathAmp: { description: 'Amplitude of the scale swing (±) during the listening breathing animation.', type: 'number', default: '`0.038`', }, }} />
+
+</CodePopup>

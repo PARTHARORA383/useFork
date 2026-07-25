@@ -42,7 +42,8 @@ export const NavigationLinkData: NavigationSection[] = [
           { id: 11, title: 'Carousal-01', href: '/docs/carousal01' },
           { id: 12, title: 'Parallax Slider', href: '/docs/parallax-slider' },
           {id : 16, title: 'Cool Buttons', href: '/docs/cool-buttons' },
-          {id : 17, title: 'Apple Carousel', href: '/docs/apple-carousel' }
+          {id : 17, title: 'Apple Carousel', href: '/docs/apple-carousel' },
+          {id : 18, title: 'Cloud Orb', href: '/docs/cloud-orb' }
         ],
       },
       {

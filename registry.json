@@ -406,6 +406,40 @@
         }
       ],
       "dependencies": ["motion "]
+    },
+    {
+      "name": "cloud-orb",
+      "type": "registry:block",
+      "title": "Cloud Orb",
+      "description": "An animated, shader-driven 3D orb built with React Three Fiber, featuring flowing gradient clouds, ribbon layers, and reactive idle, listening, and speaking states.",
+      "files": [
+        {
+          "path": "components/orb/cloud-orb.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/cloud-orb-demo.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/orb/orb-toolbar.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/orb/color-toolbar.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        },
+        {
+          "path": "components/demo/cloud-orb-usage.tsx",
+          "type": "registry:component",
+          "language": "tsx"
+        }
+      ],
+      "dependencies": ["three", "@react-three/fiber", "motion", "lucide-react"]
     }
   ]
 }

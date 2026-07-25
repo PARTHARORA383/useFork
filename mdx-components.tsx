@@ -33,6 +33,7 @@ import { Carousal01Demo } from '@/components/demo/carousal-01-demo';
 import { ParallaxSliderDemo } from '@/components/demo/parallax-slider-demo';
 import { CoolButtonsDemo } from '@/components/demo/cool-button-demo';
 import { AppleCarouselDemo } from '@/components/demo/apple-carousel-demo';
+import { CloudOrbDemo } from '@/components/demo/cloud-orb-demo';
 
 // use this function to get MDX components, you will need it for rendering MDX
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
@@ -71,6 +72,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Carousal01Demo,
     ParallaxSliderDemo,
     CoolButtonsDemo,
-    AppleCarouselDemo
+    AppleCarouselDemo,
+    CloudOrbDemo
   };
 }
