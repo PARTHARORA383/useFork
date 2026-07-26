@@ -54,11 +54,6 @@ export const data = [
         href: '/docs/parallax-images',
         icon: <Ghost className="w-5 h-5" />,
       },
-      {
-        title: 'Banner Carousal',
-        href: '/docs/banner-carousal',
-        icon: <Ghost className="w-5 h-5" />,
-      },
       { title: 'Code Block', href: '/docs/code-block', icon: <Ghost className="w-5 h-5" /> },
       { title: 'Save Toggle', href: '/docs/save-toggle', icon: <Ghost className="w-5 h-5" /> },
       { title: 'Flip Card', href: '/docs/flip-card-hover', icon: <Ghost className="w-5 h-5" /> },
@@ -93,7 +88,6 @@ export const data = [
         icon: <Ghost className="w-5 h-5" />,
       },
       { title: 'Wave Effect', href: '/docs/wave-in-text', icon: <Ghost className="w-5 h-5" /> },
-      { title: 'Rollin Effect ', href: '/docs/roll-in-text', icon: <Ghost className="w-5 h-5" /> },
       {
         title: 'RollOver Effect ',
         href: '/docs/roll-over-text',
