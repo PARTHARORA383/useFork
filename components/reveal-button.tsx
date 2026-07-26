@@ -18,14 +18,15 @@ function RevealButton({ title, children, onClick, className }: RevealButtonProps
       <motion.div
         ref={containerRef}
         className={cn(
-          'flex items-center justify-center border p-2 rounded-xl origin-left overflow-hidden cursor-pointer text-white',
+          'flex items-center justify-center border p-2 rounded-xl origin-left overflow-hidden cursor-pointer text-white active:scale-95 transition-tranform duration-200',
           isActive
             ? `gap-2 bg-sky-400/40 border-sky-200 dark:bg-purple-400/40 dark:border-purple-200`
             : 'hover:bg-muted2 border-muted-foreground',
           className
         )}
+        onMouseEnter={()=> setIsActive(true)}
+        onMouseLeave={()=>setIsActive(false)}
         onClick={() => {
-          setIsActive((prev)=>!prev)
           onClick?.();
         }}
       >

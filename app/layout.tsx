@@ -18,7 +18,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
           }}
         >
           <Analytics />
-          <CustomNavbar />
+          {/* <CustomNavbar /> */}
           {children}
         </RootProvider>
       </body>

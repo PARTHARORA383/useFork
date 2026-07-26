@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Bebas_Neue } from 'next/font/google';
-import { useState } from 'react';
 
 const bebasNeue = Bebas_Neue({ subsets: ['latin'], weight: '400' });
 
@@ -15,7 +14,7 @@ function HeroHeader() {
           initial={{ opacity: 1, y: '120%' }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="text-9xl font-medium"
+          className="text-7xl font-medium text-center"
           style={{ fontFamily: bebasNeue.style.fontFamily }}
         >
           Design Led Components
@@ -26,11 +25,11 @@ function HeroHeader() {
           initial={{ opacity: 1, y: '120%' }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="text-9xl font-medium"
+          className="text-7xl font-medium text-center"
           style={{ fontFamily: bebasNeue.style.fontFamily }}
         >
           For Bold{' '}
-          <span className="bg-gradient-to-r from-[var(--color-purple-200)] to-[var(--color-purple-300)] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[var(--color-purple-200)] to-[var(--color-purple-300)] bg-clip-text text-white">
             Interfaces
           </span>
         </motion.div>
@@ -45,67 +44,22 @@ function HeroCTA() {
       initial={{ opacity: 0, y: '100%' }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.8, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="flex gap-4"
+      className="flex justify-center gap-4 mt-2"
     >
-      {/* Documentation Button */}
-      <DocumentationButton />
-      <ComponentButton />
+      <Link
+        href="/docs"
+        className="rounded-full px-4 py-1.5 text-sm font-medium bg-foreground text-background cursor-pointer active:scale-95 transition-transform duration-200 hover:opacity-90"
+      >
+        Get Started
+      </Link>
+
+      <Link
+        href="/components"
+        className="rounded-full px-4 py-1.5 text-sm font-medium bg-muted3 text-foreground/80 cursor-pointer active:scale-95 transition-transform duration-200 hover:text-foreground"
+      >
+        View All Components
+      </Link>
     </motion.div>
-  );
-}
-
-function DocumentationButton() {
-  const [isHover, setIsHover] = useState(false);
-
-  return (
-    <Link
-      href="/docs"
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-      className="relative rounded-full p-2 px-5 overflow-hidden bg-muted3 cursor-pointer active:scale-95 transition-transform duration-200 flex items-center justify-center"
-    >
-      {/* Base Text */}
-      <span className="text-foreground/80">Documentation</span>
-
-      {/* Reveal Layer */}
-      <div
-        className="absolute inset-0 p-2 px-5 transition-[clip-path] duration-700 ease-out flex items-center justify-center"
-        style={{
-          clipPath: isHover ? 'ellipse(150px 150px at 10% 50%)' : 'ellipse(0px 0px at 0% 50%)',
-        }}
-      >
-        <span className="text-foreground">Documentation</span>
-      </div>
-    </Link>
-  );
-}
-
-function ComponentButton() {
-  const [isHover, setIsHover] = useState(false);
-  return (
-    <div>
-      <a
-        href="https://github.com/PARTHARORA383/useFork"
-        target="_blank"
-        rel="noopener noreferrer"
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
-        className="relative rounded-full p-2 px-5 overflow-hidden bg-foreground/90 text-background cursor-pointer active:scale-95 transition-transform duration-200 flex items-center justify-center"
-      >
-        {/* Base Text */}
-        <span className="text-background/80">Star us on GitHub</span>
-
-        {/* Reveal Layer */}
-        <div
-          className="absolute inset-0 p-2 px-5 bg-gradient-to-r from-[var(--color-purple-300)] to-[var(--color-purple-400)] transition-[clip-path] duration-700 ease-out flex items-center justify-center"
-          style={{
-            clipPath: isHover ? 'ellipse(150px 150px at 50% 100%)' : 'ellipse(0px 0px at 0% 50%)',
-          }}
-        >
-          <span className="text-foreground">Star us on GitHub</span>
-        </div>
-      </a>
-    </div>
   );
 }
 
