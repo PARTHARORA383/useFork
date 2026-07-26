@@ -21,9 +21,9 @@ const featuredVideos = [
     href: "https://usefork.dev/docs/parallax-images",
   },
   {
-    title: "Side Navigation",
-    src: "/videos/craft4.mp4",
-    href: "https://usefork.dev/docs/side-navigation",
+    title: "Cloud Orb",
+    src: "/videos/craft11.mp4",
+    href: "https://usefork.dev/docs/cloud-orb",
   },
 ];
 

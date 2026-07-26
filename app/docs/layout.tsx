@@ -17,7 +17,7 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
           nav={{ enabled: false }}
           searchToggle={{ enabled: false }}
         >
-          <div className=" dark:bg-muted ">
+          <div className="dark:bg-muted ">
             <CustomSidebar />
             <CustomToolbar />
             <PageLoader>{children}</PageLoader>

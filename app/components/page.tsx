@@ -3,6 +3,11 @@ import { VideoPlayer } from "@/components/video-player";
 
 const craftVideos = [
     {
+        title: "Parallax Images",
+        src: "/videos/craft3.mp4",
+        href: "https://usefork.dev/docs/parallax-images",
+    },
+    {
         title: "Interactive Carousal",
         src: "/videos/craft1.mp4",
         href: "https://usefork.dev/docs/carousal01",
@@ -13,9 +18,14 @@ const craftVideos = [
         href: "https://usefork.dev/docs/cool-buttons",
     },
     {
-        title: "Parallax Images",
-        src: "/videos/craft3.mp4",
-        href: "https://usefork.dev/docs/parallax-images",
+        title: "Cloud Orb",
+        src: "/videos/craft11.mp4",
+        href: "https://usefork.dev/docs/cloud-orb",
+    },
+    {
+        title: "Apple Carousal",
+        src: "/videos/craft10.mp4",
+        href: "https://usefork.dev/docs/apple-carousel",
     },
     {
         title: "Side Navigation",
