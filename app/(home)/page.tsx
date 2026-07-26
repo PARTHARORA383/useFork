@@ -20,7 +20,7 @@ export default function HomePage() {
     <div className="bg-muted2 relative  fixed inset-0 no-scrollbar h-[calc(100vh-1rem)] w-[calc(100vw-1rem)] border rounded-xl space-y-4 overflow-y-scroll">
       <section className="group relative flex min-h-[calc(100vh-1rem)] flex-col justify-center overflow-hidden">
         <Image
-          src="/Images/clouds.png"
+          src="/images/clouds.png"
           alt=""
           fill
           priority
