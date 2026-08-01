@@ -107,7 +107,7 @@ interface RollRevealButtonTextOverlayProps {
 export function RollRevealButtonTextOverlay({ className, text = 'Booking a Call', icon }: RollRevealButtonTextOverlayProps) {
   const { hover } = useRollRevealContext();
   return (
-    <div className={cn('absolute inset-0 px-4  bg-red-400  text-white overflow-hidden h-10 flex items-center min-w-[120px] justify-centerbg-red-400 transition-[clip-path] duration-800 linear  gap-2 justify-center', className)}
+    <div className={cn('absolute inset-0 px-4  bg-red-400  text-white overflow-hidden h-10 flex items-center min-w-[120px] transition-[clip-path] duration-800 linear  gap-2 justify-center', className)}
       style={{
         clipPath: hover ? 'ellipse(150px 150px at 10% 20%)' : `ellipse(0px 0px at 0% 100%)`
       }}
